@@ -1,10 +1,9 @@
+using Microsoft.AspNetCore.Identity;
+
 namespace myYardSale.Domain.Entities;
 
-public class ApplicationUser
+public class ApplicationUser : IdentityUser<int>
 {
-    public int Id { get; set; }
-    public string UserName { get; set; } = string.Empty;
-    public string Email { get; set; } = string.Empty;
     public string? FullName { get; set; }
     public bool IsActive { get; set; } = true;
     public DateTimeOffset CreatedAt { get; set; } = DateTimeOffset.UtcNow;

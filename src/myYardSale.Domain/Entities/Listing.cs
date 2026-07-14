@@ -9,7 +9,9 @@ public class Listing
     public ListingStatus Status { get; set; }
     public DateTimeOffset CreatedAt { get; set; } = DateTimeOffset.UtcNow;
     public Category? Category { get; set; }
-    public int CategoryId { get; set; }
+    public int? CategoryId { get; set; }
+    public Household? Household { get; set; }
+    public int? HouseholdId { get; set; }
 }
 
 public enum ListingStatus

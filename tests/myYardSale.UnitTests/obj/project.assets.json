@@ -478,7 +478,10 @@
         },
         "runtime": {
           "bin/placeholder/myYardSale.Domain.dll": {}
-        }
+        },
+        "frameworkReferences": [
+          "Microsoft.AspNetCore.App"
+        ]
       }
     }
   },

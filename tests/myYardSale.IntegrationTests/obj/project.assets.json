@@ -1743,7 +1743,10 @@
         },
         "runtime": {
           "bin/placeholder/myYardSale.Domain.dll": {}
-        }
+        },
+        "frameworkReferences": [
+          "Microsoft.AspNetCore.App"
+        ]
       },
       "myYardSale.Infrastructure/1.0.0": {
         "type": "project",

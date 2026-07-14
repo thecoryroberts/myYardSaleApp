@@ -5,8 +5,8 @@
 /media/thecoryroberts/External/Design Assets/Web Solutions/myYardSale/src/myYardSale.Domain/obj/Debug/net9.0/myYardSale.Domain.AssemblyInfoInputs.cache
 /media/thecoryroberts/External/Design Assets/Web Solutions/myYardSale/src/myYardSale.Domain/obj/Debug/net9.0/myYardSale.Domain.AssemblyInfo.cs
 /media/thecoryroberts/External/Design Assets/Web Solutions/myYardSale/src/myYardSale.Domain/obj/Debug/net9.0/myYardSale.Domain.csproj.CoreCompileInputs.cache
+/media/thecoryroberts/External/Design Assets/Web Solutions/myYardSale/src/myYardSale.Domain/obj/Debug/net9.0/myYardSale.Domain.sourcelink.json
 /media/thecoryroberts/External/Design Assets/Web Solutions/myYardSale/src/myYardSale.Domain/obj/Debug/net9.0/myYardSale.Domain.dll
 /media/thecoryroberts/External/Design Assets/Web Solutions/myYardSale/src/myYardSale.Domain/obj/Debug/net9.0/refint/myYardSale.Domain.dll
 /media/thecoryroberts/External/Design Assets/Web Solutions/myYardSale/src/myYardSale.Domain/obj/Debug/net9.0/myYardSale.Domain.pdb
 /media/thecoryroberts/External/Design Assets/Web Solutions/myYardSale/src/myYardSale.Domain/obj/Debug/net9.0/ref/myYardSale.Domain.dll
-/media/thecoryroberts/External/Design Assets/Web Solutions/myYardSale/src/myYardSale.Domain/obj/Debug/net9.0/myYardSale.Domain.sourcelink.json

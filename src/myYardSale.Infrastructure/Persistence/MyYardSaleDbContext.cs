@@ -1,9 +1,11 @@
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using myYardSale.Domain.Entities;
 
 namespace myYardSale.Infrastructure.Persistence;
 
-public class MyYardSaleDbContext : DbContext
+public class MyYardSaleDbContext : IdentityDbContext<ApplicationUser, IdentityRole<int>, int>
 {
     public MyYardSaleDbContext(DbContextOptions<MyYardSaleDbContext> options)
         : base(options)
@@ -13,12 +15,48 @@ public class MyYardSaleDbContext : DbContext
     public DbSet<Organization> Organizations => Set<Organization>();
     public DbSet<Event> Events => Set<Event>();
     public DbSet<Household> Households => Set<Household>();
-    public DbSet<ApplicationUser> Users => Set<ApplicationUser>();
     public DbSet<Listing> Listings => Set<Listing>();
     public DbSet<Category> Categories => Set<Category>();
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
+        base.OnModelCreating(modelBuilder);
+
+        modelBuilder.Entity<ApplicationUser>(entity =>
+        {
+            entity.ToTable("Users");
+        });
+
+        modelBuilder.Entity<IdentityRole<int>>(entity =>
+        {
+            entity.ToTable("Roles");
+        });
+
+        modelBuilder.Entity<IdentityUserRole<int>>(entity =>
+        {
+            entity.ToTable("UserRoles");
+        });
+
+        modelBuilder.Entity<IdentityUserClaim<int>>(entity =>
+        {
+            entity.ToTable("UserClaims");
+        });
+
+        modelBuilder.Entity<IdentityUserLogin<int>>(entity =>
+        {
+            entity.ToTable("UserLogins");
+        });
+
+        modelBuilder.Entity<IdentityRoleClaim<int>>(entity =>
+        {
+            entity.ToTable("RoleClaims");
+        });
+
+        modelBuilder.Entity<IdentityUserToken<int>>(entity =>
+        {
+            entity.ToTable("UserTokens");
+        });
+
         modelBuilder.Entity<Organization>(entity =>
         {
             entity.HasKey(x => x.Id);
@@ -61,13 +99,13 @@ public class MyYardSaleDbContext : DbContext
             entity.HasOne(x => x.Category)
                 .WithMany()
                 .HasForeignKey(x => x.CategoryId)
+                .IsRequired(false)
                 .OnDelete(DeleteBehavior.SetNull);
-            entity.HasOne<Household>()
+            entity.HasOne(x => x.Household)
                 .WithMany(x => x.Listings)
-                .HasForeignKey("HouseholdId")
+                .HasForeignKey(x => x.HouseholdId)
+                .IsRequired(false)
                 .OnDelete(DeleteBehavior.SetNull);
         });
-
-        base.OnModelCreating(modelBuilder);
     }
 }

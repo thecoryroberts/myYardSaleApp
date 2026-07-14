@@ -26,6 +26,14 @@ public sealed class SqliteListingRepository : IListingRepository
             .ToList();
     }
 
+    public async Task<Listing?> GetByIdAsync(int id, CancellationToken cancellationToken)
+    {
+        return await _context.Listings
+            .AsNoTracking()
+            .Include(x => x.Category)
+            .FirstOrDefaultAsync(x => x.Id == id, cancellationToken);
+    }
+
     public async Task<IReadOnlyList<Category>> GetCategoriesAsync(CancellationToken cancellationToken)
     {
         return await _context.Categories
@@ -35,9 +43,42 @@ public sealed class SqliteListingRepository : IListingRepository
             .ToListAsync(cancellationToken);
     }
 
-    public async Task AddAsync(Listing listing, CancellationToken cancellationToken)
+    public async Task<Listing> AddAsync(Listing listing, CancellationToken cancellationToken)
     {
         _context.Listings.Add(listing);
         await _context.SaveChangesAsync(cancellationToken);
+        return listing;
+    }
+
+    public async Task<Listing?> UpdateAsync(Listing listing, CancellationToken cancellationToken)
+    {
+        var existing = await _context.Listings.FirstOrDefaultAsync(x => x.Id == listing.Id, cancellationToken);
+        if (existing is null)
+        {
+            return null;
+        }
+
+        existing.Title = listing.Title;
+        existing.Description = listing.Description;
+        existing.Price = listing.Price;
+        existing.Status = listing.Status;
+        existing.CategoryId = listing.CategoryId;
+        existing.Category = listing.Category;
+
+        await _context.SaveChangesAsync(cancellationToken);
+        return existing;
+    }
+
+    public async Task<bool> DeleteAsync(int id, CancellationToken cancellationToken)
+    {
+        var listing = await _context.Listings.FirstOrDefaultAsync(x => x.Id == id, cancellationToken);
+        if (listing is null)
+        {
+            return false;
+        }
+
+        _context.Listings.Remove(listing);
+        await _context.SaveChangesAsync(cancellationToken);
+        return true;
     }
 }

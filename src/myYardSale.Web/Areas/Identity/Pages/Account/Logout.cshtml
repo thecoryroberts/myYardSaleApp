@@ -1,0 +1,13 @@
+@page
+@model LogoutModel
+@{
+    ViewData["Title"] = "Log out";
+}
+
+<header>
+    <h1>@ViewData["Title"]</h1>
+    <p>You are about to log out.</p>
+    <form class="form-inline" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Page("/Index", new { area = "" })" method="post">
+        <button type="submit" class="btn btn-primary">Click here to log out</button>
+    </form>
+</header>

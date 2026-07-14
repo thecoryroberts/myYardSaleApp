@@ -6,9 +6,14 @@ namespace myYardSale.Web.Extensions;
 
 public static class DatabaseExtensions
 {
-    public static async Task InitializeDatabaseAsync(this IApplicationBuilder app, IServiceProvider services)
+    public static async Task InitializeDatabaseAsync(this IApplicationBuilder app, IConfiguration configuration)
     {
-        using var scope = services.CreateScope();
+        if (!configuration.GetValue<bool>("Database:ApplyMigrationsOnStartup"))
+        {
+            return;
+        }
+
+        using var scope = app.ApplicationServices.CreateScope();
         var dbContext = scope.ServiceProvider.GetRequiredService<MyYardSaleDbContext>();
         await dbContext.Database.MigrateAsync();
 

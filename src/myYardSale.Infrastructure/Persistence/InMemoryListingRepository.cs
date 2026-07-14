@@ -42,6 +42,21 @@ public sealed class InMemoryListingRepository : IListingRepository
     public Task<IReadOnlyList<Listing>> GetActiveListingsAsync(CancellationToken cancellationToken)
         => Task.FromResult(_listings.Where(x => x.Status == ListingStatus.Active).ToList() as IReadOnlyList<Listing>);
 
+    public Task<Listing?> GetByIdAsync(int id, CancellationToken cancellationToken)
+        => Task.FromResult(_listings.FirstOrDefault(x => x.Id == id));
+
+    public Task<Listing> AddAsync(Listing listing, CancellationToken cancellationToken)
+    {
+        ArgumentNullException.ThrowIfNull(listing);
+        return Task.FromResult(listing);
+    }
+
+    public Task<Listing?> UpdateAsync(Listing listing, CancellationToken cancellationToken)
+        => Task.FromResult<Listing?>(listing);
+
+    public Task<bool> DeleteAsync(int id, CancellationToken cancellationToken)
+        => Task.FromResult(true);
+
     public Task<IReadOnlyList<Category>> GetCategoriesAsync(CancellationToken cancellationToken)
         => Task.FromResult<IReadOnlyList<Category>>(_listings.Select(x => x.Category!).Where(x => x is not null).DistinctBy(x => x.Id).ToList());
 }
