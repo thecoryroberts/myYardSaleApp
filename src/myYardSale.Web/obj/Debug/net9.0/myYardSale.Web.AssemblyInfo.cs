@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("myYardSale.Web")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+cf43515903626aa04586795c585a41f9748f5bfb")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+e80c5d71c2c75df6d6832f079c967d8240219858")]
 [assembly: System.Reflection.AssemblyProductAttribute("myYardSale.Web")]
 [assembly: System.Reflection.AssemblyTitleAttribute("myYardSale.Web")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

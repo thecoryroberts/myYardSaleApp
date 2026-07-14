@@ -26,6 +26,15 @@ public sealed class SqliteListingRepository : IListingRepository
             .ToList();
     }
 
+    public async Task<IReadOnlyList<Listing>> GetAllAsync(CancellationToken cancellationToken)
+    {
+        return await _context.Listings
+            .AsNoTracking()
+            .Include(x => x.Category)
+            .OrderByDescending(x => x.CreatedAt.DateTime)
+            .ToListAsync(cancellationToken);
+    }
+
     public async Task<Listing?> GetByIdAsync(int id, CancellationToken cancellationToken)
     {
         return await _context.Listings
@@ -63,7 +72,6 @@ public sealed class SqliteListingRepository : IListingRepository
         existing.Price = listing.Price;
         existing.Status = listing.Status;
         existing.CategoryId = listing.CategoryId;
-        existing.Category = listing.Category;
 
         await _context.SaveChangesAsync(cancellationToken);
         return existing;

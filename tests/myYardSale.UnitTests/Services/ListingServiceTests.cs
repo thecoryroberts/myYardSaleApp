@@ -92,6 +92,9 @@ public class ListingServiceTests
         public Task<IReadOnlyList<Listing>> GetActiveListingsAsync(CancellationToken cancellationToken)
             => Task.FromResult<IReadOnlyList<Listing>>(_listings.Where(x => x.Status == ListingStatus.Active).ToList());
 
+        public Task<IReadOnlyList<Listing>> GetAllAsync(CancellationToken cancellationToken)
+            => Task.FromResult<IReadOnlyList<Listing>>(_listings.ToList());
+
         public Task<Listing?> GetByIdAsync(int id, CancellationToken cancellationToken)
             => Task.FromResult(_listings.FirstOrDefault(x => x.Id == id));
 

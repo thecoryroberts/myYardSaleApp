@@ -87,8 +87,7 @@ public class HomeController : Controller
             Description = model.Description,
             Price = model.Price,
             Status = model.Status,
-            CategoryId = model.CategoryId,
-            Category = model.CategoryId is null ? null : new Category { Id = model.CategoryId.Value }
+            CategoryId = model.CategoryId
         };
 
         await _listingService.CreateAsync(listing, cancellationToken);
@@ -139,8 +138,7 @@ public class HomeController : Controller
             Description = model.Description,
             Price = model.Price,
             Status = model.Status,
-            CategoryId = model.CategoryId,
-            Category = model.CategoryId is null ? null : new Category { Id = model.CategoryId.Value }
+            CategoryId = model.CategoryId
         };
 
         var updated = await _listingService.UpdateAsync(listing, cancellationToken);
@@ -169,6 +167,6 @@ public class HomeController : Controller
     [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
     public IActionResult Error()
     {
-        return View();
+        return View(new ErrorViewModel { RequestId = HttpContext.TraceIdentifier });
     }
 }

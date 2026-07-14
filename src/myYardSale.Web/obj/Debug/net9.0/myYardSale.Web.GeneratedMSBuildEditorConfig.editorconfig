@@ -44,6 +44,18 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = QXJlYXMvSWRlbnRpdHkvUGFnZXMvX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
+[/media/thecoryroberts/External/Design Assets/Web Solutions/myYardSale/src/myYardSale.Web/Views/Admin/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQWRtaW4vRWRpdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/media/thecoryroberts/External/Design Assets/Web Solutions/myYardSale/src/myYardSale.Web/Views/Admin/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQWRtaW4vSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[/media/thecoryroberts/External/Design Assets/Web Solutions/myYardSale/src/myYardSale.Web/Views/Admin/_ViewImports.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQWRtaW4vX1ZpZXdJbXBvcnRzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
 [/media/thecoryroberts/External/Design Assets/Web Solutions/myYardSale/src/myYardSale.Web/Views/Home/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvSG9tZS9DcmVhdGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
@@ -66,6 +78,10 @@ build_metadata.AdditionalFiles.CssScope =
 
 [/media/thecoryroberts/External/Design Assets/Web Solutions/myYardSale/src/myYardSale.Web/Views/Shared/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU2hhcmVkL0Vycm9yLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/media/thecoryroberts/External/Design Assets/Web Solutions/myYardSale/src/myYardSale.Web/Views/Shared/_LoginPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU2hhcmVkL19Mb2dpblBhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [/media/thecoryroberts/External/Design Assets/Web Solutions/myYardSale/src/myYardSale.Web/Views/Shared/_ValidationScriptsPartial.cshtml]

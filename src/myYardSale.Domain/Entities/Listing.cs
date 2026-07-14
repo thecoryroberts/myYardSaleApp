@@ -12,6 +12,7 @@ public class Listing
     public int? CategoryId { get; set; }
     public Household? Household { get; set; }
     public int? HouseholdId { get; set; }
+    public ICollection<ListingImage> Images { get; set; } = new List<ListingImage>();
 }
 
 public enum ListingStatus
