@@ -17,3 +17,4 @@
 /media/thecoryroberts/External/Design Assets/Web Solutions/myYardSale/src/myYardSale.Infrastructure/obj/Debug/net9.0/myYardSale.Infrastructure.csproj.AssemblyReference.cache
 /media/thecoryroberts/External/Design Assets/Web Solutions/myYardSale/src/myYardSale.Infrastructure/obj/Debug/net9.0/myYardSa.AC728FA4.Up2Date
 /media/thecoryroberts/External/Design Assets/Web Solutions/myYardSale/src/myYardSale.Infrastructure/obj/Debug/net9.0/myYardSale.Infrastructure.genruntimeconfig.cache
+/media/thecoryroberts/External/Design Assets/Web Solutions/myYardSale/src/myYardSale.Infrastructure/obj/Debug/net9.0/myYardSale.Infrastructure.sourcelink.json

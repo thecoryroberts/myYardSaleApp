@@ -1,4 +1,5 @@
 using Microsoft.EntityFrameworkCore;
+using myYardSale.Domain.Entities;
 using myYardSale.Infrastructure.Persistence;
 
 namespace myYardSale.Web.Extensions;

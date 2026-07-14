@@ -101,3 +101,7 @@
 /media/thecoryroberts/External/Design Assets/Web Solutions/myYardSale/tests/myYardSale.UnitTests/bin/Debug/net9.0/myYardSale.Domain.dll
 /media/thecoryroberts/External/Design Assets/Web Solutions/myYardSale/tests/myYardSale.UnitTests/bin/Debug/net9.0/myYardSale.Application.pdb
 /media/thecoryroberts/External/Design Assets/Web Solutions/myYardSale/tests/myYardSale.UnitTests/bin/Debug/net9.0/myYardSale.Domain.pdb
+/media/thecoryroberts/External/Design Assets/Web Solutions/myYardSale/tests/myYardSale.UnitTests/obj/Debug/net9.0/myYardSale.UnitTests.sourcelink.json
+/media/thecoryroberts/External/Design Assets/Web Solutions/myYardSale/tests/myYardSale.UnitTests/bin/Debug/net9.0/FluentValidation.dll
+/media/thecoryroberts/External/Design Assets/Web Solutions/myYardSale/tests/myYardSale.UnitTests/bin/Debug/net9.0/FluentValidation.DependencyInjectionExtensions.dll
+/media/thecoryroberts/External/Design Assets/Web Solutions/myYardSale/tests/myYardSale.UnitTests/bin/Debug/net9.0/Microsoft.Extensions.DependencyInjection.Abstractions.dll

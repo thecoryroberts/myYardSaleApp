@@ -178,3 +178,11 @@
 /media/thecoryroberts/External/Design Assets/Web Solutions/myYardSale/tests/myYardSale.IntegrationTests/bin/Debug/net9.0/myYardSale.Domain.pdb
 /media/thecoryroberts/External/Design Assets/Web Solutions/myYardSale/tests/myYardSale.IntegrationTests/bin/Debug/net9.0/myYardSale.Infrastructure.pdb
 /media/thecoryroberts/External/Design Assets/Web Solutions/myYardSale/tests/myYardSale.IntegrationTests/bin/Debug/net9.0/myYardSale.Application.pdb
+/media/thecoryroberts/External/Design Assets/Web Solutions/myYardSale/tests/myYardSale.IntegrationTests/bin/Debug/net9.0/Microsoft.AspNetCore.Cryptography.Internal.dll
+/media/thecoryroberts/External/Design Assets/Web Solutions/myYardSale/tests/myYardSale.IntegrationTests/bin/Debug/net9.0/Microsoft.AspNetCore.Cryptography.KeyDerivation.dll
+/media/thecoryroberts/External/Design Assets/Web Solutions/myYardSale/tests/myYardSale.IntegrationTests/bin/Debug/net9.0/Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
+/media/thecoryroberts/External/Design Assets/Web Solutions/myYardSale/tests/myYardSale.IntegrationTests/bin/Debug/net9.0/Microsoft.Extensions.Identity.Core.dll
+/media/thecoryroberts/External/Design Assets/Web Solutions/myYardSale/tests/myYardSale.IntegrationTests/bin/Debug/net9.0/Microsoft.Extensions.Identity.Stores.dll
+/media/thecoryroberts/External/Design Assets/Web Solutions/myYardSale/tests/myYardSale.IntegrationTests/obj/Debug/net9.0/myYardSale.IntegrationTests.sourcelink.json
+/media/thecoryroberts/External/Design Assets/Web Solutions/myYardSale/tests/myYardSale.IntegrationTests/bin/Debug/net9.0/FluentValidation.dll
+/media/thecoryroberts/External/Design Assets/Web Solutions/myYardSale/tests/myYardSale.IntegrationTests/bin/Debug/net9.0/FluentValidation.DependencyInjectionExtensions.dll
