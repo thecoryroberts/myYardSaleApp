@@ -17,6 +17,10 @@ public class MyYardSaleDbContext : IdentityDbContext<ApplicationUser, IdentityRo
     public DbSet<Household> Households => Set<Household>();
     public DbSet<Listing> Listings => Set<Listing>();
     public DbSet<Category> Categories => Set<Category>();
+    public DbSet<ListingImage> ListingImages => Set<ListingImage>();
+    public DbSet<CartItem> CartItems => Set<CartItem>();
+    public DbSet<Order> Orders => Set<Order>();
+    public DbSet<OrderItem> OrderItems => Set<OrderItem>();
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -88,6 +92,56 @@ public class MyYardSaleDbContext : IdentityDbContext<ApplicationUser, IdentityRo
         {
             entity.HasKey(x => x.Id);
             entity.Property(x => x.Name).IsRequired().HasMaxLength(200);
+        });
+
+        modelBuilder.Entity<ListingImage>(entity =>
+        {
+            entity.HasKey(x => x.Id);
+            entity.Property(x => x.FileName).IsRequired().HasMaxLength(500);
+            entity.Property(x => x.StoragePath).IsRequired().HasMaxLength(1000);
+            entity.Property(x => x.AltText).HasMaxLength(500);
+            entity.HasOne(x => x.Listing)
+                .WithMany(x => x.Images)
+                .HasForeignKey(x => x.ListingId)
+                .OnDelete(DeleteBehavior.Cascade);
+        });
+
+        modelBuilder.Entity<CartItem>(entity =>
+        {
+            entity.HasKey(x => x.Id);
+            entity.HasOne(x => x.Listing)
+                .WithMany()
+                .HasForeignKey(x => x.ListingId)
+                .OnDelete(DeleteBehavior.Cascade);
+            entity.HasOne(x => x.User)
+                .WithMany()
+                .HasForeignKey(x => x.UserId)
+                .OnDelete(DeleteBehavior.Cascade);
+        });
+
+        modelBuilder.Entity<Order>(entity =>
+        {
+            entity.HasKey(x => x.Id);
+            entity.Property(x => x.Notes).HasMaxLength(2000);
+            entity.Property(x => x.TotalAmount).HasPrecision(10, 2);
+            entity.HasOne(x => x.User)
+                .WithMany()
+                .HasForeignKey(x => x.UserId)
+                .OnDelete(DeleteBehavior.Cascade);
+        });
+
+        modelBuilder.Entity<OrderItem>(entity =>
+        {
+            entity.HasKey(x => x.Id);
+            entity.Property(x => x.UnitPrice).HasPrecision(10, 2);
+            entity.HasOne(x => x.Order)
+                .WithMany(x => x.Items)
+                .HasForeignKey(x => x.OrderId)
+                .OnDelete(DeleteBehavior.Cascade);
+            entity.HasOne(x => x.Listing)
+                .WithMany()
+                .HasForeignKey(x => x.ListingId)
+                .OnDelete(DeleteBehavior.SetNull);
         });
 
         modelBuilder.Entity<Listing>(entity =>

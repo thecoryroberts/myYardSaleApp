@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using myYardSale.Application.Services;
 using myYardSale.Domain.Entities;
 using myYardSale.Web.Models;
+using myYardSale.Web.Services;
 
 namespace myYardSale.Web.Controllers.Admin;
 
@@ -11,10 +12,12 @@ namespace myYardSale.Web.Controllers.Admin;
 public class AdminController : Controller
 {
     private readonly ListingService _listingService;
+    private readonly ListingImageService _imageService;
 
-    public AdminController(ListingService listingService)
+    public AdminController(ListingService listingService, ListingImageService imageService)
     {
         _listingService = listingService;
+        _imageService = imageService;
     }
 
     [HttpGet]
@@ -57,7 +60,13 @@ public class AdminController : Controller
             CategoryId = listing.CategoryId,
             Categories = (await _listingService.GetCategoriesAsync(cancellationToken))
                 .Select(x => new SelectListItem { Value = x.Id.ToString(), Text = x.Name })
-                .ToList()
+                .ToList(),
+            ExistingImages = listing.Images.Select(img => new ListingImageViewModel
+            {
+                Id = img.Id,
+                StoragePath = img.StoragePath,
+                AltText = img.AltText ?? img.FileName
+            }).ToList()
         };
 
         return View(viewModel);
@@ -91,6 +100,11 @@ public class AdminController : Controller
             return NotFound();
         }
 
+        if (model.ImageFile is not null && model.ImageFile.Length > 0)
+        {
+            await _imageService.UploadImageAsync(updated.Id, model.ImageFile, cancellationToken);
+        }
+
         return RedirectToAction(nameof(Index));
     }
 
@@ -100,5 +114,13 @@ public class AdminController : Controller
     {
         await _listingService.DeleteAsync(id, cancellationToken);
         return RedirectToAction(nameof(Index));
+    }
+
+    [HttpPost]
+    [ValidateAntiForgeryToken]
+    public async Task<IActionResult> DeleteImage(int imageId, int listingId, CancellationToken cancellationToken)
+    {
+        await _imageService.DeleteImageAsync(imageId, cancellationToken);
+        return RedirectToAction(nameof(Edit), new { id = listingId });
     }
 }

@@ -16,6 +16,7 @@ public sealed class ListingSummaryViewModel
     public string Description { get; set; } = string.Empty;
     public decimal Price { get; set; }
     public string Category { get; set; } = string.Empty;
+    public string? ThumbnailUrl { get; set; }
 }
 
 public sealed class ListingDetailsViewModel
@@ -26,6 +27,14 @@ public sealed class ListingDetailsViewModel
     public decimal Price { get; set; }
     public string Category { get; set; } = string.Empty;
     public string Status { get; set; } = string.Empty;
+    public IReadOnlyList<ListingImageViewModel> Images { get; set; } = Array.Empty<ListingImageViewModel>();
+}
+
+public sealed class ListingImageViewModel
+{
+    public int Id { get; set; }
+    public string StoragePath { get; set; } = string.Empty;
+    public string? AltText { get; set; }
 }
 
 public sealed class ListingFormViewModel
@@ -37,4 +46,6 @@ public sealed class ListingFormViewModel
     public ListingStatus Status { get; set; } = ListingStatus.Active;
     public int? CategoryId { get; set; }
     public IReadOnlyList<SelectListItem> Categories { get; set; } = Array.Empty<SelectListItem>();
+    public IFormFile? ImageFile { get; set; }
+    public IReadOnlyList<ListingImageViewModel> ExistingImages { get; set; } = Array.Empty<ListingImageViewModel>();
 }

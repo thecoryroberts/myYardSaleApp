@@ -64,4 +64,94 @@ public sealed class ListingService
 
     public Task<IReadOnlyList<Category>> GetCategoriesAsync(CancellationToken cancellationToken)
         => _listingRepository.GetCategoriesAsync(cancellationToken);
+
+    public Task<ListingImage> AddImageAsync(int listingId, ListingImage image, CancellationToken cancellationToken)
+        => _listingRepository.AddImageAsync(listingId, image, cancellationToken);
+
+    public Task<bool> DeleteImageAsync(int imageId, CancellationToken cancellationToken)
+        => _listingRepository.DeleteImageAsync(imageId, cancellationToken);
+
+    public Task<IReadOnlyList<ListingImage>> GetImagesAsync(int listingId, CancellationToken cancellationToken)
+        => _listingRepository.GetImagesAsync(listingId, cancellationToken);
+
+    public Task<ListingImage?> GetImageByIdAsync(int imageId, CancellationToken cancellationToken)
+        => _listingRepository.GetImageByIdAsync(imageId, cancellationToken);
+
+    // Cart
+    public async Task<CartItem> AddToCartAsync(int listingId, int userId, CancellationToken cancellationToken)
+    {
+        var existing = await _listingRepository.GetCartItemByListingAndUserAsync(listingId, userId, cancellationToken);
+        if (existing is not null)
+        {
+            existing.Quantity++;
+            return existing;
+        }
+
+        var listing = await _listingRepository.GetByIdAsync(listingId, cancellationToken);
+        if (listing is null)
+        {
+            throw new InvalidOperationException("Listing not found.");
+        }
+
+        var item = new CartItem
+        {
+            ListingId = listingId,
+            UserId = userId,
+            Quantity = 1,
+            UnitPrice = listing.Price,
+            AddedAt = DateTimeOffset.UtcNow
+        };
+
+        return await _listingRepository.AddToCartAsync(item, cancellationToken);
+    }
+
+    public Task<bool> RemoveFromCartAsync(int cartItemId, CancellationToken cancellationToken)
+        => _listingRepository.RemoveFromCartAsync(cartItemId, cancellationToken);
+
+    public Task<IReadOnlyList<CartItem>> GetCartItemsAsync(int userId, CancellationToken cancellationToken)
+        => _listingRepository.GetCartItemsAsync(userId, cancellationToken);
+
+    public Task<bool> ClearCartAsync(int userId, CancellationToken cancellationToken)
+        => _listingRepository.ClearCartAsync(userId, cancellationToken);
+
+    // Orders
+    public async Task<Order> CheckoutAsync(int userId, string? notes, CancellationToken cancellationToken)
+    {
+        var cartItems = await _listingRepository.GetCartItemsAsync(userId, cancellationToken);
+        if (!cartItems.Any())
+        {
+            throw new InvalidOperationException("Cart is empty.");
+        }
+
+        var order = new Order
+        {
+            UserId = userId,
+            PlacedAt = DateTimeOffset.UtcNow,
+            Status = OrderStatus.Pending,
+            Notes = notes,
+            TotalAmount = cartItems.Sum(x => x.UnitPrice * x.Quantity),
+            Items = cartItems.Select(x => new OrderItem
+            {
+                ListingId = x.ListingId,
+                Quantity = x.Quantity,
+                UnitPrice = x.UnitPrice
+            }).ToList()
+        };
+
+        var created = await _listingRepository.CreateOrderAsync(order, cancellationToken);
+        await _listingRepository.ClearCartAsync(userId, cancellationToken);
+        return created;
+    }
+
+    public Task<IReadOnlyList<Order>> GetOrdersAsync(int userId, CancellationToken cancellationToken)
+        => _listingRepository.GetOrdersAsync(userId, cancellationToken);
+
+    public Task<Order?> GetOrderByIdAsync(int orderId, CancellationToken cancellationToken)
+        => _listingRepository.GetOrderByIdAsync(orderId, cancellationToken);
+
+    public Task<IReadOnlyList<Order>> GetAllOrdersAsync(CancellationToken cancellationToken)
+        => _listingRepository.GetAllOrdersAsync(cancellationToken);
+
+    public Task<Order?> UpdateOrderStatusAsync(int orderId, OrderStatus status, CancellationToken cancellationToken)
+        => _listingRepository.UpdateOrderStatusAsync(orderId, status, cancellationToken);
 }

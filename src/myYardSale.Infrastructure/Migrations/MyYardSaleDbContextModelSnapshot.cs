@@ -15,7 +15,7 @@ namespace myYardSale.Infrastructure.Migrations
         protected override void BuildModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
-            modelBuilder.HasAnnotation("ProductVersion", "9.0.8");
+            modelBuilder.HasAnnotation("ProductVersion", "9.0.11");
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole<int>", b =>
                 {
@@ -340,6 +340,42 @@ namespace myYardSale.Infrastructure.Migrations
                     b.ToTable("Listings");
                 });
 
+            modelBuilder.Entity("myYardSale.Domain.Entities.ListingImage", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("AltText")
+                        .HasMaxLength(500)
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("FileName")
+                        .IsRequired()
+                        .HasMaxLength(500)
+                        .HasColumnType("TEXT");
+
+                    b.Property<int>("ListingId")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("SortOrder")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("StoragePath")
+                        .IsRequired()
+                        .HasMaxLength(1000)
+                        .HasColumnType("TEXT");
+
+                    b.Property<DateTimeOffset>("UploadedAt")
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ListingId");
+
+                    b.ToTable("ListingImages");
+                });
+
             modelBuilder.Entity("myYardSale.Domain.Entities.Organization", b =>
                 {
                     b.Property<int>("Id")
@@ -456,6 +492,17 @@ namespace myYardSale.Infrastructure.Migrations
                     b.Navigation("Household");
                 });
 
+            modelBuilder.Entity("myYardSale.Domain.Entities.ListingImage", b =>
+                {
+                    b.HasOne("myYardSale.Domain.Entities.Listing", "Listing")
+                        .WithMany("Images")
+                        .HasForeignKey("ListingId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Listing");
+                });
+
             modelBuilder.Entity("myYardSale.Domain.Entities.Event", b =>
                 {
                     b.Navigation("Households");
@@ -464,6 +511,11 @@ namespace myYardSale.Infrastructure.Migrations
             modelBuilder.Entity("myYardSale.Domain.Entities.Household", b =>
                 {
                     b.Navigation("Listings");
+                });
+
+            modelBuilder.Entity("myYardSale.Domain.Entities.Listing", b =>
+                {
+                    b.Navigation("Images");
                 });
 
             modelBuilder.Entity("myYardSale.Domain.Entities.Organization", b =>

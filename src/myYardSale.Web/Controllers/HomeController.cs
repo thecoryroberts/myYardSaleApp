@@ -3,16 +3,19 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using myYardSale.Application.Services;
 using myYardSale.Domain.Entities;
 using myYardSale.Web.Models;
+using myYardSale.Web.Services;
 
 namespace myYardSale.Web.Controllers;
 
 public class HomeController : Controller
 {
     private readonly ListingService _listingService;
+    private readonly ListingImageService _imageService;
 
-    public HomeController(ListingService listingService)
+    public HomeController(ListingService listingService, ListingImageService imageService)
     {
         _listingService = listingService;
+        _imageService = imageService;
     }
 
     [HttpGet]
@@ -29,7 +32,8 @@ public class HomeController : Controller
                 Title = x.Title,
                 Description = x.Description,
                 Price = x.Price,
-                Category = x.Category?.Name ?? "Uncategorized"
+                Category = x.Category?.Name ?? "Uncategorized",
+                ThumbnailUrl = x.Images.FirstOrDefault()?.StoragePath
             }).ToList()
         };
 
@@ -52,7 +56,13 @@ public class HomeController : Controller
             Description = listing.Description,
             Price = listing.Price,
             Category = listing.Category?.Name ?? "Uncategorized",
-            Status = listing.Status.ToString()
+            Status = listing.Status.ToString(),
+            Images = listing.Images.Select(img => new ListingImageViewModel
+            {
+                Id = img.Id,
+                StoragePath = img.StoragePath,
+                AltText = img.AltText ?? img.FileName
+            }).ToList()
         });
     }
 
@@ -90,7 +100,13 @@ public class HomeController : Controller
             CategoryId = model.CategoryId
         };
 
-        await _listingService.CreateAsync(listing, cancellationToken);
+        var created = await _listingService.CreateAsync(listing, cancellationToken);
+
+        if (model.ImageFile is not null && model.ImageFile.Length > 0)
+        {
+            await _imageService.UploadImageAsync(created.Id, model.ImageFile, cancellationToken);
+        }
+
         return RedirectToAction(nameof(Index));
     }
 
@@ -113,7 +129,13 @@ public class HomeController : Controller
             CategoryId = listing.CategoryId,
             Categories = (await _listingService.GetCategoriesAsync(cancellationToken))
                 .Select(x => new SelectListItem { Value = x.Id.ToString(), Text = x.Name })
-                .ToList()
+                .ToList(),
+            ExistingImages = listing.Images.Select(img => new ListingImageViewModel
+            {
+                Id = img.Id,
+                StoragePath = img.StoragePath,
+                AltText = img.AltText ?? img.FileName
+            }).ToList()
         };
 
         return View(viewModel);
@@ -147,6 +169,11 @@ public class HomeController : Controller
             return NotFound();
         }
 
+        if (model.ImageFile is not null && model.ImageFile.Length > 0)
+        {
+            await _imageService.UploadImageAsync(updated.Id, model.ImageFile, cancellationToken);
+        }
+
         return RedirectToAction(nameof(Details), new { id = updated.Id });
     }
 
@@ -156,6 +183,14 @@ public class HomeController : Controller
     {
         await _listingService.DeleteAsync(id, cancellationToken);
         return RedirectToAction(nameof(Index));
+    }
+
+    [HttpPost]
+    [ValidateAntiForgeryToken]
+    public async Task<IActionResult> DeleteImage(int imageId, int listingId, CancellationToken cancellationToken)
+    {
+        await _imageService.DeleteImageAsync(imageId, cancellationToken);
+        return RedirectToAction(nameof(Edit), new { id = listingId });
     }
 
     [HttpGet]

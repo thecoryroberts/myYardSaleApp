@@ -108,6 +108,21 @@ public class ListingServiceTests
         public Task<Listing?> UpdateAsync(Listing listing, CancellationToken cancellationToken)
             => Task.FromResult<Listing?>(listing);
 
+        public Task<ListingImage> AddImageAsync(int listingId, ListingImage image, CancellationToken cancellationToken)
+        {
+            ArgumentNullException.ThrowIfNull(image);
+            return Task.FromResult(image);
+        }
+
+        public Task<bool> DeleteImageAsync(int imageId, CancellationToken cancellationToken)
+            => Task.FromResult(true);
+
+        public Task<IReadOnlyList<ListingImage>> GetImagesAsync(int listingId, CancellationToken cancellationToken)
+            => Task.FromResult<IReadOnlyList<ListingImage>>([]);
+
+        public Task<ListingImage?> GetImageByIdAsync(int imageId, CancellationToken cancellationToken)
+            => Task.FromResult<ListingImage?>(null);
+
         public Task<bool> DeleteAsync(int id, CancellationToken cancellationToken)
             => Task.FromResult(true);
 

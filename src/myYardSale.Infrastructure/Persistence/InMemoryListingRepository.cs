@@ -57,6 +57,62 @@ public sealed class InMemoryListingRepository : IListingRepository
     public Task<Listing?> UpdateAsync(Listing listing, CancellationToken cancellationToken)
         => Task.FromResult<Listing?>(listing);
 
+    public Task<ListingImage> AddImageAsync(int listingId, ListingImage image, CancellationToken cancellationToken)
+    {
+        ArgumentNullException.ThrowIfNull(image);
+        return Task.FromResult(image);
+    }
+
+    public Task<bool> DeleteImageAsync(int imageId, CancellationToken cancellationToken)
+        => Task.FromResult(true);
+
+    public Task<IReadOnlyList<ListingImage>> GetImagesAsync(int listingId, CancellationToken cancellationToken)
+        => Task.FromResult<IReadOnlyList<ListingImage>>([]);
+
+    public Task<ListingImage?> GetImageByIdAsync(int imageId, CancellationToken cancellationToken)
+        => Task.FromResult<ListingImage?>(null);
+
+    // Cart
+    public Task<CartItem> AddToCartAsync(CartItem item, CancellationToken cancellationToken)
+    {
+        ArgumentNullException.ThrowIfNull(item);
+        return Task.FromResult(item);
+    }
+
+    public Task<bool> RemoveFromCartAsync(int cartItemId, CancellationToken cancellationToken)
+        => Task.FromResult(true);
+
+    public Task<IReadOnlyList<CartItem>> GetCartItemsAsync(int userId, CancellationToken cancellationToken)
+        => Task.FromResult<IReadOnlyList<CartItem>>([]);
+
+    public Task<bool> ClearCartAsync(int userId, CancellationToken cancellationToken)
+        => Task.FromResult(true);
+
+    public Task<CartItem?> GetCartItemByIdAsync(int cartItemId, CancellationToken cancellationToken)
+        => Task.FromResult<CartItem?>(null);
+
+    public Task<CartItem?> GetCartItemByListingAndUserAsync(int listingId, int userId, CancellationToken cancellationToken)
+        => Task.FromResult<CartItem?>(null);
+
+    // Orders
+    public Task<Order> CreateOrderAsync(Order order, CancellationToken cancellationToken)
+    {
+        ArgumentNullException.ThrowIfNull(order);
+        return Task.FromResult(order);
+    }
+
+    public Task<IReadOnlyList<Order>> GetOrdersAsync(int userId, CancellationToken cancellationToken)
+        => Task.FromResult<IReadOnlyList<Order>>([]);
+
+    public Task<Order?> GetOrderByIdAsync(int orderId, CancellationToken cancellationToken)
+        => Task.FromResult<Order?>(null);
+
+    public Task<IReadOnlyList<Order>> GetAllOrdersAsync(CancellationToken cancellationToken)
+        => Task.FromResult<IReadOnlyList<Order>>([]);
+
+    public Task<Order?> UpdateOrderStatusAsync(int orderId, OrderStatus status, CancellationToken cancellationToken)
+        => Task.FromResult<Order?>(null);
+
     public Task<bool> DeleteAsync(int id, CancellationToken cancellationToken)
         => Task.FromResult(true);
 

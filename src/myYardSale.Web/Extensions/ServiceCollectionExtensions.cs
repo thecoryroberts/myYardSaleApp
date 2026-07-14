@@ -4,6 +4,7 @@ using myYardSale.Application.Abstractions;
 using myYardSale.Application.Services;
 using myYardSale.Domain.Entities;
 using myYardSale.Infrastructure.Persistence;
+using myYardSale.Web.Services;
 
 namespace myYardSale.Web.Extensions;
 
@@ -42,6 +43,7 @@ public static class ServiceCollectionExtensions
 
         services.AddScoped<IListingRepository, SqliteListingRepository>();
         services.AddScoped<ListingService>();
+        services.AddScoped<ListingImageService>();
 
         services.AddAntiforgery(options =>
         {
