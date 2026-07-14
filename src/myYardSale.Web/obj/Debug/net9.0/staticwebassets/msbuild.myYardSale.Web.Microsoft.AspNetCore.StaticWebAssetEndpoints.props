@@ -768,5 +768,29 @@
       <EndpointProperties><![CDATA[[{"Name":"fingerprint","Value":"o9a4z7j5sy"},{"Name":"integrity","Value":"sha256-BAR4WIJb1Tn\u002BJQmrb09UKQ6I8eIMYZMpPNCgWEnU1nY="},{"Name":"label","Value":"_content/myYardSale.Web/myYardSale.Web.bundle.scp.css"}]]]></EndpointProperties>
       <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"1083"},{"Name":"Content-Type","Value":"text/css"},{"Name":"ETag","Value":"\u0022BAR4WIJb1Tn\u002BJQmrb09UKQ6I8eIMYZMpPNCgWEnU1nY=\u0022"},{"Name":"Last-Modified","Value":"Tue, 14 Jul 2026 17:15:58 GMT"}]]]></ResponseHeaders>
     </StaticWebAssetEndpoint>
+    <StaticWebAssetEndpoint Include="_content/myYardSale.Web/uploads/listings/1/5db2c591029146a2a30ee898a61a96ab.2e54wfe06k.png">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\listings\1\5db2c591029146a2a30ee898a61a96ab.png'))</AssetFile>
+      <Selectors><![CDATA[[]]]></Selectors>
+      <EndpointProperties><![CDATA[[{"Name":"fingerprint","Value":"2e54wfe06k"},{"Name":"integrity","Value":"sha256-tm/A9LP9/KX7Tr1nrxDvHvos1khD7RQ5QWLF1vyPKuY="},{"Name":"label","Value":"_content/myYardSale.Web/uploads/listings/1/5db2c591029146a2a30ee898a61a96ab.png"}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"1062064"},{"Name":"Content-Type","Value":"image/png"},{"Name":"ETag","Value":"\u0022tm/A9LP9/KX7Tr1nrxDvHvos1khD7RQ5QWLF1vyPKuY=\u0022"},{"Name":"Last-Modified","Value":"Tue, 14 Jul 2026 18:53:07 GMT"}]]]></ResponseHeaders>
+    </StaticWebAssetEndpoint>
+    <StaticWebAssetEndpoint Include="_content/myYardSale.Web/uploads/listings/1/5db2c591029146a2a30ee898a61a96ab.png">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\listings\1\5db2c591029146a2a30ee898a61a96ab.png'))</AssetFile>
+      <Selectors><![CDATA[[]]]></Selectors>
+      <EndpointProperties><![CDATA[[{"Name":"integrity","Value":"sha256-tm/A9LP9/KX7Tr1nrxDvHvos1khD7RQ5QWLF1vyPKuY="}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=3600, must-revalidate"},{"Name":"Content-Length","Value":"1062064"},{"Name":"Content-Type","Value":"image/png"},{"Name":"ETag","Value":"\u0022tm/A9LP9/KX7Tr1nrxDvHvos1khD7RQ5QWLF1vyPKuY=\u0022"},{"Name":"Last-Modified","Value":"Tue, 14 Jul 2026 18:53:07 GMT"}]]]></ResponseHeaders>
+    </StaticWebAssetEndpoint>
+    <StaticWebAssetEndpoint Include="_content/myYardSale.Web/uploads/listings/1/adef1e75e4a643ebbb51ef2dbbe125e0.png">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\listings\1\adef1e75e4a643ebbb51ef2dbbe125e0.png'))</AssetFile>
+      <Selectors><![CDATA[[]]]></Selectors>
+      <EndpointProperties><![CDATA[[{"Name":"integrity","Value":"sha256-0nOSmFEZxtbvkqY5/9tl0Tp41Almqi7aTRAlvtOnhs8="}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=3600, must-revalidate"},{"Name":"Content-Length","Value":"499396"},{"Name":"Content-Type","Value":"image/png"},{"Name":"ETag","Value":"\u00220nOSmFEZxtbvkqY5/9tl0Tp41Almqi7aTRAlvtOnhs8=\u0022"},{"Name":"Last-Modified","Value":"Tue, 14 Jul 2026 18:31:26 GMT"}]]]></ResponseHeaders>
+    </StaticWebAssetEndpoint>
+    <StaticWebAssetEndpoint Include="_content/myYardSale.Web/uploads/listings/1/adef1e75e4a643ebbb51ef2dbbe125e0.yjuy9p18rq.png">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\listings\1\adef1e75e4a643ebbb51ef2dbbe125e0.png'))</AssetFile>
+      <Selectors><![CDATA[[]]]></Selectors>
+      <EndpointProperties><![CDATA[[{"Name":"fingerprint","Value":"yjuy9p18rq"},{"Name":"integrity","Value":"sha256-0nOSmFEZxtbvkqY5/9tl0Tp41Almqi7aTRAlvtOnhs8="},{"Name":"label","Value":"_content/myYardSale.Web/uploads/listings/1/adef1e75e4a643ebbb51ef2dbbe125e0.png"}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"499396"},{"Name":"Content-Type","Value":"image/png"},{"Name":"ETag","Value":"\u00220nOSmFEZxtbvkqY5/9tl0Tp41Almqi7aTRAlvtOnhs8=\u0022"},{"Name":"Last-Modified","Value":"Tue, 14 Jul 2026 18:31:26 GMT"}]]]></ResponseHeaders>
+    </StaticWebAssetEndpoint>
   </ItemGroup>
 </Project>

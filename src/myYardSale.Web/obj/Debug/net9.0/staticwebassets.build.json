@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "Cj9XpbZFI7+cOi4nKtvbp9c2nXL/HP4meV61fWR2/mA=",
+  "Hash": "QlxvhfyJaFR+0hF0uoz2T8rIKMF8FCMRs2/+5bMfEUE=",
   "Source": "myYardSale.Web",
   "BasePath": "_content/myYardSale.Web",
   "Mode": "Default",
@@ -5349,6 +5349,48 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot/lib/jquery/LICENSE.txt"
+    },
+    {
+      "Identity": "/media/thecoryroberts/External/Design Assets/Web Solutions/myYardSale/src/myYardSale.Web/wwwroot/uploads/listings/1/5db2c591029146a2a30ee898a61a96ab.png",
+      "SourceId": "myYardSale.Web",
+      "SourceType": "Discovered",
+      "ContentRoot": "/media/thecoryroberts/External/Design Assets/Web Solutions/myYardSale/src/myYardSale.Web/wwwroot/",
+      "BasePath": "_content/myYardSale.Web",
+      "RelativePath": "uploads/listings/1/5db2c591029146a2a30ee898a61a96ab#[.{fingerprint}]?.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "2e54wfe06k",
+      "Integrity": "tm/A9LP9/KX7Tr1nrxDvHvos1khD7RQ5QWLF1vyPKuY=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot/uploads/listings/1/5db2c591029146a2a30ee898a61a96ab.png"
+    },
+    {
+      "Identity": "/media/thecoryroberts/External/Design Assets/Web Solutions/myYardSale/src/myYardSale.Web/wwwroot/uploads/listings/1/adef1e75e4a643ebbb51ef2dbbe125e0.png",
+      "SourceId": "myYardSale.Web",
+      "SourceType": "Discovered",
+      "ContentRoot": "/media/thecoryroberts/External/Design Assets/Web Solutions/myYardSale/src/myYardSale.Web/wwwroot/",
+      "BasePath": "_content/myYardSale.Web",
+      "RelativePath": "uploads/listings/1/adef1e75e4a643ebbb51ef2dbbe125e0#[.{fingerprint}]?.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "yjuy9p18rq",
+      "Integrity": "0nOSmFEZxtbvkqY5/9tl0Tp41Almqi7aTRAlvtOnhs8=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot/uploads/listings/1/adef1e75e4a643ebbb51ef2dbbe125e0.png"
     }
   ],
   "Endpoints": [
@@ -33034,6 +33076,170 @@
         {
           "Name": "integrity",
           "Value": "sha256-LQzSHblgqDuqX5tJqWjrDNBZN+uNTMbbSinCXKt1yTM="
+        }
+      ]
+    },
+    {
+      "Route": "uploads/listings/1/5db2c591029146a2a30ee898a61a96ab.2e54wfe06k.png",
+      "AssetFile": "/media/thecoryroberts/External/Design Assets/Web Solutions/myYardSale/src/myYardSale.Web/wwwroot/uploads/listings/1/5db2c591029146a2a30ee898a61a96ab.png",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "1062064"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/png"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"tm/A9LP9/KX7Tr1nrxDvHvos1khD7RQ5QWLF1vyPKuY=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 14 Jul 2026 18:53:07 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "2e54wfe06k"
+        },
+        {
+          "Name": "label",
+          "Value": "uploads/listings/1/5db2c591029146a2a30ee898a61a96ab.png"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-tm/A9LP9/KX7Tr1nrxDvHvos1khD7RQ5QWLF1vyPKuY="
+        }
+      ]
+    },
+    {
+      "Route": "uploads/listings/1/5db2c591029146a2a30ee898a61a96ab.png",
+      "AssetFile": "/media/thecoryroberts/External/Design Assets/Web Solutions/myYardSale/src/myYardSale.Web/wwwroot/uploads/listings/1/5db2c591029146a2a30ee898a61a96ab.png",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "1062064"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/png"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"tm/A9LP9/KX7Tr1nrxDvHvos1khD7RQ5QWLF1vyPKuY=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 14 Jul 2026 18:53:07 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-tm/A9LP9/KX7Tr1nrxDvHvos1khD7RQ5QWLF1vyPKuY="
+        }
+      ]
+    },
+    {
+      "Route": "uploads/listings/1/adef1e75e4a643ebbb51ef2dbbe125e0.png",
+      "AssetFile": "/media/thecoryroberts/External/Design Assets/Web Solutions/myYardSale/src/myYardSale.Web/wwwroot/uploads/listings/1/adef1e75e4a643ebbb51ef2dbbe125e0.png",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "499396"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/png"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"0nOSmFEZxtbvkqY5/9tl0Tp41Almqi7aTRAlvtOnhs8=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 14 Jul 2026 18:31:26 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-0nOSmFEZxtbvkqY5/9tl0Tp41Almqi7aTRAlvtOnhs8="
+        }
+      ]
+    },
+    {
+      "Route": "uploads/listings/1/adef1e75e4a643ebbb51ef2dbbe125e0.yjuy9p18rq.png",
+      "AssetFile": "/media/thecoryroberts/External/Design Assets/Web Solutions/myYardSale/src/myYardSale.Web/wwwroot/uploads/listings/1/adef1e75e4a643ebbb51ef2dbbe125e0.png",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "499396"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/png"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"0nOSmFEZxtbvkqY5/9tl0Tp41Almqi7aTRAlvtOnhs8=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 14 Jul 2026 18:31:26 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "yjuy9p18rq"
+        },
+        {
+          "Name": "label",
+          "Value": "uploads/listings/1/adef1e75e4a643ebbb51ef2dbbe125e0.png"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-0nOSmFEZxtbvkqY5/9tl0Tp41Almqi7aTRAlvtOnhs8="
         }
       ]
     }

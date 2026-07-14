@@ -217,6 +217,36 @@ namespace myYardSale.Infrastructure.Migrations
                     b.ToTable("Users", (string)null);
                 });
 
+            modelBuilder.Entity("myYardSale.Domain.Entities.CartItem", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<DateTimeOffset>("AddedAt")
+                        .HasColumnType("TEXT");
+
+                    b.Property<int>("ListingId")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("Quantity")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<decimal>("UnitPrice")
+                        .HasColumnType("TEXT");
+
+                    b.Property<int>("UserId")
+                        .HasColumnType("INTEGER");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ListingId");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("CartItems");
+                });
+
             modelBuilder.Entity("myYardSale.Domain.Entities.Category", b =>
                 {
                     b.Property<int>("Id")
@@ -376,6 +406,64 @@ namespace myYardSale.Infrastructure.Migrations
                     b.ToTable("ListingImages");
                 });
 
+            modelBuilder.Entity("myYardSale.Domain.Entities.Order", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("Notes")
+                        .HasMaxLength(2000)
+                        .HasColumnType("TEXT");
+
+                    b.Property<DateTimeOffset>("PlacedAt")
+                        .HasColumnType("TEXT");
+
+                    b.Property<int>("Status")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<decimal>("TotalAmount")
+                        .HasPrecision(10, 2)
+                        .HasColumnType("TEXT");
+
+                    b.Property<int>("UserId")
+                        .HasColumnType("INTEGER");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("Orders");
+                });
+
+            modelBuilder.Entity("myYardSale.Domain.Entities.OrderItem", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("ListingId")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("OrderId")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("Quantity")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<decimal>("UnitPrice")
+                        .HasPrecision(10, 2)
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ListingId");
+
+                    b.HasIndex("OrderId");
+
+                    b.ToTable("OrderItems");
+                });
+
             modelBuilder.Entity("myYardSale.Domain.Entities.Organization", b =>
                 {
                     b.Property<int>("Id")
@@ -453,6 +541,25 @@ namespace myYardSale.Infrastructure.Migrations
                         .IsRequired();
                 });
 
+            modelBuilder.Entity("myYardSale.Domain.Entities.CartItem", b =>
+                {
+                    b.HasOne("myYardSale.Domain.Entities.Listing", "Listing")
+                        .WithMany()
+                        .HasForeignKey("ListingId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("myYardSale.Domain.Entities.ApplicationUser", "User")
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Listing");
+
+                    b.Navigation("User");
+                });
+
             modelBuilder.Entity("myYardSale.Domain.Entities.Event", b =>
                 {
                     b.HasOne("myYardSale.Domain.Entities.Organization", "Organization")
@@ -503,6 +610,36 @@ namespace myYardSale.Infrastructure.Migrations
                     b.Navigation("Listing");
                 });
 
+            modelBuilder.Entity("myYardSale.Domain.Entities.Order", b =>
+                {
+                    b.HasOne("myYardSale.Domain.Entities.ApplicationUser", "User")
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("User");
+                });
+
+            modelBuilder.Entity("myYardSale.Domain.Entities.OrderItem", b =>
+                {
+                    b.HasOne("myYardSale.Domain.Entities.Listing", "Listing")
+                        .WithMany()
+                        .HasForeignKey("ListingId")
+                        .OnDelete(DeleteBehavior.SetNull)
+                        .IsRequired();
+
+                    b.HasOne("myYardSale.Domain.Entities.Order", "Order")
+                        .WithMany("Items")
+                        .HasForeignKey("OrderId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Listing");
+
+                    b.Navigation("Order");
+                });
+
             modelBuilder.Entity("myYardSale.Domain.Entities.Event", b =>
                 {
                     b.Navigation("Households");
@@ -516,6 +653,11 @@ namespace myYardSale.Infrastructure.Migrations
             modelBuilder.Entity("myYardSale.Domain.Entities.Listing", b =>
                 {
                     b.Navigation("Images");
+                });
+
+            modelBuilder.Entity("myYardSale.Domain.Entities.Order", b =>
+                {
+                    b.Navigation("Items");
                 });
 
             modelBuilder.Entity("myYardSale.Domain.Entities.Organization", b =>

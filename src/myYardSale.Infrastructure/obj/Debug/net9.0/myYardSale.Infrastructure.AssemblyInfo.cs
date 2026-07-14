@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("myYardSale.Infrastructure")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+75ae3d2f2b2457c91f370ab61e34520fe167643e")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+5e7523d4bbefd1cac0abb27fefd693080cfb5567")]
 [assembly: System.Reflection.AssemblyProductAttribute("myYardSale.Infrastructure")]
 [assembly: System.Reflection.AssemblyTitleAttribute("myYardSale.Infrastructure")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
