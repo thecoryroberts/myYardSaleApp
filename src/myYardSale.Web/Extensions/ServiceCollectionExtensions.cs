@@ -41,7 +41,17 @@ public static class ServiceCollectionExtensions
         .AddDefaultTokenProviders()
         .AddDefaultUI();
 
-        services.AddScoped<IListingRepository, SqliteListingRepository>();
+        // Register repository based on provider
+        if (provider == "sqlserver")
+        {
+            // SqlServerListingRepository would be used for SQL Server
+            // Currently using SqliteListingRepository as fallback
+            services.AddScoped<IListingRepository, SqliteListingRepository>();
+        }
+        else
+        {
+            services.AddScoped<IListingRepository, SqliteListingRepository>();
+        }
         services.AddScoped<ListingService>();
         services.AddScoped<ListingImageService>();
 

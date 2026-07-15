@@ -1,57 +1,80 @@
-﻿@model myYardSale.Web.Models.HomeViewModel
+@model myYardSale.Web.Models.HomeViewModel
 
 @{
     ViewData["Title"] = "Browse Community Listings";
 }
 
-<div class="text-center mb-5">
-    <h1 class="display-5 fw-bold">Find local treasures and community deals</h1>
-    <p class="lead text-muted">A production-ready marketplace foundation for yard sales, neighborhood events, and local pickups.</p>
+<div class="hero-section mb-5">
+    <div class="container">
+        <h1 class="display-4 fw-bold mb-3">Find Local Treasures</h1>
+        <p class="lead mb-0">Discover amazing deals from your neighbors and local yard sales. Pickup directly from sellers!</p>
+    </div>
 </div>
 
-<form method="get" class="row g-3 align-items-end mb-4">
-    <div class="col-md-8">
-        <label for="searchTerm" class="form-label">Search listings</label>
-        <input id="searchTerm" name="searchTerm" class="form-control" value="@Model.SearchTerm" placeholder="Search by title, description, or category" />
+<form method="get" class="row g-3 align-items-end mb-4 fade-in-up">
+    <div class="col-md-8 col-lg-9">
+        <label for="searchTerm" class="form-label fw-medium">Search listings</label>
+        <input id="searchTerm" name="searchTerm" class="form-control form-control-lg" value="@Model.SearchTerm" placeholder="Search by title, description, or category..." />
     </div>
-    <div class="col-md-4">
-        <button type="submit" class="btn btn-primary w-100">Search</button>
+    <div class="col-md-4 col-lg-3">
+        <button type="submit" class="btn btn-primary btn-lg w-100">
+            <i class="bi bi-search me-2"></i>Search
+        </button>
     </div>
 </form>
 
 @if (!Model.Listings.Any())
 {
-    <div class="alert alert-info">No listings match your search.</div>
+    <div class="empty-state fade-in-up">
+        <i class="bi bi-emoji-frown display-1 mb-3"></i>
+        <h3 class="h4">No listings found</h3>
+        <p class="text-muted">Try adjusting your search or <a asp-action="Create" class="text-decoration-none">create a listing</a> to get started.</p>
+    </div>
 }
 else
 {
-    <div class="row row-cols-1 row-cols-md-3 g-4">
+    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4 fade-in-up">
         @foreach (var listing in Model.Listings)
         {
             <div class="col">
-                <a asp-action="Details" asp-route-id="@listing.Id" class="text-decoration-none text-dark">
-                    <div class="card h-100 shadow-sm">
+                <a asp-action="Details" asp-route-id="@listing.Id" class="text-decoration-none">
+                    <div class="card h-100 listing-card">
                         @if (!string.IsNullOrEmpty(listing.ThumbnailUrl))
                         {
-                            <img src="@listing.ThumbnailUrl" class="card-img-top" alt="@listing.Title" style="height: 200px; object-fit: cover;" />
+                            <img src="@listing.ThumbnailUrl" class="card-img-top" alt="@listing.Title" loading="lazy" />
                         }
                         else
                         {
-                            <div class="card-img-top bg-light d-flex align-items-center justify-content-center" style="height: 200px;">
-                                <span class="text-muted">No image</span>
+                            <div class="card-img-top bg-light d-flex align-items-center justify-content-center">
+                                <i class="bi bi-image text-muted" style="font-size: 3rem;"></i>
                             </div>
                         }
-                        <div class="card-body">
+                        <div class="card-body d-flex flex-column">
                             <div class="d-flex justify-content-between align-items-center mb-2">
-                                <h5 class="card-title mb-0">@listing.Title</h5>
-                                <span class="badge bg-secondary">@listing.Category</span>
+                                <h5 class="card-title mb-0 text-truncate">@listing.Title</h5>
+                                <span class="badge bg-primary rounded-pill">@listing.Category</span>
                             </div>
-                            <p class="card-text">@listing.Description</p>
-                            <p class="fw-bold mb-0">$@listing.Price.ToString("0.00")</p>
+                            <p class="card-text flex-grow-1">@listing.Description</p>
+                            <div class="d-flex justify-content-between align-items-center mt-2">
+                                <span class="price-badge rounded-pill">$@listing.Price.ToString("0.00")</span>
+                                <i class="bi bi-arrow-right text-primary"></i>
+                            </div>
                         </div>
                     </div>
                 </a>
             </div>
         }
     </div>
+}
+
+@section Scripts {
+    <script>
+        // Stagger card animations
+        document.addEventListener('DOMContentLoaded', function() {
+            const cards = document.querySelectorAll('.listing-card');
+            cards.forEach((card, index) => {
+                card.style.animationDelay = (index * 50) + 'ms';
+            });
+        });
+    </script>
 }

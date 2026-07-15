@@ -4,39 +4,72 @@
     ViewData["Title"] = "My Orders";
 }
 
-<h1 class="h3 mb-4">My Orders</h1>
+<h1 class="h3 mb-4">
+    <i class="bi bi-box-seam me-2"></i>My Orders
+</h1>
 
 @if (!Model.Orders.Any())
 {
-    <div class="alert alert-info">You haven't placed any orders yet.</div>
+    <div class="empty-state fade-in-up">
+        <i class="bi bi-box display-1 mb-3 text-primary"></i>
+        <h3 class="h4 mb-2">No orders yet</h3>
+        <p class="text-muted mb-4">You haven't placed any orders. Start shopping to see your orders here.</p>
+        <a asp-action="Index" asp-controller="Home" class="btn btn-primary btn-lg">
+            <i class="bi bi-shop me-2"></i>Browse Listings
+        </a>
+    </div>
 }
 else
 {
     <div class="card shadow-sm">
-        <div class="card-body">
-            <table class="table table-hover">
-                <thead>
-                    <tr>
-                        <th>Order #</th>
-                        <th>Date</th>
-                        <th>Status</th>
-                        <th>Total</th>
-                        <th>Items</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach (var order in Model.Orders)
-                    {
+        <div class="card-body p-0">
+            <div class="table-responsive">
+                <table class="table table-hover mb-0">
+                    <thead class="table-light">
                         <tr>
-                            <td><a asp-action="Details" asp-route-id="@order.Id">#@order.Id</a></td>
-                            <td>@order.PlacedAt.ToString("MMM dd, yyyy")</td>
-                            <td><span class="badge bg-primary">@order.Status</span></td>
-                            <td>$@order.TotalAmount.ToString("0.00")</td>
-                            <td>@order.ItemCount</td>
+                            <th class="border-0">Order #</th>
+                            <th class="border-0">Date</th>
+                            <th class="border-0">Status</th>
+                            <th class="border-0">Total</th>
+                            <th class="border-0">Items</th>
+                            <th class="border-0"></th>
                         </tr>
-                    }
-                </tbody>
-            </table>
+                    </thead>
+                    <tbody>
+                        @foreach (var order in Model.Orders)
+                        {
+                            <tr>
+                                <td>
+                                    <a asp-action="Details" asp-route-id="@order.Id" class="text-decoration-none fw-medium">
+                                        #@order.Id
+                                    </a>
+                                </td>
+                                <td>@order.PlacedAt.ToString("MMM dd, yyyy")</td>
+                                <td>
+                                    @{
+                                        var statusClass = order.Status switch
+                                        {
+                                            "Pending" => "bg-warning",
+                                            "Processing" => "bg-info",
+                                            "Completed" => "bg-success",
+                                            "Cancelled" => "bg-danger",
+                                            _ => "bg-secondary"
+                                        };
+                                    }
+                                    <span class="badge @statusClass rounded-pill">@order.Status</span>
+                                </td>
+                                <td class="fw-medium">$@order.TotalAmount.ToString("0.00")</td>
+                                <td>@order.ItemCount item@(order.ItemCount != 1 ? "s" : "")</td>
+                                <td class="text-end">
+                                    <a asp-action="Details" asp-route-id="@order.Id" class="btn btn-sm btn-outline-primary rounded-pill">
+                                        <i class="bi bi-eye me-1"></i>View
+                                    </a>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
         </div>
     </div>
 }

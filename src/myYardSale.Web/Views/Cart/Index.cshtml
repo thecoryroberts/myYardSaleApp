@@ -4,81 +4,104 @@
     ViewData["Title"] = "Shopping Cart";
 }
 
-<h1 class="h3 mb-4">Shopping Cart</h1>
+<h1 class="h3 mb-4">
+    <i class="bi bi-cart3 me-2"></i>Shopping Cart
+</h1>
 
 @if (TempData["Success"] is string success)
 {
     <div class="alert alert-success alert-dismissible fade show" role="alert">
-        @success
+        <i class="bi bi-check-circle me-2"></i>@success
         <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
     </div>
 }
 @if (TempData["Error"] is string error)
 {
     <div class="alert alert-danger alert-dismissible fade show" role="alert">
-        @error
+        <i class="bi bi-exclamation-triangle me-2"></i>@error
         <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
     </div>
 }
 
 @if (!Model.Items.Any())
 {
-    <div class="alert alert-info">
-        Your cart is empty. <a asp-action="Index" asp-controller="Home">Browse listings</a> to add items.
+    <div class="empty-state fade-in-up">
+        <i class="bi bi-cart-x display-1 mb-3 text-primary"></i>
+        <h3 class="h4 mb-2">Your cart is empty</h3>
+        <p class="text-muted mb-4">Browse our listings to find great deals in your neighborhood.</p>
+        <a asp-action="Index" asp-controller="Home" class="btn btn-primary btn-lg">
+            <i class="bi bi-shop me-2"></i>Start Shopping
+        </a>
     </div>
 }
 else
 {
     <div class="card shadow-sm">
-        <div class="card-body">
-            <table class="table table-hover">
-                <thead>
-                    <tr>
-                        <th>Item</th>
-                        <th>Price</th>
-                        <th>Quantity</th>
-                        <th>Subtotal</th>
-                        <th></th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach (var item in Model.Items)
-                    {
+        <div class="card-body p-0">
+            <div class="table-responsive">
+                <table class="table table-hover mb-0">
+                    <thead class="table-light">
                         <tr>
-                            <td>
-                                <div class="d-flex align-items-center">
-                                    @if (!string.IsNullOrEmpty(item.ThumbnailUrl))
-                                    {
-                                        <img src="@item.ThumbnailUrl" alt="@item.Title" class="me-2" style="height: 50px; width: 50px; object-fit: cover;" />
-                                    }
-                                    <a asp-action="Details" asp-controller="Home" asp-route-id="@item.ListingId">@item.Title</a>
-                                </div>
-                            </td>
-                            <td>$@item.UnitPrice.ToString("0.00")</td>
-                            <td>@item.Quantity</td>
-                            <td>$@item.Subtotal.ToString("0.00")</td>
-                            <td>
-                                <form asp-action="Remove" method="post" class="d-inline">
-                                    @Html.AntiForgeryToken()
-                                    <input type="hidden" name="cartItemId" value="@item.Id" />
-                                    <button type="submit" class="btn btn-sm btn-outline-danger" onclick="return confirm('Remove this item?');">&times;</button>
-                                </form>
-                            </td>
+                            <th class="border-0">Item</th>
+                            <th class="border-0">Price</th>
+                            <th class="border-0">Quantity</th>
+                            <th class="border-0">Subtotal</th>
+                            <th class="border-0 text-end">Actions</th>
                         </tr>
-                    }
-                </tbody>
-                <tfoot>
-                    <tr>
-                        <th colspan="3" class="text-end">Total:</th>
-                        <th colspan="2">$@Model.Total.ToString("0.00")</th>
-                    </tr>
-                </tfoot>
-            </table>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model.Items)
+                        {
+                            <tr>
+                                <td>
+                                    <div class="d-flex align-items-center">
+                                        @if (!string.IsNullOrEmpty(item.ThumbnailUrl))
+                                        {
+                                            <img src="@item.ThumbnailUrl" alt="@item.Title" class="me-3 rounded" style="height: 60px; width: 60px; object-fit: cover;" loading="lazy" />
+                                        }
+                                        else
+                                        {
+                                            <div class="me-3 bg-light rounded d-flex align-items-center justify-content-center" style="height: 60px; width: 60px;">
+                                                <i class="bi bi-image text-muted"></i>
+                                            </div>
+                                        }
+                                        <a asp-action="Details" asp-controller="Home" asp-route-id="@item.ListingId" class="text-decoration-none fw-medium">
+                                            @item.Title
+                                        </a>
+                                    </div>
+                                </td>
+                                <td class="align-middle">$@item.UnitPrice.ToString("0.00")</td>
+                                <td class="align-middle">@item.Quantity</td>
+                                <td class="align-middle fw-medium">$@item.Subtotal.ToString("0.00")</td>
+                                <td class="text-end align-middle">
+                                    <form asp-action="Remove" method="post" class="d-inline" onsubmit="return confirm('Remove this item from your cart?');">
+                                        @Html.AntiForgeryToken()
+                                        <input type="hidden" name="cartItemId" value="@item.Id" />
+                                        <button type="submit" class="btn btn-sm btn-outline-danger rounded-circle" style="width: 36px; height: 36px;" title="Remove">
+                                            <i class="bi bi-trash"></i>
+                                        </button>
+                                    </form>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                    <tfoot class="table-light">
+                        <tr>
+                            <th colspan="3" class="text-end border-0 fs-5">Total:</th>
+                            <th colspan="2" class="border-0 fs-4 text-success">$@Model.Total.ToString("0.00")</th>
+                        </tr>
+                    </tfoot>
+                </table>
+            </div>
         </div>
     </div>
 
-    <div class="d-flex gap-2 mt-3">
-        <a asp-action="Checkout" class="btn btn-primary">Proceed to Checkout</a>
-        <a asp-action="Index" asp-controller="Home" class="btn btn-outline-secondary">Continue Shopping</a>
+    <div class="d-flex gap-2 flex-wrap mt-4 justify-content-between align-items-center">
+        <a asp-action="Index" asp-controller="Home" class="btn btn-outline-secondary">
+            <i class="bi bi-arrow-left me-2"></i>Continue Shopping
+        </a>
+        <a asp-action="Checkout" class="btn btn-success btn-lg px-4">
+            <i class="bi bi-credit-card me-2"></i>Proceed to Checkout
+        </a>
     </div>
 }

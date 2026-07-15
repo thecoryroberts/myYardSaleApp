@@ -1,45 +1,94 @@
 @model myYardSale.Web.Models.AdminListingIndexViewModel
+
 @{
-    ViewData["Title"] = "Admin Listings";
+    ViewData["Title"] = "Admin: Listings";
 }
 
-<h1 class="mb-4">Admin Listings</h1>
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <h1 class="h3 mb-0">
+        <i class="bi bi-gear me-2"></i>Admin Dashboard
+    </h1>
+    <a asp-action="Create" asp-controller="Home" class="btn btn-primary">
+        <i class="bi bi-plus-circle me-2"></i>New Listing
+    </a>
+</div>
 
 @if (!Model.Listings.Any())
 {
-    <div class="alert alert-info">No listings available.</div>
+    <div class="empty-state fade-in-up">
+        <i class="bi bi-box display-1 mb-3 text-warning"></i>
+        <h3 class="h4 mb-2">No listings yet</h3>
+        <p class="text-muted">No listings have been created.</p>
+    </div>
 }
 else
 {
-    <table class="table table-striped">
-        <thead>
-            <tr>
-                <th>Title</th>
-                <th>Status</th>
-                <th>Price</th>
-                <th>Category</th>
-                <th>Created</th>
-                <th>Actions</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (var listing in Model.Listings)
-            {
-                <tr>
-                    <td>@listing.Title</td>
-                    <td>@listing.Status</td>
-                    <td>@listing.Price.ToString("C")</td>
-                    <td>@listing.Category</td>
-                    <td>@listing.CreatedAt.ToString("yyyy-MM-dd")</td>
-                    <td>
-                        <a class="btn btn-sm btn-outline-primary" asp-action="Edit" asp-route-id="@listing.Id">Edit</a>
-                        <form asp-action="Delete" asp-route-id="@listing.Id" method="post" class="d-inline">
-                            @Html.AntiForgeryToken()
-                            <button type="submit" class="btn btn-sm btn-outline-danger" onclick="return confirm('Delete this listing?');">Delete</button>
-                        </form>
-                    </td>
-                </tr>
-            }
-        </tbody>
-    </table>
+    <div class="card shadow-sm fade-in-up">
+        <div class="card-header bg-white py-3">
+            <h5 class="mb-0">
+                <i class="bi bi-list-ul me-2"></i>All Listings
+            </h5>
+        </div>
+        <div class="card-body p-0">
+            <div class="table-responsive">
+                <table class="table table-hover mb-0">
+                    <thead class="table-light">
+                        <tr>
+                            <th class="border-0">Title</th>
+                            <th class="border-0">Status</th>
+                            <th class="border-0">Price</th>
+                            <th class="border-0">Category</th>
+                            <th class="border-0">Created</th>
+                            <th class="border-0 text-end">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var listing in Model.Listings)
+                        {
+                            <tr>
+                                <td>
+                                    <a asp-action="Details" asp-controller="Home" asp-route-id="@listing.Id" class="text-decoration-none fw-medium">
+                                        @listing.Title
+                                    </a>
+                                </td>
+                                <td>
+                                    @{
+                                        var statusClass = listing.Status switch
+                                        {
+                                            "Active" => "bg-success",
+                                            "Draft" => "bg-secondary",
+                                            "Sold" => "bg-info",
+                                            "Removed" => "bg-danger",
+                                            _ => "bg-secondary"
+                                        };
+                                    }
+                                    <span class="badge @statusClass rounded-pill">@listing.Status</span>
+                                </td>
+                                <td class="fw-medium">$@listing.Price.ToString("0.00")</td>
+                                <td>@listing.Category</td>
+                                <td>@listing.CreatedAt.ToString("MMM dd, yyyy")</td>
+                                <td class="text-end">
+                                    <div class="btn-group btn-group-sm">
+                                        <a asp-action="Details" asp-controller="Home" asp-route-id="@listing.Id" class="btn btn-outline-primary" title="View">
+                                            <i class="bi bi-eye"></i>
+                                        </a>
+                                        <a asp-action="Edit" asp-controller="Home" asp-route-id="@listing.Id" class="btn btn-outline-secondary" title="Edit">
+                                            <i class="bi bi-pencil"></i>
+                                        </a>
+                                        <form asp-action="Delete" asp-controller="Home" asp-route-id="@listing.Id" method="post" class="d-inline" 
+                                              onsubmit="return confirm('Delete this listing? This action cannot be undone.');">
+                                            @Html.AntiForgeryToken()
+                                            <button type="submit" class="btn btn-outline-danger" title="Delete">
+                                                <i class="bi bi-trash"></i>
+                                            </button>
+                                        </form>
+                                    </div>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
 }

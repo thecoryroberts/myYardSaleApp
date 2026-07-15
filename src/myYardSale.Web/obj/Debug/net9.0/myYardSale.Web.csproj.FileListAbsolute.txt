@@ -234,9 +234,7 @@
 /media/thecoryroberts/External/Design Assets/Web Solutions/myYardSale/src/myYardSale.Web/obj/Debug/net9.0/compressed/nezrqnk58p-muycvpuwrr.gz
 /media/thecoryroberts/External/Design Assets/Web Solutions/myYardSale/src/myYardSale.Web/obj/Debug/net9.0/compressed/v0zgfp0y55-87fc7y1x7t.gz
 /media/thecoryroberts/External/Design Assets/Web Solutions/myYardSale/src/myYardSale.Web/obj/Debug/net9.0/compressed/yfc7ypekbg-mlv21k5csn.gz
-/media/thecoryroberts/External/Design Assets/Web Solutions/myYardSale/src/myYardSale.Web/obj/Debug/net9.0/compressed/qo97gduwm6-lugek5hnai.gz
 /media/thecoryroberts/External/Design Assets/Web Solutions/myYardSale/src/myYardSale.Web/obj/Debug/net9.0/compressed/st0377peqo-61n19gt1b8.gz
-/media/thecoryroberts/External/Design Assets/Web Solutions/myYardSale/src/myYardSale.Web/obj/Debug/net9.0/compressed/3i7pn5trxn-fr7q2aak1r.gz
 /media/thecoryroberts/External/Design Assets/Web Solutions/myYardSale/src/myYardSale.Web/obj/Debug/net9.0/compressed/6hw3yl2u0p-bqjiyaj88i.gz
 /media/thecoryroberts/External/Design Assets/Web Solutions/myYardSale/src/myYardSale.Web/obj/Debug/net9.0/compressed/zj5swzumi7-c2jlpeoesf.gz
 /media/thecoryroberts/External/Design Assets/Web Solutions/myYardSale/src/myYardSale.Web/obj/Debug/net9.0/compressed/61geo5dyr0-erw9l3u2r3.gz
@@ -448,3 +446,6 @@
 /media/thecoryroberts/External/Design Assets/Web Solutions/myYardSale/src/myYardSale.Web/bin/Debug/net9.0/zh-Hans/Microsoft.CodeAnalysis.Workspaces.MSBuild.resources.dll
 /media/thecoryroberts/External/Design Assets/Web Solutions/myYardSale/src/myYardSale.Web/bin/Debug/net9.0/zh-Hant/Microsoft.CodeAnalysis.Workspaces.MSBuild.resources.dll
 /media/thecoryroberts/External/Design Assets/Web Solutions/myYardSale/src/myYardSale.Web/bin/Debug/net9.0/runtimes/win/lib/net8.0/System.Windows.Extensions.dll
+/media/thecoryroberts/External/Design Assets/Web Solutions/myYardSale/src/myYardSale.Web/bin/Debug/net9.0/appsettings.Production.json
+/media/thecoryroberts/External/Design Assets/Web Solutions/myYardSale/src/myYardSale.Web/obj/Debug/net9.0/compressed/qo97gduwm6-6qag3hnyeq.gz
+/media/thecoryroberts/External/Design Assets/Web Solutions/myYardSale/src/myYardSale.Web/obj/Debug/net9.0/compressed/3i7pn5trxn-17xovigh9l.gz
