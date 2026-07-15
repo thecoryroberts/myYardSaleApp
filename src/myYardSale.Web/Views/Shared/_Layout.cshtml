@@ -49,11 +49,9 @@
                     </ul>
                     @if (User.Identity?.IsAuthenticated == true)
                     {
-                        <a asp-controller="Cart" asp-action="Index" class="btn btn-outline-light position-relative me-3">
+                        <a asp-controller="Cart" asp-action="Index" class="btn btn-outline-light me-3">
                             <i class="bi bi-cart3"></i>
-                            <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-primary cart-badge">
-                                @await Component.InvokeAsync("CartItemCount")
-                            </span>
+                            <span class="d-lg-none ms-1">Cart</span>
                         </a>
                     }
                     <partial name="_LoginPartial" />

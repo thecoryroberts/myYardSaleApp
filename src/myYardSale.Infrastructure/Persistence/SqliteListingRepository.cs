@@ -23,18 +23,19 @@ public sealed class SqliteListingRepository : IListingRepository
 
         return listings
             .Where(x => x.Status == ListingStatus.Active)
-            .OrderByDescending(x => x.CreatedAt.DateTime)
+            .OrderByDescending(x => x.CreatedAt)
             .ToList();
     }
 
     public async Task<IReadOnlyList<Listing>> GetAllAsync(CancellationToken cancellationToken)
     {
-        return await _context.Listings
+        var listings = await _context.Listings
             .AsNoTracking()
             .Include(x => x.Category)
             .Include(x => x.Images)
-            .OrderByDescending(x => x.CreatedAt.DateTime)
             .ToListAsync(cancellationToken);
+
+        return listings.OrderByDescending(x => x.CreatedAt).ToList();
     }
 
     public async Task<Listing?> GetByIdAsync(int id, CancellationToken cancellationToken)
@@ -136,14 +137,15 @@ public sealed class SqliteListingRepository : IListingRepository
 
     public async Task<IReadOnlyList<CartItem>> GetCartItemsAsync(int userId, CancellationToken cancellationToken)
     {
-        return await _context.CartItems
+        var items = await _context.CartItems
             .AsNoTracking()
             .Include(x => x.Listing!)
                 .ThenInclude(x => x.Images)
             .Include(x => x.Listing!.Category)
             .Where(x => x.UserId == userId)
-            .OrderByDescending(x => x.AddedAt)
             .ToListAsync(cancellationToken);
+
+        return items.OrderByDescending(x => x.AddedAt).ToList();
     }
 
     public async Task<bool> ClearCartAsync(int userId, CancellationToken cancellationToken)
@@ -173,13 +175,14 @@ public sealed class SqliteListingRepository : IListingRepository
 
     public async Task<IReadOnlyList<Order>> GetOrdersAsync(int userId, CancellationToken cancellationToken)
     {
-        return await _context.Orders
+        var orders = await _context.Orders
             .AsNoTracking()
             .Include(x => x.Items)
             .ThenInclude(x => x.Listing)
             .Where(x => x.UserId == userId)
-            .OrderByDescending(x => x.PlacedAt)
             .ToListAsync(cancellationToken);
+
+        return orders.OrderByDescending(x => x.PlacedAt).ToList();
     }
 
     public async Task<Order?> GetOrderByIdAsync(int orderId, CancellationToken cancellationToken)
@@ -194,13 +197,14 @@ public sealed class SqliteListingRepository : IListingRepository
 
     public async Task<IReadOnlyList<Order>> GetAllOrdersAsync(CancellationToken cancellationToken)
     {
-        return await _context.Orders
+        var orders = await _context.Orders
             .AsNoTracking()
             .Include(x => x.Items)
             .ThenInclude(x => x.Listing)
             .Include(x => x.User)
-            .OrderByDescending(x => x.PlacedAt)
             .ToListAsync(cancellationToken);
+
+        return orders.OrderByDescending(x => x.PlacedAt).ToList();
     }
 
     public async Task<Order?> UpdateOrderStatusAsync(int orderId, OrderStatus status, CancellationToken cancellationToken)

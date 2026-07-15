@@ -261,8 +261,20 @@
       "PackagePath": "staticwebassets/uploads/listings/1/5db2c591029146a2a30ee898a61a96ab.png"
     },
     {
+      "Id": "/media/thecoryroberts/External/Design Assets/Web Solutions/myYardSale/src/myYardSale.Web/wwwroot/uploads/listings/1/672d144c589b48a4b673587d661f2276.jpg",
+      "PackagePath": "staticwebassets/uploads/listings/1/672d144c589b48a4b673587d661f2276.jpg"
+    },
+    {
       "Id": "/media/thecoryroberts/External/Design Assets/Web Solutions/myYardSale/src/myYardSale.Web/wwwroot/uploads/listings/1/adef1e75e4a643ebbb51ef2dbbe125e0.png",
       "PackagePath": "staticwebassets/uploads/listings/1/adef1e75e4a643ebbb51ef2dbbe125e0.png"
+    },
+    {
+      "Id": "/media/thecoryroberts/External/Design Assets/Web Solutions/myYardSale/src/myYardSale.Web/wwwroot/uploads/listings/4/486abb993547432b86f1b76e97af9ab2.webp",
+      "PackagePath": "staticwebassets/uploads/listings/4/486abb993547432b86f1b76e97af9ab2.webp"
+    },
+    {
+      "Id": "/media/thecoryroberts/External/Design Assets/Web Solutions/myYardSale/src/myYardSale.Web/wwwroot/uploads/listings/5/a179548000f844fcafc09bc092ac155b.jpg",
+      "PackagePath": "staticwebassets/uploads/listings/5/a179548000f844fcafc09bc092ac155b.jpg"
     },
     {
       "Id": "obj/Debug/net9.0/staticwebassets/msbuild.build.myYardSale.Web.props",
