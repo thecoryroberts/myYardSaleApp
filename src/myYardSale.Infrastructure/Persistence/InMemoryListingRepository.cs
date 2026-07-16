@@ -45,6 +45,9 @@ public sealed class InMemoryListingRepository : IListingRepository
     public Task<IReadOnlyList<Listing>> GetAllAsync(CancellationToken cancellationToken)
         => Task.FromResult(_listings.ToList() as IReadOnlyList<Listing>);
 
+    public Task<IReadOnlyList<Listing>> GetListingsByUserAsync(int userId, CancellationToken cancellationToken)
+        => Task.FromResult(_listings.Where(x => x.UserId == userId).ToList() as IReadOnlyList<Listing>);
+
     public Task<Listing?> GetByIdAsync(int id, CancellationToken cancellationToken)
         => Task.FromResult(_listings.FirstOrDefault(x => x.Id == id));
 

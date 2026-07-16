@@ -44,6 +44,12 @@ public static class DatabaseExtensions
             await roleManager.CreateAsync(new IdentityRole<int>(adminRoleName));
         }
 
+        const string sellerRoleName = "Seller";
+        if (!await roleManager.RoleExistsAsync(sellerRoleName))
+        {
+            await roleManager.CreateAsync(new IdentityRole<int>(sellerRoleName));
+        }
+
         // Seed Admin User
         var adminEmail = configuration.GetValue<string>("Admin:Email") ?? "admin@myyardsale.com";
         var adminPassword = configuration.GetValue<string>("Admin:Password") ?? "Admin123!";
@@ -76,14 +82,30 @@ public static class DatabaseExtensions
         {
             var demoUsers = new[]
             {
-                new ApplicationUser { UserName = "seller1@myyardsale.com", Email = "seller1@myyardsale.com", FullName = "Jane Seller", IsActive = true },
-                new ApplicationUser { UserName = "buyer1@myyardsale.com", Email = "buyer1@myyardsale.com", FullName = "Bob Buyer", IsActive = true },
-                new ApplicationUser { UserName = "seller2@myyardsale.com", Email = "seller2@myyardsale.com", FullName = "Alice Vendor", IsActive = true }
+                new { User = new ApplicationUser { UserName = "seller1@myyardsale.com", Email = "seller1@myyardsale.com", FullName = "Jane Seller", IsActive = true }, IsSeller = true },
+                new { User = new ApplicationUser { UserName = "buyer1@myyardsale.com", Email = "buyer1@myyardsale.com", FullName = "Bob Buyer", IsActive = true }, IsSeller = false },
+                new { User = new ApplicationUser { UserName = "seller2@myyardsale.com", Email = "seller2@myyardsale.com", FullName = "Alice Vendor", IsActive = true }, IsSeller = true }
             };
 
-            foreach (var user in demoUsers)
+            foreach (var demoUser in demoUsers)
             {
-                await userManager.CreateAsync(user, "Password123!");
+                await userManager.CreateAsync(demoUser.User, "Password123!");
+                if (demoUser.IsSeller)
+                {
+                    await userManager.AddToRoleAsync(demoUser.User, sellerRoleName);
+                }
+            }
+        }
+        else
+        {
+            // Ensure existing demo sellers have the Seller role
+            var sellerUsers = await userManager.Users.Where(u => u.Email != null && (u.Email.StartsWith("seller") || u.Email.StartsWith("vendor"))).ToListAsync();
+            foreach (var user in sellerUsers)
+            {
+                if (!await userManager.IsInRoleAsync(user, sellerRoleName))
+                {
+                    await userManager.AddToRoleAsync(user, sellerRoleName);
+                }
             }
         }
 

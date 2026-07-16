@@ -12,6 +12,8 @@ public class Listing
     public int? CategoryId { get; set; }
     public Household? Household { get; set; }
     public int? HouseholdId { get; set; }
+    public int? UserId { get; set; }
+    public ApplicationUser? User { get; set; }
     public ICollection<ListingImage> Images { get; set; } = new List<ListingImage>();
 }
 

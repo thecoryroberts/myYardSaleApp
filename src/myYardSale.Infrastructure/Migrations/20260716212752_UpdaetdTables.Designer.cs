@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using myYardSale.Infrastructure.Persistence;
 
@@ -10,9 +11,11 @@ using myYardSale.Infrastructure.Persistence;
 namespace myYardSale.Infrastructure.Migrations
 {
     [DbContext(typeof(MyYardSaleDbContext))]
-    partial class MyYardSaleDbContextModelSnapshot : ModelSnapshot
+    [Migration("20260716212752_UpdaetdTables")]
+    partial class UpdaetdTables
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "9.0.8");
@@ -601,8 +604,7 @@ namespace myYardSale.Infrastructure.Migrations
 
                     b.HasOne("myYardSale.Domain.Entities.ApplicationUser", "User")
                         .WithMany()
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.SetNull);
+                        .HasForeignKey("UserId");
 
                     b.Navigation("Category");
 

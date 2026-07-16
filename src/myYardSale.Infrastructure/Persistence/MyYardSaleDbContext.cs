@@ -160,6 +160,11 @@ public class MyYardSaleDbContext : IdentityDbContext<ApplicationUser, IdentityRo
                 .HasForeignKey(x => x.HouseholdId)
                 .IsRequired(false)
                 .OnDelete(DeleteBehavior.SetNull);
+            entity.HasOne(x => x.User)
+                .WithMany()
+                .HasForeignKey(x => x.UserId)
+                .IsRequired(false)
+                .OnDelete(DeleteBehavior.SetNull);
         });
     }
 }

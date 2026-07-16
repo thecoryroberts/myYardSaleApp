@@ -20,6 +20,13 @@ builder.Services.AddControllersWithViews()
 builder.Services.AddRazorPages();
 builder.Services.AddApplicationServices(builder.Configuration);
 
+// Authorization - only Admin and Seller roles can manage listings
+builder.Services.AddAuthorization(options =>
+{
+    options.AddPolicy("CanManageListings", policy =>
+        policy.RequireRole("Admin", "Seller"));
+});
+
 // Response Caching
 builder.Services.AddResponseCaching();
 

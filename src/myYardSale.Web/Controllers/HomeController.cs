@@ -1,3 +1,5 @@
+using System.Security.Claims;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using myYardSale.Application.Services;
@@ -18,6 +20,12 @@ public class HomeController : Controller
         _imageService = imageService;
     }
 
+    private int GetCurrentUserId()
+    {
+        var userIdClaim = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+        return int.TryParse(userIdClaim, out var userId) ? userId : 0;
+    }
+
     [HttpGet]
     public async Task<IActionResult> Index(string? searchTerm, CancellationToken cancellationToken)
     {
@@ -26,6 +34,30 @@ public class HomeController : Controller
         var viewModel = new HomeViewModel
         {
             SearchTerm = searchTerm ?? string.Empty,
+            Listings = listings.Select(x => new ListingSummaryViewModel
+            {
+                Id = x.Id,
+                Title = x.Title,
+                Description = x.Description,
+                Price = x.Price,
+                Category = x.Category?.Name ?? "Uncategorized",
+                ThumbnailUrl = x.Images.FirstOrDefault()?.StoragePath
+            }).ToList()
+        };
+
+        return View(viewModel);
+    }
+
+    [HttpGet]
+    [Authorize(Policy = "CanManageListings")]
+    public async Task<IActionResult> MyListings(CancellationToken cancellationToken)
+    {
+        var userId = GetCurrentUserId();
+        var listings = await _listingService.GetByUserAsync(userId, cancellationToken);
+
+        var viewModel = new HomeViewModel
+        {
+            SearchTerm = string.Empty,
             Listings = listings.Select(x => new ListingSummaryViewModel
             {
                 Id = x.Id,
@@ -67,6 +99,7 @@ public class HomeController : Controller
     }
 
     [HttpGet]
+    [Authorize(Policy = "CanManageListings")]
     public async Task<IActionResult> Create(CancellationToken cancellationToken)
     {
         var viewModel = new ListingFormViewModel
@@ -81,6 +114,7 @@ public class HomeController : Controller
 
     [HttpPost]
     [ValidateAntiForgeryToken]
+    [Authorize(Policy = "CanManageListings")]
     public async Task<IActionResult> Create(ListingFormViewModel model, CancellationToken cancellationToken)
     {
         if (!ModelState.IsValid)
@@ -97,7 +131,8 @@ public class HomeController : Controller
             Description = model.Description,
             Price = model.Price,
             Status = model.Status,
-            CategoryId = model.CategoryId
+            CategoryId = model.CategoryId,
+            UserId = GetCurrentUserId()
         };
 
         var created = await _listingService.CreateAsync(listing, cancellationToken);
@@ -111,12 +146,20 @@ public class HomeController : Controller
     }
 
     [HttpGet]
+    [Authorize(Policy = "CanManageListings")]
     public async Task<IActionResult> Edit(int id, CancellationToken cancellationToken)
     {
         var listing = await _listingService.GetByIdAsync(id, cancellationToken);
         if (listing is null)
         {
             return NotFound();
+        }
+
+        // Only allow the owner or admin to edit
+        var currentUserId = GetCurrentUserId();
+        if (!User.IsInRole("Admin") && listing.UserId != currentUserId)
+        {
+            return Forbid();
         }
 
         var viewModel = new ListingFormViewModel
@@ -143,6 +186,7 @@ public class HomeController : Controller
 
     [HttpPost]
     [ValidateAntiForgeryToken]
+    [Authorize(Policy = "CanManageListings")]
     public async Task<IActionResult> Edit(ListingFormViewModel model, CancellationToken cancellationToken)
     {
         if (!ModelState.IsValid)
@@ -179,14 +223,29 @@ public class HomeController : Controller
 
     [HttpPost]
     [ValidateAntiForgeryToken]
+    [Authorize(Policy = "CanManageListings")]
     public async Task<IActionResult> Delete(int id, CancellationToken cancellationToken)
     {
+        var listing = await _listingService.GetByIdAsync(id, cancellationToken);
+        if (listing is null)
+        {
+            return NotFound();
+        }
+
+        // Only allow the owner or admin to delete
+        var currentUserId = GetCurrentUserId();
+        if (!User.IsInRole("Admin") && listing.UserId != currentUserId)
+        {
+            return Forbid();
+        }
+
         await _listingService.DeleteAsync(id, cancellationToken);
         return RedirectToAction(nameof(Index));
     }
 
     [HttpPost]
     [ValidateAntiForgeryToken]
+    [Authorize(Policy = "CanManageListings")]
     public async Task<IActionResult> DeleteImage(int imageId, int listingId, CancellationToken cancellationToken)
     {
         await _imageService.DeleteImageAsync(imageId, cancellationToken);

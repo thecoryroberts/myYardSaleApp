@@ -33,6 +33,9 @@ public sealed class ListingService
     public Task<IReadOnlyList<Listing>> GetAllAsync(CancellationToken cancellationToken)
         => _listingRepository.GetAllAsync(cancellationToken);
 
+    public Task<IReadOnlyList<Listing>> GetByUserAsync(int userId, CancellationToken cancellationToken)
+        => _listingRepository.GetListingsByUserAsync(userId, cancellationToken);
+
     public Task<Listing?> GetByIdAsync(int id, CancellationToken cancellationToken)
         => _listingRepository.GetByIdAsync(id, cancellationToken);
 

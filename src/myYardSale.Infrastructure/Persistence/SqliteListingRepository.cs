@@ -38,6 +38,18 @@ public sealed class SqliteListingRepository : IListingRepository
         return listings.OrderByDescending(x => x.CreatedAt).ToList();
     }
 
+    public async Task<IReadOnlyList<Listing>> GetListingsByUserAsync(int userId, CancellationToken cancellationToken)
+    {
+        var listings = await _context.Listings
+            .AsNoTracking()
+            .Include(x => x.Category)
+            .Include(x => x.Images)
+            .Where(x => x.UserId == userId)
+            .ToListAsync(cancellationToken);
+
+        return listings.OrderByDescending(x => x.CreatedAt).ToList();
+    }
+
     public async Task<Listing?> GetByIdAsync(int id, CancellationToken cancellationToken)
     {
         return await _context.Listings

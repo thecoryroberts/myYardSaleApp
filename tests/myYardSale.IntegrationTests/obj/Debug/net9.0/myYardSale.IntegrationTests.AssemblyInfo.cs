@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("myYardSale.IntegrationTests")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+c93b59ba6c70e7b94651a698a1c48aa131ae5359")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+1a9f19fb217ab6306571c3cf4f5967b73d638e71")]
 [assembly: System.Reflection.AssemblyProductAttribute("myYardSale.IntegrationTests")]
 [assembly: System.Reflection.AssemblyTitleAttribute("myYardSale.IntegrationTests")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
