@@ -295,6 +295,42 @@ main {
     }
 }
 
+/* Filter bar */
+.filter-bar .form-label {
+    font-size: 0.9rem;
+}
+
+.filter-bar .form-control-lg,
+.filter-bar .form-select-lg {
+    border-radius: 0.5rem;
+}
+
+/* Pagination enhancements */
+.pagination {
+    gap: 0.25rem;
+}
+
+.pagination .page-link {
+    border: none;
+    border-radius: 0.5rem;
+    color: var(--myyard-sale-primary);
+    font-weight: 500;
+    transition: all 0.2s ease;
+}
+
+.pagination .page-item.active .page-link {
+    background-color: var(--myyard-sale-primary);
+    color: #fff;
+}
+
+.pagination .page-item.disabled .page-link {
+    color: #cbd5e1;
+}
+
+.pagination .page-link:hover:not(.active) {
+    background-color: #e2e8f0;
+}
+
 /* Utilities */
 .object-fit-cover {
     object-fit: cover;

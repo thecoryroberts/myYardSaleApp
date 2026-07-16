@@ -6,6 +6,11 @@
     <title>@ViewData["Title"] - myYardSale</title>
     <meta name="description" content="Local marketplace for yard sales, neighborhood events, and community pickups. Find treasures in your area!" />
     <meta name="theme-color" content="#2563eb" />
+    <meta property="og:title" content="@(ViewData["Title"] ?? "myYardSale") - Local Community Marketplace" />
+    <meta property="og:description" content="Discover amazing deals from your neighbors and local yard sales. Pickup directly from sellers!" />
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary" />
+    <link rel="icon" type="image/x-icon" href="~/favicon.ico" />
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" />
@@ -24,44 +29,37 @@
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                         <li class="nav-item">
-                            <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Index">
+                            <a class="nav-link @(ViewData["ActiveNav"]?.ToString() == "Browse" ? "active" : "")" asp-area="" asp-controller="Home" asp-action="Index">
                                 <i class="bi bi-house-door me-1"></i>Browse
                             </a>
                         </li>
                         @if (User.Identity?.IsAuthenticated == true && (User.IsInRole("Admin") || User.IsInRole("Seller")))
                         {
                             <li class="nav-item">
-                                <a class="nav-link" asp-area="" asp-controller="Home" asp-action="MyListings">
+                                <a class="nav-link @(ViewData["ActiveNav"]?.ToString() == "MyListings" ? "active" : "")" asp-area="" asp-controller="Home" asp-action="MyListings">
                                     <i class="bi bi-box me-1"></i>My Listings
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Create">
+                                <a class="nav-link @(ViewData["ActiveNav"]?.ToString() == "Create" ? "active" : "")" asp-area="" asp-controller="Home" asp-action="Create">
                                     <i class="bi bi-plus-circle me-1"></i>Create Listing
                                 </a>
                             </li>
                         }
                         <li class="nav-item">
-                            <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Privacy">
+                            <a class="nav-link @(ViewData["ActiveNav"]?.ToString() == "Privacy" ? "active" : "")" asp-area="" asp-controller="Home" asp-action="Privacy">
                                 <i class="bi bi-shield-check me-1"></i>Privacy
                             </a>
                         </li>
                         @if (User.Identity?.IsAuthenticated == true && User.IsInRole("Admin"))
                         {
                             <li class="nav-item">
-                                <a class="nav-link" asp-controller="Admin" asp-action="Index">
+                                <a class="nav-link @(ViewData["ActiveNav"]?.ToString() == "Admin" ? "active" : "")" asp-controller="Admin" asp-action="Index">
                                     <i class="bi bi-gear me-1"></i>Admin Panel
                                 </a>
                             </li>
                         }
                     </ul>
-                    @if (User.Identity?.IsAuthenticated == true)
-                    {
-                        <a asp-controller="Cart" asp-action="Index" class="btn btn-outline-light me-3">
-                            <i class="bi bi-cart3"></i>
-                            <span class="d-lg-none ms-1">Cart</span>
-                        </a>
-                    }
                     <partial name="_LoginPartial" />
                 </div>
             </div>

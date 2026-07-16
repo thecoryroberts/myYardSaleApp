@@ -6,16 +6,17 @@
 <ul class="navbar-nav">
     @if (SignInManager.IsSignedIn(User))
     {
-        <li class="nav-item me-2">
-            <a class="nav-link" asp-controller="Cart" asp-action="Index">
-                <i class="bi bi-cart3"></i>
+        <li class="nav-item me-2 position-relative">
+            <a class="nav-link" asp-controller="Cart" asp-action="Index" title="Shopping Cart">
+                <i class="bi bi-cart3 fs-5"></i>
+                @await Component.InvokeAsync("CartCount")
                 <span class="d-lg-none ms-1">Cart</span>
             </a>
         </li>
 
         <li class="nav-item me-2">
-            <a class="nav-link" asp-controller="Orders" asp-action="Index">
-                <i class="bi bi-box-seam"></i>
+            <a class="nav-link @(ViewData["ActiveNav"]?.ToString() == "Orders" ? "active" : "")" asp-controller="Orders" asp-action="Index" title="My Orders">
+                <i class="bi bi-box-seam fs-5"></i>
                 <span class="d-lg-none ms-1">Orders</span>
             </a>
         </li>

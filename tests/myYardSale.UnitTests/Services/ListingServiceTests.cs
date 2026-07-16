@@ -12,7 +12,7 @@ public class ListingServiceTests
         var repository = new FakeListingRepository();
         var service = new ListingService(repository);
 
-        var result = await service.SearchAsync("bicycle", CancellationToken.None);
+        var result = await service.SearchAsync("bicycle", null, null, CancellationToken.None);
 
         Assert.Single(result);
         Assert.Equal("Vintage Bicycle", result[0].Title);
@@ -24,7 +24,7 @@ public class ListingServiceTests
         var repository = new FakeListingRepository();
         var service = new ListingService(repository);
 
-        var result = await service.SearchAsync(null, CancellationToken.None);
+        var result = await service.SearchAsync(null, null, null, CancellationToken.None);
 
         Assert.Equal(2, result.Count);
         Assert.Contains(result, x => x.Title == "Vintage Bicycle");
@@ -94,6 +94,9 @@ public class ListingServiceTests
 
         public Task<IReadOnlyList<Listing>> GetAllAsync(CancellationToken cancellationToken)
             => Task.FromResult<IReadOnlyList<Listing>>(_listings.ToList());
+
+        public Task<IReadOnlyList<Listing>> GetListingsByUserAsync(int userId, CancellationToken cancellationToken)
+            => Task.FromResult<IReadOnlyList<Listing>>(_listings.Where(x => x.UserId == userId).ToList());
 
         public Task<Listing?> GetByIdAsync(int id, CancellationToken cancellationToken)
             => Task.FromResult(_listings.FirstOrDefault(x => x.Id == id));

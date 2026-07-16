@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "6Zstzs00sMpTPyZpB+T4mFf55dSa1CM5VnrTg9rMzGc=",
+  "Hash": "wvX0sEgTaMS/7OeYqs7wLcj/nZr7zEJlbUTnlRg6haU=",
   "Source": "myYardSale.Web",
   "BasePath": "_content/myYardSale.Web",
   "Mode": "Default",
@@ -3083,12 +3083,12 @@
       "OriginalItemSpec": "/home/thecoryroberts/.nuget/packages/microsoft.aspnetcore.identity.ui/9.0.11/staticwebassets/V5/lib/bootstrap/dist/css/bootstrap.rtl.min.css.map"
     },
     {
-      "Identity": "/media/thecoryroberts/External/Design Assets/Web Solutions/myYardSale/src/myYardSale.Web/obj/Debug/net9.0/compressed/qo97gduwm6-6qag3hnyeq.gz",
+      "Identity": "/media/thecoryroberts/External/Design Assets/Web Solutions/myYardSale/src/myYardSale.Web/obj/Debug/net9.0/compressed/qo97gduwm6-95xljab98m.gz",
       "SourceId": "myYardSale.Web",
       "SourceType": "Discovered",
       "ContentRoot": "/media/thecoryroberts/External/Design Assets/Web Solutions/myYardSale/src/myYardSale.Web/obj/Debug/net9.0/compressed/",
       "BasePath": "_content/myYardSale.Web",
-      "RelativePath": "css/site#[.{fingerprint=6qag3hnyeq}]?.css.gz",
+      "RelativePath": "css/site#[.{fingerprint=95xljab98m}]?.css.gz",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Alternative",
@@ -3097,8 +3097,8 @@
       "RelatedAsset": "/media/thecoryroberts/External/Design Assets/Web Solutions/myYardSale/src/myYardSale.Web/wwwroot/css/site.css",
       "AssetTraitName": "Content-Encoding",
       "AssetTraitValue": "gzip",
-      "Fingerprint": "hpiqqhu5pe",
-      "Integrity": "y8DRajAhmy/L3XXtLUDQv7Y195HVKlMmHr+hDKO/418=",
+      "Fingerprint": "1etnh2kaol",
+      "Integrity": "d1IeSmhMaGu33wHG3WaV/Hqs9OUMQGN6obziEI0CGHY=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "/media/thecoryroberts/External/Design Assets/Web Solutions/myYardSale/src/myYardSale.Web/wwwroot/css/site.css"
@@ -4042,8 +4042,8 @@
       "RelatedAsset": "",
       "AssetTraitName": "",
       "AssetTraitValue": "",
-      "Fingerprint": "6qag3hnyeq",
-      "Integrity": "TlFyWVmf4IV0XReI66qaQ46HbmZFa0S2I6TmiKmpw18=",
+      "Fingerprint": "95xljab98m",
+      "Integrity": "DeZ2vqKJcPVlMXJhI6T3QeZCIPWizqzNNlwdUEH+quA=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot/css/site.css"
@@ -5454,17 +5454,38 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot/uploads/listings/5/a179548000f844fcafc09bc092ac155b.jpg"
+    },
+    {
+      "Identity": "/media/thecoryroberts/External/Design Assets/Web Solutions/myYardSale/src/myYardSale.Web/wwwroot/uploads/listings/7/a68323488c0046fb8146ef02ff510795.jpg",
+      "SourceId": "myYardSale.Web",
+      "SourceType": "Discovered",
+      "ContentRoot": "/media/thecoryroberts/External/Design Assets/Web Solutions/myYardSale/src/myYardSale.Web/wwwroot/",
+      "BasePath": "_content/myYardSale.Web",
+      "RelativePath": "uploads/listings/7/a68323488c0046fb8146ef02ff510795#[.{fingerprint}]?.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "yh0ria63n6",
+      "Integrity": "RhVfOFCjX1BnxihO2pGCRcJShD/2gh8d5nJlzlOqIYU=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot/uploads/listings/7/a68323488c0046fb8146ef02ff510795.jpg"
     }
   ],
   "Endpoints": [
     {
-      "Route": "css/site.6qag3hnyeq.css",
-      "AssetFile": "/media/thecoryroberts/External/Design Assets/Web Solutions/myYardSale/src/myYardSale.Web/obj/Debug/net9.0/compressed/qo97gduwm6-6qag3hnyeq.gz",
+      "Route": "css/site.95xljab98m.css",
+      "AssetFile": "/media/thecoryroberts/External/Design Assets/Web Solutions/myYardSale/src/myYardSale.Web/obj/Debug/net9.0/compressed/qo97gduwm6-95xljab98m.gz",
       "Selectors": [
         {
           "Name": "Content-Encoding",
           "Value": "gzip",
-          "Quality": "0.000570125428"
+          "Quality": "0.000529661017"
         }
       ],
       "ResponseHeaders": [
@@ -5474,15 +5495,15 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "1753"
+          "Value": "1887"
         },
         {
           "Name": "ETag",
-          "Value": "\"y8DRajAhmy/L3XXtLUDQv7Y195HVKlMmHr+hDKO/418=\""
+          "Value": "\"d1IeSmhMaGu33wHG3WaV/Hqs9OUMQGN6obziEI0CGHY=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Tue, 14 Jul 2026 19:18:16 GMT"
+          "Value": "Thu, 16 Jul 2026 22:06:48 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -5502,13 +5523,13 @@
         },
         {
           "Name": "ETag",
-          "Value": "W/\"TlFyWVmf4IV0XReI66qaQ46HbmZFa0S2I6TmiKmpw18=\""
+          "Value": "W/\"DeZ2vqKJcPVlMXJhI6T3QeZCIPWizqzNNlwdUEH+quA=\""
         }
       ],
       "EndpointProperties": [
         {
           "Name": "fingerprint",
-          "Value": "6qag3hnyeq"
+          "Value": "95xljab98m"
         },
         {
           "Name": "label",
@@ -5516,12 +5537,12 @@
         },
         {
           "Name": "integrity",
-          "Value": "sha256-TlFyWVmf4IV0XReI66qaQ46HbmZFa0S2I6TmiKmpw18="
+          "Value": "sha256-DeZ2vqKJcPVlMXJhI6T3QeZCIPWizqzNNlwdUEH+quA="
         }
       ]
     },
     {
-      "Route": "css/site.6qag3hnyeq.css",
+      "Route": "css/site.95xljab98m.css",
       "AssetFile": "/media/thecoryroberts/External/Design Assets/Web Solutions/myYardSale/src/myYardSale.Web/wwwroot/css/site.css",
       "Selectors": [],
       "ResponseHeaders": [
@@ -5531,7 +5552,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "5704"
+          "Value": "6353"
         },
         {
           "Name": "Content-Type",
@@ -5539,11 +5560,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"TlFyWVmf4IV0XReI66qaQ46HbmZFa0S2I6TmiKmpw18=\""
+          "Value": "\"DeZ2vqKJcPVlMXJhI6T3QeZCIPWizqzNNlwdUEH+quA=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Tue, 14 Jul 2026 19:18:16 GMT"
+          "Value": "Thu, 16 Jul 2026 22:06:48 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -5553,7 +5574,7 @@
       "EndpointProperties": [
         {
           "Name": "fingerprint",
-          "Value": "6qag3hnyeq"
+          "Value": "95xljab98m"
         },
         {
           "Name": "label",
@@ -5561,13 +5582,13 @@
         },
         {
           "Name": "integrity",
-          "Value": "sha256-TlFyWVmf4IV0XReI66qaQ46HbmZFa0S2I6TmiKmpw18="
+          "Value": "sha256-DeZ2vqKJcPVlMXJhI6T3QeZCIPWizqzNNlwdUEH+quA="
         }
       ]
     },
     {
-      "Route": "css/site.6qag3hnyeq.css.gz",
-      "AssetFile": "/media/thecoryroberts/External/Design Assets/Web Solutions/myYardSale/src/myYardSale.Web/obj/Debug/net9.0/compressed/qo97gduwm6-6qag3hnyeq.gz",
+      "Route": "css/site.95xljab98m.css.gz",
+      "AssetFile": "/media/thecoryroberts/External/Design Assets/Web Solutions/myYardSale/src/myYardSale.Web/obj/Debug/net9.0/compressed/qo97gduwm6-95xljab98m.gz",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -5576,7 +5597,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "1753"
+          "Value": "1887"
         },
         {
           "Name": "Content-Type",
@@ -5584,11 +5605,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"y8DRajAhmy/L3XXtLUDQv7Y195HVKlMmHr+hDKO/418=\""
+          "Value": "\"d1IeSmhMaGu33wHG3WaV/Hqs9OUMQGN6obziEI0CGHY=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Tue, 14 Jul 2026 19:18:16 GMT"
+          "Value": "Thu, 16 Jul 2026 22:06:48 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -5606,7 +5627,7 @@
       "EndpointProperties": [
         {
           "Name": "fingerprint",
-          "Value": "6qag3hnyeq"
+          "Value": "95xljab98m"
         },
         {
           "Name": "label",
@@ -5614,18 +5635,18 @@
         },
         {
           "Name": "integrity",
-          "Value": "sha256-y8DRajAhmy/L3XXtLUDQv7Y195HVKlMmHr+hDKO/418="
+          "Value": "sha256-d1IeSmhMaGu33wHG3WaV/Hqs9OUMQGN6obziEI0CGHY="
         }
       ]
     },
     {
       "Route": "css/site.css",
-      "AssetFile": "/media/thecoryroberts/External/Design Assets/Web Solutions/myYardSale/src/myYardSale.Web/obj/Debug/net9.0/compressed/qo97gduwm6-6qag3hnyeq.gz",
+      "AssetFile": "/media/thecoryroberts/External/Design Assets/Web Solutions/myYardSale/src/myYardSale.Web/obj/Debug/net9.0/compressed/qo97gduwm6-95xljab98m.gz",
       "Selectors": [
         {
           "Name": "Content-Encoding",
           "Value": "gzip",
-          "Quality": "0.000570125428"
+          "Quality": "0.000529661017"
         }
       ],
       "ResponseHeaders": [
@@ -5635,15 +5656,15 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "1753"
+          "Value": "1887"
         },
         {
           "Name": "ETag",
-          "Value": "\"y8DRajAhmy/L3XXtLUDQv7Y195HVKlMmHr+hDKO/418=\""
+          "Value": "\"d1IeSmhMaGu33wHG3WaV/Hqs9OUMQGN6obziEI0CGHY=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Tue, 14 Jul 2026 19:18:16 GMT"
+          "Value": "Thu, 16 Jul 2026 22:06:48 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -5663,13 +5684,13 @@
         },
         {
           "Name": "ETag",
-          "Value": "W/\"TlFyWVmf4IV0XReI66qaQ46HbmZFa0S2I6TmiKmpw18=\""
+          "Value": "W/\"DeZ2vqKJcPVlMXJhI6T3QeZCIPWizqzNNlwdUEH+quA=\""
         }
       ],
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-TlFyWVmf4IV0XReI66qaQ46HbmZFa0S2I6TmiKmpw18="
+          "Value": "sha256-DeZ2vqKJcPVlMXJhI6T3QeZCIPWizqzNNlwdUEH+quA="
         }
       ]
     },
@@ -5684,7 +5705,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "5704"
+          "Value": "6353"
         },
         {
           "Name": "Content-Type",
@@ -5692,11 +5713,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"TlFyWVmf4IV0XReI66qaQ46HbmZFa0S2I6TmiKmpw18=\""
+          "Value": "\"DeZ2vqKJcPVlMXJhI6T3QeZCIPWizqzNNlwdUEH+quA=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Tue, 14 Jul 2026 19:18:16 GMT"
+          "Value": "Thu, 16 Jul 2026 22:06:48 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -5706,13 +5727,13 @@
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-TlFyWVmf4IV0XReI66qaQ46HbmZFa0S2I6TmiKmpw18="
+          "Value": "sha256-DeZ2vqKJcPVlMXJhI6T3QeZCIPWizqzNNlwdUEH+quA="
         }
       ]
     },
     {
       "Route": "css/site.css.gz",
-      "AssetFile": "/media/thecoryroberts/External/Design Assets/Web Solutions/myYardSale/src/myYardSale.Web/obj/Debug/net9.0/compressed/qo97gduwm6-6qag3hnyeq.gz",
+      "AssetFile": "/media/thecoryroberts/External/Design Assets/Web Solutions/myYardSale/src/myYardSale.Web/obj/Debug/net9.0/compressed/qo97gduwm6-95xljab98m.gz",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -5721,7 +5742,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "1753"
+          "Value": "1887"
         },
         {
           "Name": "Content-Type",
@@ -5729,11 +5750,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"y8DRajAhmy/L3XXtLUDQv7Y195HVKlMmHr+hDKO/418=\""
+          "Value": "\"d1IeSmhMaGu33wHG3WaV/Hqs9OUMQGN6obziEI0CGHY=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Tue, 14 Jul 2026 19:18:16 GMT"
+          "Value": "Thu, 16 Jul 2026 22:06:48 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -5751,7 +5772,7 @@
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-y8DRajAhmy/L3XXtLUDQv7Y195HVKlMmHr+hDKO/418="
+          "Value": "sha256-d1IeSmhMaGu33wHG3WaV/Hqs9OUMQGN6obziEI0CGHY="
         }
       ]
     },
@@ -33549,6 +33570,88 @@
         {
           "Name": "integrity",
           "Value": "sha256-4QZtbfCYvjlnjKURUkdfz7ahvNKJomDNsNXsUp6HLpA="
+        }
+      ]
+    },
+    {
+      "Route": "uploads/listings/7/a68323488c0046fb8146ef02ff510795.jpg",
+      "AssetFile": "/media/thecoryroberts/External/Design Assets/Web Solutions/myYardSale/src/myYardSale.Web/wwwroot/uploads/listings/7/a68323488c0046fb8146ef02ff510795.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "15658"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"RhVfOFCjX1BnxihO2pGCRcJShD/2gh8d5nJlzlOqIYU=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Thu, 16 Jul 2026 21:51:57 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-RhVfOFCjX1BnxihO2pGCRcJShD/2gh8d5nJlzlOqIYU="
+        }
+      ]
+    },
+    {
+      "Route": "uploads/listings/7/a68323488c0046fb8146ef02ff510795.yh0ria63n6.jpg",
+      "AssetFile": "/media/thecoryroberts/External/Design Assets/Web Solutions/myYardSale/src/myYardSale.Web/wwwroot/uploads/listings/7/a68323488c0046fb8146ef02ff510795.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "15658"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"RhVfOFCjX1BnxihO2pGCRcJShD/2gh8d5nJlzlOqIYU=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Thu, 16 Jul 2026 21:51:57 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "yh0ria63n6"
+        },
+        {
+          "Name": "label",
+          "Value": "uploads/listings/7/a68323488c0046fb8146ef02ff510795.jpg"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-RhVfOFCjX1BnxihO2pGCRcJShD/2gh8d5nJlzlOqIYU="
         }
       ]
     }

@@ -12,22 +12,41 @@ public sealed class ListingService
         _listingRepository = listingRepository;
     }
 
-    public async Task<IReadOnlyList<Listing>> SearchAsync(string? searchTerm, CancellationToken cancellationToken)
+    public async Task<IReadOnlyList<Listing>> SearchAsync(
+        string? searchTerm,
+        int? categoryId = null,
+        string? sortBy = null,
+        CancellationToken cancellationToken = default)
     {
         var listings = await _listingRepository.GetActiveListingsAsync(cancellationToken);
         var normalizedTerm = searchTerm?.Trim() ?? string.Empty;
 
-        if (string.IsNullOrWhiteSpace(normalizedTerm))
+        if (!string.IsNullOrWhiteSpace(normalizedTerm))
         {
-            return listings;
+            listings = listings
+                .Where(x =>
+                    x.Title.Contains(normalizedTerm, StringComparison.OrdinalIgnoreCase) ||
+                    x.Description.Contains(normalizedTerm, StringComparison.OrdinalIgnoreCase) ||
+                    x.Category?.Name.Contains(normalizedTerm, StringComparison.OrdinalIgnoreCase) == true)
+                .ToList();
         }
 
-        return listings
-            .Where(x =>
-                x.Title.Contains(normalizedTerm, StringComparison.OrdinalIgnoreCase) ||
-                x.Description.Contains(normalizedTerm, StringComparison.OrdinalIgnoreCase) ||
-                x.Category?.Name.Contains(normalizedTerm, StringComparison.OrdinalIgnoreCase) == true)
-            .ToList();
+        if (categoryId.HasValue)
+        {
+            listings = listings
+                .Where(x => x.CategoryId == categoryId.Value)
+                .ToList();
+        }
+
+        listings = sortBy?.ToLowerInvariant() switch
+        {
+            "price_asc" => listings.OrderBy(x => x.Price).ToList(),
+            "price_desc" => listings.OrderByDescending(x => x.Price).ToList(),
+            "title" => listings.OrderBy(x => x.Title).ToList(),
+            _ => listings.OrderByDescending(x => x.CreatedAt).ToList()
+        };
+
+        return listings;
     }
 
     public Task<IReadOnlyList<Listing>> GetAllAsync(CancellationToken cancellationToken)

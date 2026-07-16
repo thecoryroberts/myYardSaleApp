@@ -27,14 +27,25 @@ public class HomeController : Controller
     }
 
     [HttpGet]
-    public async Task<IActionResult> Index(string? searchTerm, CancellationToken cancellationToken)
+    public async Task<IActionResult> Index(
+        string? searchTerm,
+        int? categoryId,
+        string? sortBy,
+        int page = 1,
+        CancellationToken cancellationToken = default)
     {
-        var listings = await _listingService.SearchAsync(searchTerm, cancellationToken);
+        const int pageSize = 9;
+        var effectiveSort = string.IsNullOrWhiteSpace(sortBy) ? "newest" : sortBy;
+        var effectivePage = page < 1 ? 1 : page;
 
-        var viewModel = new HomeViewModel
-        {
-            SearchTerm = searchTerm ?? string.Empty,
-            Listings = listings.Select(x => new ListingSummaryViewModel
+        var categories = await _listingService.GetCategoriesAsync(cancellationToken);
+        var allMatches = await _listingService.SearchAsync(searchTerm, categoryId, effectiveSort, cancellationToken);
+
+        var totalResults = allMatches.Count;
+        var paged = allMatches
+            .Skip((effectivePage - 1) * pageSize)
+            .Take(pageSize)
+            .Select(x => new ListingSummaryViewModel
             {
                 Id = x.Id,
                 Title = x.Title,
@@ -42,7 +53,21 @@ public class HomeController : Controller
                 Price = x.Price,
                 Category = x.Category?.Name ?? "Uncategorized",
                 ThumbnailUrl = x.Images.FirstOrDefault()?.StoragePath
-            }).ToList()
+            })
+            .ToList();
+
+        var viewModel = new HomeViewModel
+        {
+            SearchTerm = searchTerm ?? string.Empty,
+            CategoryId = categoryId,
+            SortBy = effectiveSort,
+            Page = effectivePage,
+            PageSize = pageSize,
+            TotalResults = totalResults,
+            Categories = categories
+                .Select(x => new SelectListItem { Value = x.Id.ToString(), Text = x.Name })
+                .ToList(),
+            Listings = paged
         };
 
         return View(viewModel);

@@ -11,15 +11,51 @@
     </div>
 </div>
 
-<form method="get" class="row g-3 align-items-end mb-4 fade-in-up">
-    <div class="col-md-8 col-lg-9">
-        <label for="searchTerm" class="form-label fw-medium">Search listings</label>
-        <input id="searchTerm" name="searchTerm" class="form-control form-control-lg" value="@Model.SearchTerm" placeholder="Search by title, description, or category..." />
-    </div>
-    <div class="col-md-4 col-lg-3">
-        <button type="submit" class="btn btn-primary btn-lg w-100">
-            <i class="bi bi-search me-2"></i>Search
-        </button>
+<form method="get" class="card border-0 shadow-sm mb-4 fade-in-up filter-bar">
+    <div class="card-body">
+        <div class="row g-3 align-items-end">
+            <div class="col-12 col-md-5 col-lg-6">
+                <label for="searchTerm" class="form-label fw-medium mb-1">Search listings</label>
+                <input id="searchTerm" name="searchTerm" class="form-control form-control-lg"
+                       value="@Model.SearchTerm" placeholder="Search by title, description, or category..." />
+            </div>
+            <div class="col-6 col-md-4 col-lg-3">
+                <label for="categoryId" class="form-label fw-medium mb-1">Category</label>
+                <select id="categoryId" name="categoryId" class="form-select form-select-lg">
+                    <option value="">All categories</option>
+                    @foreach (var cat in Model.Categories)
+                    {
+                        <option value="@cat.Value" selected="@(Model.CategoryId.HasValue && Model.CategoryId.ToString() == cat.Value)">@cat.Text</option>
+                    }
+                </select>
+            </div>
+            <div class="col-6 col-md-3 col-lg-3">
+                <label for="sortBy" class="form-label fw-medium mb-1">Sort by</label>
+                <select id="sortBy" name="sortBy" class="form-select form-select-lg">
+                    <option value="newest" selected="@(Model.SortBy == "newest")">Newest</option>
+                    <option value="price_asc" selected="@(Model.SortBy == "price_asc")">Price: Low to High</option>
+                    <option value="price_desc" selected="@(Model.SortBy == "price_desc")">Price: High to Low</option>
+                    <option value="title" selected="@(Model.SortBy == "title")">Title A–Z</option>
+                </select>
+            </div>
+            <div class="col-12 d-flex gap-2 align-items-center">
+                <button type="submit" class="btn btn-primary btn-lg">
+                    <i class="bi bi-search me-2"></i>Search
+                </button>
+                @if (!string.IsNullOrWhiteSpace(Model.SearchTerm) || Model.CategoryId.HasValue || Model.SortBy != "newest")
+                {
+                    <a asp-action="Index" class="btn btn-outline-secondary btn-lg">
+                        <i class="bi bi-x-circle me-2"></i>Clear filters
+                    </a>
+                }
+                @if (Model.TotalResults > 0)
+                {
+                    <span class="text-muted ms-auto d-none d-sm-block">
+                        <i class="bi bi-list-ul me-1"></i>@Model.TotalResults listing@(Model.TotalResults == 1 ? "" : "s") found
+                    </span>
+                }
+            </div>
+        </div>
     </div>
 </form>
 
@@ -72,6 +108,49 @@ else
             </div>
         }
     </div>
+}
+
+@{
+    var totalPages = (int)Math.Ceiling(Model.TotalResults / (double)Model.PageSize);
+}
+
+@if (totalPages > 1)
+{
+    <nav aria-label="Listing pagination" class="mt-4 fade-in-up">
+        <ul class="pagination justify-content-center flex-wrap">
+            <li class="page-item @(Model.Page <= 1 ? "disabled" : "")">
+                <a class="page-link"
+                   asp-action="Index"
+                   asp-route-searchTerm="@Model.SearchTerm"
+                   asp-route-categoryId="@Model.CategoryId"
+                   asp-route-sortBy="@Model.SortBy"
+                   asp-route-page="@(Model.Page - 1)">
+                    <i class="bi bi-chevron-left"></i> Previous
+                </a>
+            </li>
+            @for (int p = 1; p <= totalPages; p++)
+            {
+                <li class="page-item @(p == Model.Page ? "active" : "")">
+                    <a class="page-link"
+                       asp-action="Index"
+                       asp-route-searchTerm="@Model.SearchTerm"
+                       asp-route-categoryId="@Model.CategoryId"
+                       asp-route-sortBy="@Model.SortBy"
+                       asp-route-page="@p">@p</a>
+                </li>
+            }
+            <li class="page-item @(Model.Page >= totalPages ? "disabled" : "")">
+                <a class="page-link"
+                   asp-action="Index"
+                   asp-route-searchTerm="@Model.SearchTerm"
+                   asp-route-categoryId="@Model.CategoryId"
+                   asp-route-sortBy="@Model.SortBy"
+                   asp-route-page="@(Model.Page + 1)">
+                    Next <i class="bi bi-chevron-right"></i>
+                </a>
+            </li>
+        </ul>
+    </nav>
 }
 
 @section Scripts {
