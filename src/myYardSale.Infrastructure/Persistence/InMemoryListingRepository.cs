@@ -57,6 +57,10 @@ public sealed class InMemoryListingRepository : IListingRepository
     public Task<Listing> AddAsync(Listing listing, CancellationToken cancellationToken)
     {
         ArgumentNullException.ThrowIfNull(listing);
+        if (listing.Id == 0)
+        {
+            listing.Id = _listings.Count == 0 ? 1 : _listings.Max(x => x.Id) + 1;
+        }
         _listings.Add(listing);
         return Task.FromResult(listing);
     }
