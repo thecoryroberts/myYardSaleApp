@@ -31,6 +31,11 @@
                         @if (User.Identity?.IsAuthenticated == true && (User.IsInRole("Admin") || User.IsInRole("Seller")))
                         {
                             <li class="nav-item">
+                                <a class="nav-link" asp-area="" asp-controller="Home" asp-action="MyListings">
+                                    <i class="bi bi-box me-1"></i>My Listings
+                                </a>
+                            </li>
+                            <li class="nav-item">
                                 <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Create">
                                     <i class="bi bi-plus-circle me-1"></i>Create Listing
                                 </a>

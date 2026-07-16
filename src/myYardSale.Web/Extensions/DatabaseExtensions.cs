@@ -99,7 +99,14 @@ public static class DatabaseExtensions
         else
         {
             // Ensure existing demo sellers have the Seller role
-            var sellerUsers = await userManager.Users.Where(u => u.Email != null && (u.Email.StartsWith("seller") || u.Email.StartsWith("vendor"))).ToListAsync();
+            var demoSellerEmails = new[]
+            {
+                "seller1@myyardsale.com",
+                "seller2@myyardsale.com"
+            };
+            var sellerUsers = await userManager.Users
+                .Where(u => u.Email != null && demoSellerEmails.Contains(u.Email))
+                .ToListAsync();
             foreach (var user in sellerUsers)
             {
                 if (!await userManager.IsInRoleAsync(user, sellerRoleName))

@@ -5,7 +5,7 @@ namespace myYardSale.Infrastructure.Persistence;
 
 public sealed class InMemoryListingRepository : IListingRepository
 {
-    private readonly IReadOnlyList<Listing> _listings =
+    private readonly List<Listing> _listings =
     [
         new Listing
         {
@@ -15,7 +15,8 @@ public sealed class InMemoryListingRepository : IListingRepository
             Price = 75m,
             Status = ListingStatus.Active,
             CategoryId = 1,
-            Category = new Category { Id = 1, Name = "Sports" }
+            Category = new Category { Id = 1, Name = "Sports" },
+            UserId = 1
         },
         new Listing
         {
@@ -25,7 +26,8 @@ public sealed class InMemoryListingRepository : IListingRepository
             Price = 120m,
             Status = ListingStatus.Active,
             CategoryId = 2,
-            Category = new Category { Id = 2, Name = "Furniture" }
+            Category = new Category { Id = 2, Name = "Furniture" },
+            UserId = 1
         },
         new Listing
         {
@@ -35,7 +37,8 @@ public sealed class InMemoryListingRepository : IListingRepository
             Price = 180m,
             Status = ListingStatus.Active,
             CategoryId = 3,
-            Category = new Category { Id = 3, Name = "Tools" }
+            Category = new Category { Id = 3, Name = "Tools" },
+            UserId = 2
         }
     ];
 
@@ -54,6 +57,7 @@ public sealed class InMemoryListingRepository : IListingRepository
     public Task<Listing> AddAsync(Listing listing, CancellationToken cancellationToken)
     {
         ArgumentNullException.ThrowIfNull(listing);
+        _listings.Add(listing);
         return Task.FromResult(listing);
     }
 

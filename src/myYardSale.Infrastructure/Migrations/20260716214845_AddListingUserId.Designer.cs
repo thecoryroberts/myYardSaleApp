@@ -11,14 +11,14 @@ using myYardSale.Infrastructure.Persistence;
 namespace myYardSale.Infrastructure.Migrations
 {
     [DbContext(typeof(MyYardSaleDbContext))]
-    [Migration("20260716212837_UpdaetdTables2")]
-    partial class UpdaetdTables2
+    [Migration("20260716214845_AddListingUserId")]
+    partial class AddListingUserId
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
-            modelBuilder.HasAnnotation("ProductVersion", "9.0.8");
+            modelBuilder.HasAnnotation("ProductVersion", "9.0.11");
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole<int>", b =>
                 {
