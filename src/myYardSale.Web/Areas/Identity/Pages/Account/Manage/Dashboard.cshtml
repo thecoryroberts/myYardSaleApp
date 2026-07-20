@@ -1,0 +1,124 @@
+@page
+@model myYardSale.Web.Areas.Identity.Pages.Account.Manage.DashboardModel
+@{
+    ViewData["Title"] = "Dashboard";
+    ViewData["ActivePage"] = "Dashboard";
+}
+
+<div class="fade-in-up">
+    <h1 class="h3 mb-4"><i class="bi bi-speedometer2 me-2"></i>Dashboard</h1>
+
+    <!-- Summary cards row -->
+    <div class="row g-3 mb-4">
+        <div class="col-sm-6 col-lg-3">
+            <div class="card border-0 bg-primary bg-opacity-10 p-3">
+                <div class="d-flex align-items-center gap-3">
+                    <div class="bg-primary bg-opacity-25 rounded-circle p-3 d-flex align-items-center justify-content-center" style="width: 48px; height: 48px;">
+                        <i class="bi bi-box text-primary fs-5"></i>
+                    </div>
+                    <div>
+                        <div class="fs-3 fw-bold">@Model.ActiveListings</div>
+                        <div class="small text-muted">Active Listings</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6 col-lg-3">
+            <div class="card border-0 bg-success bg-opacity-10 p-3">
+                <div class="d-flex align-items-center gap-3">
+                    <div class="bg-success bg-opacity-25 rounded-circle p-3 d-flex align-items-center justify-content-center" style="width: 48px; height: 48px;">
+                        <i class="bi bi-receipt text-success fs-5"></i>
+                    </div>
+                    <div>
+                        <div class="fs-3 fw-bold">@Model.TotalPurchases</div>
+                        <div class="small text-muted">Purchases</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6 col-lg-3">
+            <div class="card border-0 bg-warning bg-opacity-10 p-3">
+                <div class="d-flex align-items-center gap-3">
+                    <div class="bg-warning bg-opacity-25 rounded-circle p-3 d-flex align-items-center justify-content-center" style="width: 48px; height: 48px;">
+                        <i class="bi bi-clock text-warning fs-5"></i>
+                    </div>
+                    <div>
+                        <div class="fs-3 fw-bold">@Model.PendingOrders</div>
+                        <div class="small text-muted">Pending Orders</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6 col-lg-3">
+            <div class="card border-0 bg-info bg-opacity-10 p-3">
+                <div class="d-flex align-items-center gap-3">
+                    <div class="bg-info bg-opacity-25 rounded-circle p-3 d-flex align-items-center justify-content-center" style="width: 48px; height: 48px;">
+                        <i class="bi bi-cart text-info fs-5"></i>
+                    </div>
+                    <div>
+                        <div class="fs-3 fw-bold">@Model.CartCount</div>
+                        <div class="small text-muted">Cart Items</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row g-4">
+        <!-- Recent Listings -->
+        <div class="col-md-6">
+            <div class="card h-100">
+                <div class="card-header bg-white d-flex justify-content-between align-items-center">
+                    <h5 class="mb-0 fs-6"><i class="bi bi-box me-2"></i>Recent Listings</h5>
+                    <a asp-controller="Home" asp-action="MyListings" class="small">View all</a>
+                </div>
+                <div class="card-body p-0">
+                    @if (Model.RecentListings.Any())
+                    {
+                        <ul class="list-group list-group-flush">
+                            @foreach (var l in Model.RecentListings)
+                            {
+                                <li class="list-group-item d-flex justify-content-between align-items-center">
+                                    <a asp-controller="Home" asp-action="Details" asp-route-id="@l.Id" class="text-decoration-none text-truncate">@l.Title</a>
+                                    <span class="badge bg-primary rounded-pill">$@l.Price.ToString("0.00")</span>
+                                </li>
+                            }
+                        </ul>
+                    }
+                    else
+                    {
+                        <div class="p-4 text-center text-muted small">No listings yet.</div>
+                    }
+                </div>
+            </div>
+        </div>
+
+        <!-- Recent Purchases -->
+        <div class="col-md-6">
+            <div class="card h-100">
+                <div class="card-header bg-white d-flex justify-content-between align-items-center">
+                    <h5 class="mb-0 fs-6"><i class="bi bi-receipt me-2"></i>Recent Purchases</h5>
+                    <a asp-page="/Account/Manage/Purchases" class="small">View all</a>
+                </div>
+                <div class="card-body p-0">
+                    @if (Model.RecentOrders.Any())
+                    {
+                        <ul class="list-group list-group-flush">
+                            @foreach (var o in Model.RecentOrders)
+                            {
+                                <li class="list-group-item d-flex justify-content-between align-items-center">
+                                    <span class="text-truncate">Order #@o.Id</span>
+                                    <span class="badge @(o.StatusClass)">@o.Status</span>
+                                </li>
+                            }
+                        </ul>
+                    }
+                    else
+                    {
+                        <div class="p-4 text-center text-muted small">No purchases yet.</div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

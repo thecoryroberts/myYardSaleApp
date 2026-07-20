@@ -12,8 +12,8 @@
       <RelatedAsset></RelatedAsset>
       <AssetTraitName></AssetTraitName>
       <AssetTraitValue></AssetTraitValue>
-      <Fingerprint>95xljab98m</Fingerprint>
-      <Integrity>DeZ2vqKJcPVlMXJhI6T3QeZCIPWizqzNNlwdUEH+quA=</Integrity>
+      <Fingerprint>250iiinrvr</Fingerprint>
+      <Integrity>NtvPgbTao/VRIdLSpEc09UYIHbnmsBHeIE3MqKHzYZc=</Integrity>
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\css\site.css'))</OriginalItemSpec>
@@ -1259,6 +1259,24 @@
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\listings\7\a68323488c0046fb8146ef02ff510795.jpg'))</OriginalItemSpec>
+    </StaticWebAsset>
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\listings\8\ba35baa9175e44aaa9f1f14a71335e17.jpg'))">
+      <SourceType>Package</SourceType>
+      <SourceId>myYardSale.Web</SourceId>
+      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
+      <BasePath>_content/myYardSale.Web</BasePath>
+      <RelativePath>uploads/listings/8/ba35baa9175e44aaa9f1f14a71335e17.jpg</RelativePath>
+      <AssetKind>All</AssetKind>
+      <AssetMode>All</AssetMode>
+      <AssetRole>Primary</AssetRole>
+      <RelatedAsset></RelatedAsset>
+      <AssetTraitName></AssetTraitName>
+      <AssetTraitValue></AssetTraitValue>
+      <Fingerprint>yh0ria63n6</Fingerprint>
+      <Integrity>RhVfOFCjX1BnxihO2pGCRcJShD/2gh8d5nJlzlOqIYU=</Integrity>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\listings\8\ba35baa9175e44aaa9f1f14a71335e17.jpg'))</OriginalItemSpec>
     </StaticWebAsset>
   </ItemGroup>
 </Project>

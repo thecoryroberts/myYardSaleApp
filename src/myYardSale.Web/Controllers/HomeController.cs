@@ -162,9 +162,15 @@ public class HomeController : Controller
 
         var created = await _listingService.CreateAsync(listing, cancellationToken);
 
-        if (model.ImageFile is not null && model.ImageFile.Length > 0)
+        if (model.ImageFiles is { Count: > 0 })
         {
-            await _imageService.UploadImageAsync(created.Id, model.ImageFile, cancellationToken);
+            foreach (var file in model.ImageFiles)
+            {
+                if (file.Length > 0)
+                {
+                    await _imageService.UploadImageAsync(created.Id, file, cancellationToken);
+                }
+            }
         }
 
         return RedirectToAction(nameof(Index));
@@ -229,7 +235,8 @@ public class HomeController : Controller
             Description = model.Description,
             Price = model.Price,
             Status = model.Status,
-            CategoryId = model.CategoryId
+            CategoryId = model.CategoryId,
+            UpdatedAt = DateTimeOffset.UtcNow
         };
 
         var updated = await _listingService.UpdateAsync(listing, cancellationToken);
@@ -238,9 +245,15 @@ public class HomeController : Controller
             return NotFound();
         }
 
-        if (model.ImageFile is not null && model.ImageFile.Length > 0)
+        if (model.ImageFiles is { Count: > 0 })
         {
-            await _imageService.UploadImageAsync(updated.Id, model.ImageFile, cancellationToken);
+            foreach (var file in model.ImageFiles)
+            {
+                if (file.Length > 0)
+                {
+                    await _imageService.UploadImageAsync(updated.Id, file, cancellationToken);
+                }
+            }
         }
 
         return RedirectToAction(nameof(Details), new { id = updated.Id });

@@ -91,7 +91,8 @@ public class AdminController : Controller
             Description = model.Description,
             Price = model.Price,
             Status = model.Status,
-            CategoryId = model.CategoryId
+            CategoryId = model.CategoryId,
+            UpdatedAt = DateTimeOffset.UtcNow
         };
 
         var updated = await _listingService.UpdateAsync(listing, cancellationToken);
@@ -100,9 +101,15 @@ public class AdminController : Controller
             return NotFound();
         }
 
-        if (model.ImageFile is not null && model.ImageFile.Length > 0)
+        if (model.ImageFiles is { Count: > 0 })
         {
-            await _imageService.UploadImageAsync(updated.Id, model.ImageFile, cancellationToken);
+            foreach (var file in model.ImageFiles)
+            {
+                if (file.Length > 0)
+                {
+                    await _imageService.UploadImageAsync(updated.Id, file, cancellationToken);
+                }
+            }
         }
 
         return RedirectToAction(nameof(Index));

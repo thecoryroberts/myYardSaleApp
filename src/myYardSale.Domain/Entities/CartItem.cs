@@ -1,6 +1,6 @@
 namespace myYardSale.Domain.Entities;
 
-public class CartItem
+public class CartItem : BaseEntity
 {
     public int Id { get; set; }
     public int ListingId { get; set; }

@@ -4,59 +4,54 @@
     ViewData["Title"] = "Browse Community Listings";
 }
 
-<div class="hero-section mb-5">
-    <div class="container">
-        <h1 class="display-4 fw-bold mb-3">Find Local Treasures</h1>
-        <p class="lead mb-0">Discover amazing deals from your neighbors and local yard sales. Pickup directly from sellers!</p>
+<div class="hero-section mb-4">
+    <div class="d-flex align-items-center justify-content-between">
+        <div>
+            <h1 class="mb-1">Find Local Treasures</h1>
+            <p class="lead mb-0">Discover amazing deals from your neighbors and local yard sales.</p>
+        </div>
+        <i class="bi bi-shop d-none d-md-block" style="font-size: 3rem; opacity: .15;"></i>
     </div>
 </div>
 
-<form method="get" class="card border-0 shadow-sm mb-4 fade-in-up filter-bar">
-    <div class="card-body">
-        <div class="row g-3 align-items-end">
-            <div class="col-12 col-md-5 col-lg-6">
-                <label for="searchTerm" class="form-label fw-medium mb-1">Search listings</label>
-                <input id="searchTerm" name="searchTerm" class="form-control form-control-lg"
-                       value="@Model.SearchTerm" placeholder="Search by title, description, or category..." />
-            </div>
-            <div class="col-6 col-md-4 col-lg-3">
-                <label for="categoryId" class="form-label fw-medium mb-1">Category</label>
-                <select id="categoryId" name="categoryId" class="form-select form-select-lg">
-                    <option value="">All categories</option>
-                    @foreach (var cat in Model.Categories)
-                    {
-                        <option value="@cat.Value" selected="@(Model.CategoryId.HasValue && Model.CategoryId.ToString() == cat.Value)">@cat.Text</option>
-                    }
-                </select>
-            </div>
-            <div class="col-6 col-md-3 col-lg-3">
-                <label for="sortBy" class="form-label fw-medium mb-1">Sort by</label>
-                <select id="sortBy" name="sortBy" class="form-select form-select-lg">
-                    <option value="newest" selected="@(Model.SortBy == "newest")">Newest</option>
-                    <option value="price_asc" selected="@(Model.SortBy == "price_asc")">Price: Low to High</option>
-                    <option value="price_desc" selected="@(Model.SortBy == "price_desc")">Price: High to Low</option>
-                    <option value="title" selected="@(Model.SortBy == "title")">Title A–Z</option>
-                </select>
-            </div>
-            <div class="col-12 d-flex gap-2 align-items-center">
-                <button type="submit" class="btn btn-primary btn-lg">
-                    <i class="bi bi-search me-2"></i>Search
-                </button>
-                @if (!string.IsNullOrWhiteSpace(Model.SearchTerm) || Model.CategoryId.HasValue || Model.SortBy != "newest")
+<form method="get" class="filter-bar p-3 mb-4 fade-in-up">
+    <div class="row g-2 align-items-end">
+        <div class="col-12 col-md-5 col-lg-6">
+            <label for="searchTerm" class="form-label">Search</label>
+            <input id="searchTerm" name="searchTerm" class="form-control"
+                   value="@Model.SearchTerm" placeholder="Search listings..." />
+        </div>
+        <div class="col-6 col-md-3 col-lg-2">
+            <label for="categoryId" class="form-label">Category</label>
+            <select id="categoryId" name="categoryId" class="form-select">
+                <option value="">All</option>
+                @foreach (var cat in Model.Categories)
                 {
-                    <a asp-action="Index" class="btn btn-outline-secondary btn-lg">
-                        <i class="bi bi-x-circle me-2"></i>Clear filters
-                    </a>
+                    <option value="@cat.Value" selected="@(Model.CategoryId.HasValue && Model.CategoryId.ToString() == cat.Value)">@cat.Text</option>
                 }
-                @if (Model.TotalResults > 0)
-                {
-                    <span class="text-muted ms-auto d-none d-sm-block">
-                        <i class="bi bi-list-ul me-1"></i>@Model.TotalResults listing@(Model.TotalResults == 1 ? "" : "s") found
-                    </span>
-                }
-            </div>
+            </select>
+        </div>
+        <div class="col-6 col-md-2 col-lg-2">
+            <label for="sortBy" class="form-label">Sort</label>
+            <select id="sortBy" name="sortBy" class="form-select">
+                <option value="newest" selected="@(Model.SortBy == "newest")">Newest</option>
+                <option value="price_asc" selected="@(Model.SortBy == "price_asc")">Low Price</option>
+                <option value="price_desc" selected="@(Model.SortBy == "price_desc")">High Price</option>
+                <option value="title" selected="@(Model.SortBy == "title")">A–Z</option>
+            </select>
+        </div>
+        <div class="col-12 col-md-2 col-lg-2 d-flex gap-2">
+            <button type="submit" class="btn btn-primary flex-fill"><i class="bi bi-search me-1"></i>Search</button>
+            @if (!string.IsNullOrWhiteSpace(Model.SearchTerm) || Model.CategoryId.HasValue || Model.SortBy != "newest")
+            {
+                <a asp-action="Index" class="btn btn-outline-secondary"><i class="bi bi-x-lg"></i></a>
+            }
         </div>
     </div>
+    @if (Model.TotalResults > 0)
+    {
+        <div class="mt-2 small text-muted">@Model.TotalResults listing@(Model.TotalResults == 1 ? "" : "s") found</div>
+    }
 </form>
 
 @if (!Model.Listings.Any())
@@ -155,12 +150,37 @@ else
 
 @section Scripts {
     <script>
-        // Stagger card animations
-        document.addEventListener('DOMContentLoaded', function() {
-            const cards = document.querySelectorAll('.listing-card');
-            cards.forEach((card, index) => {
+        (function() {
+            const form = document.querySelector('.filter-bar');
+            if (!form) return;
+
+            const searchInput = form.querySelector('input[name="searchTerm"]');
+            const categorySelect = form.querySelector('select[name="categoryId"]');
+            const sortSelect = form.querySelector('select[name="sortBy"]');
+
+            // Live filter on change for selects
+            [categorySelect, sortSelect].forEach(function(el) {
+                if (!el) return;
+                el.addEventListener('change', function() {
+                    form.submit();
+                });
+            });
+
+            // Debounced search
+            let searchTimer;
+            if (searchInput) {
+                searchInput.addEventListener('input', function() {
+                    clearTimeout(searchTimer);
+                    searchTimer = setTimeout(function() {
+                        form.submit();
+                    }, 350);
+                });
+            }
+
+            // Stagger card animations
+            document.querySelectorAll('.listing-card').forEach(function(card, index) {
                 card.style.animationDelay = (index * 50) + 'ms';
             });
-        });
+        })();
     </script>
 }

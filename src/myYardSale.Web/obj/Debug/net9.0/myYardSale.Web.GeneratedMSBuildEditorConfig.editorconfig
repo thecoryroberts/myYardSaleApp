@@ -36,8 +36,28 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = QXJlYXMvSWRlbnRpdHkvUGFnZXMvQWNjb3VudC9Mb2dvdXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
+[/media/thecoryroberts/External/Design Assets/Web Solutions/myYardSale/src/myYardSale.Web/Areas/Identity/Pages/Account/Manage/Dashboard.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXMvSWRlbnRpdHkvUGFnZXMvQWNjb3VudC9NYW5hZ2UvRGFzaGJvYXJkLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/media/thecoryroberts/External/Design Assets/Web Solutions/myYardSale/src/myYardSale.Web/Areas/Identity/Pages/Account/Manage/_Layout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXMvSWRlbnRpdHkvUGFnZXMvQWNjb3VudC9NYW5hZ2UvX0xheW91dC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
 [/media/thecoryroberts/External/Design Assets/Web Solutions/myYardSale/src/myYardSale.Web/Areas/Identity/Pages/Account/Register.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXMvSWRlbnRpdHkvUGFnZXMvQWNjb3VudC9SZWdpc3Rlci5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/media/thecoryroberts/External/Design Assets/Web Solutions/myYardSale/src/myYardSale.Web/Areas/Identity/Pages/Manage/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXMvSWRlbnRpdHkvUGFnZXMvTWFuYWdlL0luZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/media/thecoryroberts/External/Design Assets/Web Solutions/myYardSale/src/myYardSale.Web/Areas/Identity/Pages/Manage/Purchases.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXMvSWRlbnRpdHkvUGFnZXMvTWFuYWdlL1B1cmNoYXNlcy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/media/thecoryroberts/External/Design Assets/Web Solutions/myYardSale/src/myYardSale.Web/Areas/Identity/Pages/Manage/_ViewStart.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXMvSWRlbnRpdHkvUGFnZXMvTWFuYWdlL19WaWV3U3RhcnQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [/media/thecoryroberts/External/Design Assets/Web Solutions/myYardSale/src/myYardSale.Web/Areas/Identity/Pages/_ViewImports.cshtml]

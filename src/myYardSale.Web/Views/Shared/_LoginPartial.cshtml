@@ -28,9 +28,10 @@
                 <span class="d-lg-inline">@UserManager.GetUserName(User)</span>
             </a>
             <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
+                <li><h6 class="dropdown-header">@User.Identity?.Name</h6></li>
                 <li>
-                    <a class="dropdown-item" asp-area="Identity" asp-page="/Account/Manage/Index">
-                        <i class="bi bi-gear me-2"></i>Settings
+                    <a class="dropdown-item" asp-area="Identity" asp-page="/Account/Manage/Dashboard">
+                        <i class="bi bi-speedometer2 me-2"></i>My Account
                     </a>
                 </li>
                 <li><hr class="dropdown-divider" /></li>

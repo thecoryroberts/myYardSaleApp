@@ -77,7 +77,6 @@ else
                                         </a>
                                         <form asp-action="Delete" asp-controller="Home" asp-route-id="@listing.Id" method="post" class="d-inline" 
                                               onsubmit="return confirm('Delete this listing? This action cannot be undone.');">
-                                            @Html.AntiForgeryToken()
                                             <button type="submit" class="btn btn-outline-danger" title="Delete">
                                                 <i class="bi bi-trash"></i>
                                             </button>

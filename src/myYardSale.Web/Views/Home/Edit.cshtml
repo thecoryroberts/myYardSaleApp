@@ -12,7 +12,7 @@
     </div>
     
     <form asp-action="Edit" method="post" enctype="multipart/form-data" class="card-body">
-        @Html.AntiForgeryToken()
+        <input asp-for="Id" type="hidden" />
         <input asp-for="Id" type="hidden" />
         
         <div class="mb-3">
@@ -74,7 +74,6 @@
                                 <form asp-action="DeleteImage" asp-route-imageId="@image.Id" asp-route-listingId="@Model.Id" method="post" 
                                       class="position-absolute top-0 end-0 m-1" 
                                       onsubmit="return confirm('Remove this image?');">
-                                    @Html.AntiForgeryToken()
                                     <button type="submit" class="btn btn-sm btn-danger rounded-circle" style="width: 28px; height: 28px; padding: 0;">
                                         <i class="bi bi-x"></i>
                                     </button>
@@ -87,14 +86,15 @@
         }
 
         <div class="mb-3">
-            <label asp-for="ImageFile" class="form-label fw-medium">
-                <i class="bi bi-camera me-1"></i>Add New Image
+            <label asp-for="ImageFiles" class="form-label fw-medium">
+                <i class="bi bi-images me-1"></i>Photos
             </label>
-            <input asp-for="ImageFile" class="form-control" type="file" accept=".jpg,.jpeg,.png,.gif,.webp" />
+            <input asp-for="ImageFiles" class="form-control" type="file" accept=".jpg,.jpeg,.png,.gif,.webp" multiple />
             <div class="form-text">
-                <i class="bi bi-info-circle me-1"></i>Supported formats: JPG, PNG, GIF, WebP. Max size: 5 MB.
+                <i class="bi bi-info-circle me-1"></i>Add more photos. Supported formats: JPG, PNG, GIF, WebP. Max size per file: 5 MB.
             </div>
         </div>
+
 
         <hr class="my-4" />
         

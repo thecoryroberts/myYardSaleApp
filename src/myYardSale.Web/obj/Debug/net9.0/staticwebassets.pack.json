@@ -281,6 +281,10 @@
       "PackagePath": "staticwebassets/uploads/listings/7/a68323488c0046fb8146ef02ff510795.jpg"
     },
     {
+      "Id": "/media/thecoryroberts/External/Design Assets/Web Solutions/myYardSale/src/myYardSale.Web/wwwroot/uploads/listings/8/ba35baa9175e44aaa9f1f14a71335e17.jpg",
+      "PackagePath": "staticwebassets/uploads/listings/8/ba35baa9175e44aaa9f1f14a71335e17.jpg"
+    },
+    {
       "Id": "obj/Debug/net9.0/staticwebassets/msbuild.build.myYardSale.Web.props",
       "PackagePath": "build\\myYardSale.Web.props"
     },

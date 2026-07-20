@@ -52,6 +52,7 @@ public sealed class ListingFormViewModel
     public ListingStatus Status { get; set; } = ListingStatus.Active;
     public int? CategoryId { get; set; }
     public IReadOnlyList<SelectListItem> Categories { get; set; } = Array.Empty<SelectListItem>();
+    public List<IFormFile> ImageFiles { get; set; } = new();
     public IFormFile? ImageFile { get; set; }
     public IReadOnlyList<ListingImageViewModel> ExistingImages { get; set; } = Array.Empty<ListingImageViewModel>();
 }

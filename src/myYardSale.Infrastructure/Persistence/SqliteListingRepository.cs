@@ -88,6 +88,7 @@ public sealed class SqliteListingRepository : IListingRepository
         existing.Price = listing.Price;
         existing.Status = listing.Status;
         existing.CategoryId = listing.CategoryId;
+        existing.UpdatedAt = DateTimeOffset.UtcNow;
 
         await _context.SaveChangesAsync(cancellationToken);
         return existing;

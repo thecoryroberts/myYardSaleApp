@@ -1,6 +1,6 @@
 namespace myYardSale.Domain.Entities;
 
-public class Order
+public class Order : BaseEntity
 {
     public int Id { get; set; }
     public int UserId { get; set; }

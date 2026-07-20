@@ -1,0 +1,55 @@
+@page
+@model myYardSale.Web.Areas.Identity.Pages.Manage.IndexModel
+@{
+    ViewData["Title"] = "Profile & Contact";
+    ViewData["ActivePage"] = "Index";
+    Layout = "/Areas/Identity/Pages/Account/Manage/_Layout.cshtml";
+}
+
+<div class="card fade-in-up">
+    <div class="card-header bg-white py-3">
+        <h1 class="h3 mb-0"><i class="bi bi-person-gear me-2"></i>@ViewData["Title"]</h1>
+    </div>
+    <div class="card-body">
+        <form method="post" class="row g-3">
+            <div class="col-md-6">
+                <label asp-for="Input.FullName" class="form-label fw-medium"></label>
+                <input asp-for="Input.FullName" class="form-control form-control-lg" placeholder="Your full name" />
+                <span asp-validation-for="Input.FullName" class="text-danger small"></span>
+            </div>
+            <div class="col-md-6">
+                <label asp-for="Input.PhoneNumber" class="form-label fw-medium"></label>
+                <input asp-for="Input.PhoneNumber" class="form-control form-control-lg" placeholder="(555) 123-4567" />
+                <span asp-validation-for="Input.PhoneNumber" class="text-danger small"></span>
+            </div>
+            <div class="col-md-6">
+                <label asp-for="Input.ContactPhone" class="form-label fw-medium"></label>
+                <input asp-for="Input.ContactPhone" class="form-control form-control-lg" placeholder="Public contact phone (optional)" />
+                <span asp-validation-for="Input.ContactPhone" class="text-danger small"></span>
+            </div>
+            <div class="col-md-6">
+                <label asp-for="Input.ContactEmail" class="form-label fw-medium"></label>
+                <input asp-for="Input.ContactEmail" class="form-control form-control-lg" placeholder="Public contact email (optional)" />
+                <span asp-validation-for="Input.ContactEmail" class="text-danger small"></span>
+            </div>
+            <div class="col-12">
+                <label asp-for="Input.PickupNotes" class="form-label fw-medium"></label>
+                <textarea asp-for="Input.PickupNotes" class="form-control" rows="3" placeholder="Preferred pickup areas, timeout handling, or default contact notes..."></textarea>
+                <span asp-validation-for="Input.PickupNotes" class="text-danger small"></span>
+            </div>
+            <div class="col-12">
+                <label asp-for="Input.ContactNotes" class="form-label fw-medium"></label>
+                <textarea asp-for="Input.ContactNotes" class="form-control" rows="3" placeholder="Buyer instructions: meet at door, text on arrival, etc..."></textarea>
+                <span asp-validation-for="Input.ContactNotes" class="text-danger small"></span>
+            </div>
+            <div class="col-12 d-flex gap-2">
+                <button type="submit" class="btn btn-primary btn-lg px-4"><i class="bi bi-save me-2"></i>Save</button>
+                <a asp-action="Index" asp-controller="Home" class="btn btn-outline-secondary btn-lg">Cancel</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

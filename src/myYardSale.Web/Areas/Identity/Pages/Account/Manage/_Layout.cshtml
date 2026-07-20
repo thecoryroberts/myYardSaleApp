@@ -1,0 +1,64 @@
+@{
+    Layout = "/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row g-4">
+    <!-- Sidebar – eBay-style left nav -->
+    <aside class="col-12 col-md-3 col-lg-2">
+        <nav class="account-sidebar" aria-label="Account navigation">
+            <div class="d-flex align-items-center gap-2 mb-3 pb-3 border-bottom">
+                <i class="bi bi-person-circle fs-3 text-primary"></i>
+                <div>
+                    <div class="fw-semibold small">My Account</div>
+                    <div class="text-muted small">@User.Identity?.Name</div>
+                </div>
+            </div>
+            <ul class="nav flex-column gap-1">
+                <li class="nav-item">
+                    <a class="nav-link sidebar-link @(ViewData["ActivePage"]?.ToString() == "Dashboard" ? "active" : "")"
+                       asp-page="/Account/Manage/Dashboard">
+                        <i class="bi bi-speedometer2 me-2"></i>Dashboard
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link sidebar-link @(ViewData["ActivePage"]?.ToString() == "Index" ? "active" : "")"
+                       asp-page="/Account/Manage/Index">
+                        <i class="bi bi-person-gear me-2"></i>Profile & Contact
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link sidebar-link @(ViewData["ActivePage"]?.ToString() == "MyListings" ? "active" : "")"
+                       asp-controller="Home" asp-action="MyListings">
+                        <i class="bi bi-box me-2"></i>My Listings
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link sidebar-link @(ViewData["ActivePage"]?.ToString() == "Purchases" ? "active" : "")"
+                       asp-page="/Account/Manage/Purchases">
+                        <i class="bi bi-receipt me-2"></i>Purchases
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link sidebar-link @(ViewData["ActivePage"]?.ToString() == "Orders" ? "active" : "")"
+                       asp-controller="Orders" asp-action="Index">
+                        <i class="bi bi-box-seam me-2"></i>Orders
+                    </a>
+                </li>
+                <li class="nav-item mt-2 pt-2 border-top">
+                    <a class="nav-link sidebar-link text-danger" asp-area="Identity" asp-page="/Account/Logout">
+                        <i class="bi bi-box-arrow-right me-2"></i>Sign Out
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </aside>
+
+    <!-- Main content area -->
+    <main class="col-12 col-md-9 col-lg-10">
+        @RenderBody()
+    </main>
+</div>
+
+@section Scripts {
+    @await RenderSectionAsync("Scripts", required: false)
+}

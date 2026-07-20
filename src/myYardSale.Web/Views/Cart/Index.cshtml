@@ -4,7 +4,7 @@
     ViewData["Title"] = "Shopping Cart";
 }
 
-<h1 class="h3 mb-4">
+<h1 class="h3 mb-4 fade-in-up">
     <i class="bi bi-cart3 me-2"></i>Shopping Cart
 </h1>
 
@@ -36,7 +36,7 @@
 }
 else
 {
-    <div class="card shadow-sm">
+    <div class="card shadow-sm fade-in-up">
         <div class="card-body p-0">
             <div class="table-responsive">
                 <table class="table table-hover mb-0">
@@ -75,7 +75,6 @@ else
                                 <td class="align-middle fw-medium">$@item.Subtotal.ToString("0.00")</td>
                                 <td class="text-end align-middle">
                                     <form asp-action="Remove" method="post" class="d-inline" onsubmit="return confirm('Remove this item from your cart?');">
-                                        @Html.AntiForgeryToken()
                                         <input type="hidden" name="cartItemId" value="@item.Id" />
                                         <button type="submit" class="btn btn-sm btn-outline-danger rounded-circle" style="width: 36px; height: 36px;" title="Remove">
                                             <i class="bi bi-trash"></i>
@@ -96,8 +95,8 @@ else
         </div>
     </div>
 
-    <div class="d-flex gap-2 flex-wrap mt-4 justify-content-between align-items-center">
-        <a asp-action="Index" asp-controller="Home" class="btn btn-outline-secondary">
+    <div class="d-flex gap-2 flex-wrap mt-4 justify-content-between align-items-center fade-in-up">
+        <a asp-action="Index" asp-controller="Home" class="btn btn-outline-secondary btn-lg">
             <i class="bi bi-arrow-left me-2"></i>Continue Shopping
         </a>
         <a asp-action="Checkout" class="btn btn-success btn-lg px-4">

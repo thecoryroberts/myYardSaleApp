@@ -61,14 +61,15 @@
         </div>
 
         <div class="mb-3">
-            <label asp-for="ImageFile" class="form-label fw-medium">
-                <i class="bi bi-camera me-1"></i>Photo
+            <label asp-for="ImageFiles" class="form-label fw-medium">
+                <i class="bi bi-images me-1"></i>Photos
             </label>
-            <input asp-for="ImageFile" class="form-control" type="file" accept=".jpg,.jpeg,.png,.gif,.webp" />
+            <input asp-for="ImageFiles" class="form-control" type="file" accept=".jpg,.jpeg,.png,.gif,.webp" multiple />
             <div class="form-text">
-                <i class="bi bi-info-circle me-1"></i>Optional. Supported formats: JPG, PNG, GIF, WebP. Max size: 5 MB.
+                <i class="bi bi-info-circle me-1"></i>Optional. Upload up to 10 photos. Supported formats: JPG, PNG, GIF, WebP. Max size per file: 5 MB.
             </div>
         </div>
+
 
         <hr class="my-4" />
         
