@@ -13,11 +13,16 @@ public class HomeController : Controller
 {
     private readonly ListingService _listingService;
     private readonly ListingImageService _imageService;
+    private readonly ILogger<HomeController> _logger;
 
-    public HomeController(ListingService listingService, ListingImageService imageService)
+    public HomeController(
+        ListingService listingService,
+        ListingImageService imageService,
+        ILogger<HomeController> logger)
     {
         _listingService = listingService;
         _imageService = imageService;
+        _logger = logger;
     }
 
     private int GetCurrentUserId()
@@ -37,6 +42,10 @@ public class HomeController : Controller
         const int pageSize = 9;
         var effectiveSort = string.IsNullOrWhiteSpace(sortBy) ? "newest" : sortBy;
         var effectivePage = page < 1 ? 1 : page;
+
+        _logger.LogInformation(
+            "Searching listings: searchTerm={SearchTerm}, categoryId={CategoryId}, sortBy={SortBy}, page={Page}",
+            searchTerm, categoryId, effectiveSort, effectivePage);
 
         var categories = await _listingService.GetCategoriesAsync(cancellationToken);
         var allMatches = await _listingService.SearchAsync(searchTerm, categoryId, effectiveSort, cancellationToken);
@@ -78,6 +87,8 @@ public class HomeController : Controller
     public async Task<IActionResult> MyListings(CancellationToken cancellationToken)
     {
         var userId = GetCurrentUserId();
+        _logger.LogInformation("User {UserId} viewing their listings", userId);
+
         var listings = await _listingService.GetByUserAsync(userId, cancellationToken);
 
         var viewModel = new HomeViewModel
@@ -103,6 +114,7 @@ public class HomeController : Controller
         var listing = await _listingService.GetByIdAsync(id, cancellationToken);
         if (listing is null)
         {
+            _logger.LogWarning("Listing {ListingId} not found", id);
             return NotFound();
         }
 
@@ -138,7 +150,6 @@ public class HomeController : Controller
     }
 
     [HttpPost]
-    [ValidateAntiForgeryToken]
     [Authorize(Policy = "CanManageListings")]
     public async Task<IActionResult> Create(ListingFormViewModel model, CancellationToken cancellationToken)
     {
@@ -161,6 +172,7 @@ public class HomeController : Controller
         };
 
         var created = await _listingService.CreateAsync(listing, cancellationToken);
+        _logger.LogInformation("Listing {ListingId} created by user {UserId}", created.Id, GetCurrentUserId());
 
         if (model.ImageFiles is { Count: > 0 })
         {
@@ -173,6 +185,7 @@ public class HomeController : Controller
             }
         }
 
+        TempData["Success"] = "Listing created successfully!";
         return RedirectToAction(nameof(Index));
     }
 
@@ -190,6 +203,8 @@ public class HomeController : Controller
         var currentUserId = GetCurrentUserId();
         if (!User.IsInRole("Admin") && listing.UserId != currentUserId)
         {
+            _logger.LogWarning("User {UserId} attempted to edit listing {ListingId} owned by {OwnerId}",
+                currentUserId, id, listing.UserId);
             return Forbid();
         }
 
@@ -216,10 +231,14 @@ public class HomeController : Controller
     }
 
     [HttpPost]
-    [ValidateAntiForgeryToken]
     [Authorize(Policy = "CanManageListings")]
-    public async Task<IActionResult> Edit(ListingFormViewModel model, CancellationToken cancellationToken)
+    public async Task<IActionResult> Edit(int id, ListingFormViewModel model, CancellationToken cancellationToken)
     {
+        if (id != model.Id)
+        {
+            return BadRequest("ID mismatch");
+        }
+
         if (!ModelState.IsValid)
         {
             model.Categories = (await _listingService.GetCategoriesAsync(cancellationToken))
@@ -228,9 +247,24 @@ public class HomeController : Controller
             return View(model);
         }
 
+        // Ownership check
+        var existing = await _listingService.GetByIdAsync(id, cancellationToken);
+        if (existing is null)
+        {
+            return NotFound();
+        }
+
+        var currentUserId = GetCurrentUserId();
+        if (!User.IsInRole("Admin") && existing.UserId != currentUserId)
+        {
+            _logger.LogWarning("User {UserId} attempted to edit listing {ListingId} owned by {OwnerId}",
+                currentUserId, id, existing.UserId);
+            return Forbid();
+        }
+
         var listing = new Listing
         {
-            Id = model.Id,
+            Id = id,
             Title = model.Title,
             Description = model.Description,
             Price = model.Price,
@@ -245,6 +279,8 @@ public class HomeController : Controller
             return NotFound();
         }
 
+        _logger.LogInformation("Listing {ListingId} updated by user {UserId}", id, currentUserId);
+
         if (model.ImageFiles is { Count: > 0 })
         {
             foreach (var file in model.ImageFiles)
@@ -256,11 +292,11 @@ public class HomeController : Controller
             }
         }
 
+        TempData["Success"] = "Listing updated successfully!";
         return RedirectToAction(nameof(Details), new { id = updated.Id });
     }
 
     [HttpPost]
-    [ValidateAntiForgeryToken]
     [Authorize(Policy = "CanManageListings")]
     public async Task<IActionResult> Delete(int id, CancellationToken cancellationToken)
     {
@@ -274,19 +310,38 @@ public class HomeController : Controller
         var currentUserId = GetCurrentUserId();
         if (!User.IsInRole("Admin") && listing.UserId != currentUserId)
         {
+            _logger.LogWarning("User {UserId} attempted to delete listing {ListingId} owned by {OwnerId}",
+                currentUserId, id, listing.UserId);
             return Forbid();
         }
 
         await _listingService.DeleteAsync(id, cancellationToken);
+        _logger.LogInformation("Listing {ListingId} deleted by user {UserId}", id, currentUserId);
+        TempData["Success"] = "Listing deleted.";
         return RedirectToAction(nameof(Index));
     }
 
     [HttpPost]
-    [ValidateAntiForgeryToken]
     [Authorize(Policy = "CanManageListings")]
     public async Task<IActionResult> DeleteImage(int imageId, int listingId, CancellationToken cancellationToken)
     {
+        // Verify the image belongs to a listing owned by the current user (or user is admin)
+        var currentUserId = GetCurrentUserId();
+        var listing = await _listingService.GetByIdAsync(listingId, cancellationToken);
+        if (listing is null)
+        {
+            return NotFound();
+        }
+
+        if (!User.IsInRole("Admin") && listing.UserId != currentUserId)
+        {
+            _logger.LogWarning("User {UserId} attempted to delete image {ImageId} from listing {ListingId}",
+                currentUserId, imageId, listingId);
+            return Forbid();
+        }
+
         await _imageService.DeleteImageAsync(imageId, cancellationToken);
+        _logger.LogInformation("Image {ImageId} deleted from listing {ListingId}", imageId, listingId);
         return RedirectToAction(nameof(Edit), new { id = listingId });
     }
 

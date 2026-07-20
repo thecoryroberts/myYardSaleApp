@@ -27390,6 +27390,304 @@
       ]
     },
     {
+      "Route": "robots.ihgrjo0v7l.txt",
+      "AssetFile": "robots.txt.gz",
+      "Selectors": [
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip",
+          "Quality": "0.012048192771"
+        }
+      ],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "82"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/plain"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"O+fVgVBTiR1DgZO1acEhelR0ZKMc8eiW1QA8+6xYIqw=\""
+        },
+        {
+          "Name": "ETag",
+          "Value": "W/\"Np/+AhulnUpfWBXIbgrdpc5Z7mZ5goVxgdX1XR70A7w=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Mon, 20 Jul 2026 19:07:47 GMT"
+        },
+        {
+          "Name": "Vary",
+          "Value": "Content-Encoding"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "ihgrjo0v7l"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-Np/+AhulnUpfWBXIbgrdpc5Z7mZ5goVxgdX1XR70A7w="
+        },
+        {
+          "Name": "label",
+          "Value": "robots.txt"
+        }
+      ]
+    },
+    {
+      "Route": "robots.ihgrjo0v7l.txt",
+      "AssetFile": "robots.txt",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "66"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/plain"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"Np/+AhulnUpfWBXIbgrdpc5Z7mZ5goVxgdX1XR70A7w=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Mon, 20 Jul 2026 19:07:47 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "ihgrjo0v7l"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-Np/+AhulnUpfWBXIbgrdpc5Z7mZ5goVxgdX1XR70A7w="
+        },
+        {
+          "Name": "label",
+          "Value": "robots.txt"
+        }
+      ]
+    },
+    {
+      "Route": "robots.ihgrjo0v7l.txt.gz",
+      "AssetFile": "robots.txt.gz",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "82"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/plain"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"O+fVgVBTiR1DgZO1acEhelR0ZKMc8eiW1QA8+6xYIqw=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Mon, 20 Jul 2026 19:07:47 GMT"
+        },
+        {
+          "Name": "Vary",
+          "Value": "Content-Encoding"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "ihgrjo0v7l"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-O+fVgVBTiR1DgZO1acEhelR0ZKMc8eiW1QA8+6xYIqw="
+        },
+        {
+          "Name": "label",
+          "Value": "robots.txt.gz"
+        }
+      ]
+    },
+    {
+      "Route": "robots.txt",
+      "AssetFile": "robots.txt.gz",
+      "Selectors": [
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip",
+          "Quality": "0.012048192771"
+        }
+      ],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        },
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "82"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/plain"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"O+fVgVBTiR1DgZO1acEhelR0ZKMc8eiW1QA8+6xYIqw=\""
+        },
+        {
+          "Name": "ETag",
+          "Value": "W/\"Np/+AhulnUpfWBXIbgrdpc5Z7mZ5goVxgdX1XR70A7w=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Mon, 20 Jul 2026 19:07:47 GMT"
+        },
+        {
+          "Name": "Vary",
+          "Value": "Content-Encoding"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-Np/+AhulnUpfWBXIbgrdpc5Z7mZ5goVxgdX1XR70A7w="
+        }
+      ]
+    },
+    {
+      "Route": "robots.txt",
+      "AssetFile": "robots.txt",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "66"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/plain"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"Np/+AhulnUpfWBXIbgrdpc5Z7mZ5goVxgdX1XR70A7w=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Mon, 20 Jul 2026 19:07:47 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-Np/+AhulnUpfWBXIbgrdpc5Z7mZ5goVxgdX1XR70A7w="
+        }
+      ]
+    },
+    {
+      "Route": "robots.txt.gz",
+      "AssetFile": "robots.txt.gz",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        },
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "82"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/plain"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"O+fVgVBTiR1DgZO1acEhelR0ZKMc8eiW1QA8+6xYIqw=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Mon, 20 Jul 2026 19:07:47 GMT"
+        },
+        {
+          "Name": "Vary",
+          "Value": "Content-Encoding"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-O+fVgVBTiR1DgZO1acEhelR0ZKMc8eiW1QA8+6xYIqw="
+        }
+      ]
+    },
+    {
       "Route": "uploads/listings/1/5db2c591029146a2a30ee898a61a96ab.2e54wfe06k.png",
       "AssetFile": "uploads/listings/1/5db2c591029146a2a30ee898a61a96ab.png",
       "Selectors": [],

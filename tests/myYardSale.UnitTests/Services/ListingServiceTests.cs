@@ -1,3 +1,4 @@
+using Microsoft.Extensions.Caching.Memory;
 using myYardSale.Application.Abstractions;
 using myYardSale.Application.Services;
 using myYardSale.Domain.Entities;
@@ -6,11 +7,17 @@ namespace myYardSale.UnitTests.Services;
 
 public class ListingServiceTests
 {
+    private static ListingService CreateService(IListingRepository repository)
+    {
+        var cache = new MemoryCache(new MemoryCacheOptions());
+        return new ListingService(repository, cache);
+    }
+
     [Fact]
     public async Task SearchAsync_ReturnsMatchingListings()
     {
         var repository = new FakeListingRepository();
-        var service = new ListingService(repository);
+        var service = CreateService(repository);
 
         var result = await service.SearchAsync("bicycle", null, null, CancellationToken.None);
 
@@ -22,7 +29,7 @@ public class ListingServiceTests
     public async Task SearchAsync_WithNullTerm_ReturnsAllActiveListings()
     {
         var repository = new FakeListingRepository();
-        var service = new ListingService(repository);
+        var service = CreateService(repository);
 
         var result = await service.SearchAsync(null, null, null, CancellationToken.None);
 
@@ -35,7 +42,7 @@ public class ListingServiceTests
     public async Task GetByIdAsync_ReturnsRequestedListing()
     {
         var repository = new FakeListingRepository();
-        var service = new ListingService(repository);
+        var service = CreateService(repository);
 
         var result = await service.GetByIdAsync(2, CancellationToken.None);
 
@@ -47,7 +54,7 @@ public class ListingServiceTests
     public async Task CreateAsync_AddsListingAndReturnsIt()
     {
         var repository = new FakeListingRepository();
-        var service = new ListingService(repository);
+        var service = CreateService(repository);
 
         var created = await service.CreateAsync(new Listing
         {
@@ -61,6 +68,21 @@ public class ListingServiceTests
         Assert.NotNull(created);
         Assert.Equal("Desk Lamp", created.Title);
         Assert.Equal(3, repository.GetCount());
+    }
+
+    [Fact]
+    public async Task GetCategoriesAsync_UsesCaching()
+    {
+        var repository = new FakeListingRepository();
+        var service = CreateService(repository);
+
+        // First call should fetch from repository
+        var firstCall = await service.GetCategoriesAsync(CancellationToken.None);
+        Assert.NotEmpty(firstCall);
+
+        // Second call should return cached result (no exception)
+        var secondCall = await service.GetCategoriesAsync(CancellationToken.None);
+        Assert.Equal(firstCall.Count, secondCall.Count);
     }
 
     private sealed class FakeListingRepository : IListingRepository

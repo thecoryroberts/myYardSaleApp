@@ -8,10 +8,12 @@
     ".NETCoreApp,Version=v9.0": {
       "myYardSale.Web/1.0.0": {
         "dependencies": {
+          "FluentValidation.AspNetCore": "11.3.0",
           "Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore": "9.0.11",
           "Microsoft.AspNetCore.Identity.EntityFrameworkCore": "9.0.11",
           "Microsoft.AspNetCore.Identity.UI": "9.0.11",
           "Microsoft.EntityFrameworkCore.Tools": "9.0.11",
+          "Microsoft.Extensions.Diagnostics.HealthChecks.EntityFrameworkCore": "9.0.11",
           "Microsoft.VisualStudio.Web.CodeGeneration.Design": "9.0.11",
           "myYardSale.Application": "1.0.0",
           "myYardSale.Infrastructure": "1.0.0"
@@ -55,23 +57,35 @@
           }
         }
       },
-      "FluentValidation/11.0.2": {
+      "FluentValidation/11.5.1": {
         "runtime": {
-          "lib/net6.0/FluentValidation.dll": {
+          "lib/net7.0/FluentValidation.dll": {
             "assemblyVersion": "11.0.0.0",
-            "fileVersion": "11.0.2.0"
+            "fileVersion": "11.5.1.0"
           }
         }
       },
-      "FluentValidation.DependencyInjectionExtensions/11.0.2": {
+      "FluentValidation.AspNetCore/11.3.0": {
         "dependencies": {
-          "FluentValidation": "11.0.2",
+          "FluentValidation": "11.5.1",
+          "FluentValidation.DependencyInjectionExtensions": "11.5.1"
+        },
+        "runtime": {
+          "lib/net6.0/FluentValidation.AspNetCore.dll": {
+            "assemblyVersion": "11.0.0.0",
+            "fileVersion": "11.3.0.0"
+          }
+        }
+      },
+      "FluentValidation.DependencyInjectionExtensions/11.5.1": {
+        "dependencies": {
+          "FluentValidation": "11.5.1",
           "Microsoft.Extensions.DependencyInjection.Abstractions": "9.0.11"
         },
         "runtime": {
           "lib/netstandard2.1/FluentValidation.DependencyInjectionExtensions.dll": {
             "assemblyVersion": "11.0.0.0",
-            "fileVersion": "11.0.2.0"
+            "fileVersion": "11.5.1.0"
           }
         }
       },
@@ -1357,14 +1371,14 @@
           }
         }
       },
-      "Microsoft.Data.Sqlite.Core/9.0.8": {
+      "Microsoft.Data.Sqlite.Core/9.0.11": {
         "dependencies": {
           "SQLitePCLRaw.core": "2.1.10"
         },
         "runtime": {
           "lib/net8.0/Microsoft.Data.Sqlite.dll": {
-            "assemblyVersion": "9.0.8.0",
-            "fileVersion": "9.0.825.36802"
+            "assemblyVersion": "9.0.11.0",
+            "fileVersion": "9.0.1125.51902"
           }
         }
       },
@@ -1460,9 +1474,9 @@
           }
         }
       },
-      "Microsoft.EntityFrameworkCore.Sqlite/9.0.8": {
+      "Microsoft.EntityFrameworkCore.Sqlite/9.0.11": {
         "dependencies": {
-          "Microsoft.EntityFrameworkCore.Sqlite.Core": "9.0.8",
+          "Microsoft.EntityFrameworkCore.Sqlite.Core": "9.0.11",
           "Microsoft.Extensions.Caching.Memory": "9.0.11",
           "Microsoft.Extensions.Configuration.Abstractions": "9.0.11",
           "Microsoft.Extensions.DependencyModel": "9.0.11",
@@ -1472,9 +1486,9 @@
           "System.Text.Json": "9.0.11"
         }
       },
-      "Microsoft.EntityFrameworkCore.Sqlite.Core/9.0.8": {
+      "Microsoft.EntityFrameworkCore.Sqlite.Core/9.0.11": {
         "dependencies": {
-          "Microsoft.Data.Sqlite.Core": "9.0.8",
+          "Microsoft.Data.Sqlite.Core": "9.0.11",
           "Microsoft.EntityFrameworkCore.Relational": "9.0.11",
           "Microsoft.Extensions.Caching.Memory": "9.0.11",
           "Microsoft.Extensions.Configuration.Abstractions": "9.0.11",
@@ -1485,12 +1499,12 @@
         },
         "runtime": {
           "lib/net8.0/Microsoft.EntityFrameworkCore.Sqlite.dll": {
-            "assemblyVersion": "9.0.8.0",
-            "fileVersion": "9.0.825.36802"
+            "assemblyVersion": "9.0.11.0",
+            "fileVersion": "9.0.1125.51902"
           }
         }
       },
-      "Microsoft.EntityFrameworkCore.SqlServer/9.0.8": {
+      "Microsoft.EntityFrameworkCore.SqlServer/9.0.11": {
         "dependencies": {
           "Microsoft.Data.SqlClient": "5.1.6",
           "Microsoft.EntityFrameworkCore.Relational": "9.0.11",
@@ -1502,8 +1516,8 @@
         },
         "runtime": {
           "lib/net8.0/Microsoft.EntityFrameworkCore.SqlServer.dll": {
-            "assemblyVersion": "9.0.8.0",
-            "fileVersion": "9.0.825.36802"
+            "assemblyVersion": "9.0.11.0",
+            "fileVersion": "9.0.1125.51902"
           }
         }
       },
@@ -1576,6 +1590,53 @@
           }
         }
       },
+      "Microsoft.Extensions.Diagnostics.Abstractions/9.0.11": {
+        "dependencies": {
+          "Microsoft.Extensions.DependencyInjection.Abstractions": "9.0.11",
+          "Microsoft.Extensions.Options": "9.0.11"
+        },
+        "runtime": {
+          "lib/net9.0/Microsoft.Extensions.Diagnostics.Abstractions.dll": {
+            "assemblyVersion": "9.0.0.0",
+            "fileVersion": "9.0.1125.51716"
+          }
+        }
+      },
+      "Microsoft.Extensions.Diagnostics.HealthChecks/9.0.11": {
+        "dependencies": {
+          "Microsoft.Extensions.Diagnostics.HealthChecks.Abstractions": "9.0.11",
+          "Microsoft.Extensions.Hosting.Abstractions": "9.0.11",
+          "Microsoft.Extensions.Logging.Abstractions": "9.0.11",
+          "Microsoft.Extensions.Options": "9.0.11"
+        },
+        "runtime": {
+          "lib/net9.0/Microsoft.Extensions.Diagnostics.HealthChecks.dll": {
+            "assemblyVersion": "9.0.0.0",
+            "fileVersion": "9.0.1125.52006"
+          }
+        }
+      },
+      "Microsoft.Extensions.Diagnostics.HealthChecks.Abstractions/9.0.11": {
+        "runtime": {
+          "lib/net9.0/Microsoft.Extensions.Diagnostics.HealthChecks.Abstractions.dll": {
+            "assemblyVersion": "9.0.0.0",
+            "fileVersion": "9.0.1125.52006"
+          }
+        }
+      },
+      "Microsoft.Extensions.Diagnostics.HealthChecks.EntityFrameworkCore/9.0.11": {
+        "dependencies": {
+          "Microsoft.EntityFrameworkCore.Relational": "9.0.11",
+          "Microsoft.Extensions.Diagnostics.HealthChecks": "9.0.11",
+          "Microsoft.Extensions.Diagnostics.HealthChecks.Abstractions": "9.0.11"
+        },
+        "runtime": {
+          "lib/net9.0/Microsoft.Extensions.Diagnostics.HealthChecks.EntityFrameworkCore.dll": {
+            "assemblyVersion": "9.0.11.0",
+            "fileVersion": "9.0.1125.52006"
+          }
+        }
+      },
       "Microsoft.Extensions.FileProviders.Abstractions/9.0.11": {
         "dependencies": {
           "Microsoft.Extensions.Primitives": "9.0.11"
@@ -1595,6 +1656,21 @@
           "lib/net9.0/Microsoft.Extensions.FileProviders.Embedded.dll": {
             "assemblyVersion": "9.0.0.0",
             "fileVersion": "9.0.1125.52006"
+          }
+        }
+      },
+      "Microsoft.Extensions.Hosting.Abstractions/9.0.11": {
+        "dependencies": {
+          "Microsoft.Extensions.Configuration.Abstractions": "9.0.11",
+          "Microsoft.Extensions.DependencyInjection.Abstractions": "9.0.11",
+          "Microsoft.Extensions.Diagnostics.Abstractions": "9.0.11",
+          "Microsoft.Extensions.FileProviders.Abstractions": "9.0.11",
+          "Microsoft.Extensions.Logging.Abstractions": "9.0.11"
+        },
+        "runtime": {
+          "lib/net9.0/Microsoft.Extensions.Hosting.Abstractions.dll": {
+            "assemblyVersion": "9.0.0.0",
+            "fileVersion": "9.0.1125.51716"
           }
         }
       },
@@ -2522,8 +2598,9 @@
       },
       "myYardSale.Application/1.0.0": {
         "dependencies": {
-          "FluentValidation": "11.0.2",
-          "FluentValidation.DependencyInjectionExtensions": "11.0.2",
+          "FluentValidation": "11.5.1",
+          "FluentValidation.DependencyInjectionExtensions": "11.5.1",
+          "Microsoft.Extensions.Caching.Abstractions": "9.0.11",
           "myYardSale.Domain": "1.0.0"
         },
         "runtime": {
@@ -2545,8 +2622,8 @@
         "dependencies": {
           "Microsoft.AspNetCore.Identity.EntityFrameworkCore": "9.0.11",
           "Microsoft.EntityFrameworkCore": "9.0.11",
-          "Microsoft.EntityFrameworkCore.SqlServer": "9.0.8",
-          "Microsoft.EntityFrameworkCore.Sqlite": "9.0.8",
+          "Microsoft.EntityFrameworkCore.SqlServer": "9.0.11",
+          "Microsoft.EntityFrameworkCore.Sqlite": "9.0.11",
           "myYardSale.Application": "1.0.0",
           "myYardSale.Domain": "1.0.0"
         },
@@ -2579,19 +2656,26 @@
       "path": "azure.identity/1.11.4",
       "hashPath": "azure.identity.1.11.4.nupkg.sha512"
     },
-    "FluentValidation/11.0.2": {
+    "FluentValidation/11.5.1": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-ik/xogKqBmZWIURMXNEbugJlKka6iV9a4qckmKDp7sHSwIfgkZ/ewzCuAeUTkFdVZujfDW6mCLMjrrR6GG4xLQ==",
-      "path": "fluentvalidation/11.0.2",
-      "hashPath": "fluentvalidation.11.0.2.nupkg.sha512"
+      "sha512": "sha512-0h1Q5lNOLLyYTWMJmyNoMqhY4CBRvvUWvJP1R4F2CnmmzuWwvB0A8aVmw5+lOuwYnwUwCRrdeMLbc81F38ahNQ==",
+      "path": "fluentvalidation/11.5.1",
+      "hashPath": "fluentvalidation.11.5.1.nupkg.sha512"
     },
-    "FluentValidation.DependencyInjectionExtensions/11.0.2": {
+    "FluentValidation.AspNetCore/11.3.0": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-ChfGHFGoLSN97MKZcippJ2qJskWuv6I3E0ngV5OTp3FhaPfFC+KcUMqaE72HtT13B8hkP/XmHlQfgSTzsmsdZw==",
-      "path": "fluentvalidation.dependencyinjectionextensions/11.0.2",
-      "hashPath": "fluentvalidation.dependencyinjectionextensions.11.0.2.nupkg.sha512"
+      "sha512": "sha512-jtFVgKnDFySyBlPS8bZbTKEEwJZnn11rXXJ2SQnjDhZ56rQqybBg9Joq4crRLz3y0QR8WoOq4iE4piV81w/Djg==",
+      "path": "fluentvalidation.aspnetcore/11.3.0",
+      "hashPath": "fluentvalidation.aspnetcore.11.3.0.nupkg.sha512"
+    },
+    "FluentValidation.DependencyInjectionExtensions/11.5.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-iWM0LS1MDYX06pcjMEQKqHirl2zkjHlNV23mEJSoR1IZI7KQmTa0RcTtGEJpj5+iHvBCfrzP2mYKM4FtRKVb+A==",
+      "path": "fluentvalidation.dependencyinjectionextensions/11.5.1",
+      "hashPath": "fluentvalidation.dependencyinjectionextensions.11.5.1.nupkg.sha512"
     },
     "Humanizer/2.14.1": {
       "type": "package",
@@ -3132,12 +3216,12 @@
       "path": "microsoft.data.sqlclient.sni.runtime/5.1.1",
       "hashPath": "microsoft.data.sqlclient.sni.runtime.5.1.1.nupkg.sha512"
     },
-    "Microsoft.Data.Sqlite.Core/9.0.8": {
+    "Microsoft.Data.Sqlite.Core/9.0.11": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-AQr1nLGi1riN7XA2c8uAKAr2fo7bvZ++VRnvKyh/rhsj2f4x0Nmgk2j8+Rw9RaJrzZMcv0Mu4nYNpAdSui/FHw==",
-      "path": "microsoft.data.sqlite.core/9.0.8",
-      "hashPath": "microsoft.data.sqlite.core.9.0.8.nupkg.sha512"
+      "sha512": "sha512-l0IFYa6sxJdlDDfMaw/fMNIoXyWnBx6w5fu7BsNaqU8sXLuotFzUjsutXosu/IPUyBOpO2GG3hLuPMLz/CwWTQ==",
+      "path": "microsoft.data.sqlite.core/9.0.11",
+      "hashPath": "microsoft.data.sqlite.core.9.0.11.nupkg.sha512"
     },
     "Microsoft.DiaSymReader/2.0.0": {
       "type": "package",
@@ -3188,26 +3272,26 @@
       "path": "microsoft.entityframeworkcore.relational/9.0.11",
       "hashPath": "microsoft.entityframeworkcore.relational.9.0.11.nupkg.sha512"
     },
-    "Microsoft.EntityFrameworkCore.Sqlite/9.0.8": {
+    "Microsoft.EntityFrameworkCore.Sqlite/9.0.11": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-5WZ3k3s2LcuyR5kBjcK2pkEa2l9Yo35WzSdyitfk5Y9GBn2jIFs8uNhYGpD9ZZ3g+feIMHXUFQ8psee0tst6Qw==",
-      "path": "microsoft.entityframeworkcore.sqlite/9.0.8",
-      "hashPath": "microsoft.entityframeworkcore.sqlite.9.0.8.nupkg.sha512"
+      "sha512": "sha512-mEmJMkMGpIB1J5gBTkbs4ximer2G+G/I8mO2unMjtimFo1XvV7+vTqUJ9ReEMMI/BGUFtIGifFUSy7QsqKUnRA==",
+      "path": "microsoft.entityframeworkcore.sqlite/9.0.11",
+      "hashPath": "microsoft.entityframeworkcore.sqlite.9.0.11.nupkg.sha512"
     },
-    "Microsoft.EntityFrameworkCore.Sqlite.Core/9.0.8": {
+    "Microsoft.EntityFrameworkCore.Sqlite.Core/9.0.11": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-9CXB4OoU6xqZymiRRvxEy6+almeSciSKOoPhr8CHlGgBnYHWBZeGhEmqzpXyv2ohF3XC/sNxEcZ6948grKrWew==",
-      "path": "microsoft.entityframeworkcore.sqlite.core/9.0.8",
-      "hashPath": "microsoft.entityframeworkcore.sqlite.core.9.0.8.nupkg.sha512"
+      "sha512": "sha512-NNfHGXUZ+Ie3Wrzja9ar3hU3octv/fi4ELS6poG2Ncp4p1Kj2rgIhXRMK8zL2BjcNAnGQojhJkBKjEOmhJaIxA==",
+      "path": "microsoft.entityframeworkcore.sqlite.core/9.0.11",
+      "hashPath": "microsoft.entityframeworkcore.sqlite.core.9.0.11.nupkg.sha512"
     },
-    "Microsoft.EntityFrameworkCore.SqlServer/9.0.8": {
+    "Microsoft.EntityFrameworkCore.SqlServer/9.0.11": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-yNZJIdLQTTHj6FTv9+IUQwmQvOwvUanTBOG1ibeTaaB1zfTtOqrSFQnjMOkcKOgxu+ofsBEDcuctb/f5xj/Oog==",
-      "path": "microsoft.entityframeworkcore.sqlserver/9.0.8",
-      "hashPath": "microsoft.entityframeworkcore.sqlserver.9.0.8.nupkg.sha512"
+      "sha512": "sha512-2DqtZXZUI0u40ZIjs8v3c8l1yQ79zMftHO6CIdpH7s+bbkUURruE7ErVWQrPxTbeMyY8P9zEfsrWfpoksZMMvQ==",
+      "path": "microsoft.entityframeworkcore.sqlserver/9.0.11",
+      "hashPath": "microsoft.entityframeworkcore.sqlserver.9.0.11.nupkg.sha512"
     },
     "Microsoft.EntityFrameworkCore.Tools/9.0.11": {
       "type": "package",
@@ -3258,6 +3342,34 @@
       "path": "microsoft.extensions.dependencymodel/9.0.11",
       "hashPath": "microsoft.extensions.dependencymodel.9.0.11.nupkg.sha512"
     },
+    "Microsoft.Extensions.Diagnostics.Abstractions/9.0.11": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-D9gu4weEmvWGuz8zp5xwsOr0ldmWphMKr7+IW66hG4rnrgpMLtTWoOINBOX5mcRTPL39+AVd3BJdc4HTvl2NrA==",
+      "path": "microsoft.extensions.diagnostics.abstractions/9.0.11",
+      "hashPath": "microsoft.extensions.diagnostics.abstractions.9.0.11.nupkg.sha512"
+    },
+    "Microsoft.Extensions.Diagnostics.HealthChecks/9.0.11": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-zB1jwjVgbJLI4aAMbL33EAjPxDizXlr6JIMHh7xet9TEPfZXkgOGE9NDkidHx3vTg9VkQNKRRrwFZYEMvViZtw==",
+      "path": "microsoft.extensions.diagnostics.healthchecks/9.0.11",
+      "hashPath": "microsoft.extensions.diagnostics.healthchecks.9.0.11.nupkg.sha512"
+    },
+    "Microsoft.Extensions.Diagnostics.HealthChecks.Abstractions/9.0.11": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-WVhhxc6gaEfAge3yqNBtbuOaDpFTu+C7vztG9j/6EOwZ4qBx8YGNgz7Zvdcfm06PvihbDae1ZKiZA3JbNqQGRQ==",
+      "path": "microsoft.extensions.diagnostics.healthchecks.abstractions/9.0.11",
+      "hashPath": "microsoft.extensions.diagnostics.healthchecks.abstractions.9.0.11.nupkg.sha512"
+    },
+    "Microsoft.Extensions.Diagnostics.HealthChecks.EntityFrameworkCore/9.0.11": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-pH+hnwJV8K4lD3WIzHFVcRGPhMCuu7jHiPy2CVt3SgL7ddQDuYOX+ZO4uMm1F/qViH/EwyLkGZCgmFOGS55EwA==",
+      "path": "microsoft.extensions.diagnostics.healthchecks.entityframeworkcore/9.0.11",
+      "hashPath": "microsoft.extensions.diagnostics.healthchecks.entityframeworkcore.9.0.11.nupkg.sha512"
+    },
     "Microsoft.Extensions.FileProviders.Abstractions/9.0.11": {
       "type": "package",
       "serviceable": true,
@@ -3271,6 +3383,13 @@
       "sha512": "sha512-XIrEYbuRq+mam7ljrxf/S4Ug5taFXDNUVGK+rxqx5qZbM572hLBzeS6ClNGy97kJQC5urlApTv6Xprl+xvp6oA==",
       "path": "microsoft.extensions.fileproviders.embedded/9.0.11",
       "hashPath": "microsoft.extensions.fileproviders.embedded.9.0.11.nupkg.sha512"
+    },
+    "Microsoft.Extensions.Hosting.Abstractions/9.0.11": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-cQsyEUYRYRzRf4y7Xn4W8bbspgXj0oNA9drEa6lVmU9qL7xv2dfCdcVVLCp6Hhs8hN7R7TfRFdQa1uXBS+96fA==",
+      "path": "microsoft.extensions.hosting.abstractions/9.0.11",
+      "hashPath": "microsoft.extensions.hosting.abstractions.9.0.11.nupkg.sha512"
     },
     "Microsoft.Extensions.Identity.Core/9.0.11": {
       "type": "package",

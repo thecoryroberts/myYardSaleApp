@@ -257,6 +257,10 @@
       "PackagePath": "staticwebassets/lib/jquery/dist/jquery.slim.min.map"
     },
     {
+      "Id": "/media/thecoryroberts/External/Design Assets/Web Solutions/myYardSale/src/myYardSale.Web/wwwroot/robots.txt",
+      "PackagePath": "staticwebassets/robots.txt"
+    },
+    {
       "Id": "/media/thecoryroberts/External/Design Assets/Web Solutions/myYardSale/src/myYardSale.Web/wwwroot/uploads/listings/1/5db2c591029146a2a30ee898a61a96ab.png",
       "PackagePath": "staticwebassets/uploads/listings/1/5db2c591029146a2a30ee898a61a96ab.png"
     },

@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "C7qUGnoWdwU=",
+  "dgSpecHash": "fzJ5dkXIhsE=",
   "success": true,
   "projectFilePath": "/media/thecoryroberts/External/Design Assets/Web Solutions/myYardSale/tests/myYardSale.UnitTests/myYardSale.UnitTests.csproj",
   "expectedPackageFiles": [
@@ -8,7 +8,9 @@
     "/home/thecoryroberts/.nuget/packages/fluentvalidation/11.0.2/fluentvalidation.11.0.2.nupkg.sha512",
     "/home/thecoryroberts/.nuget/packages/fluentvalidation.dependencyinjectionextensions/11.0.2/fluentvalidation.dependencyinjectionextensions.11.0.2.nupkg.sha512",
     "/home/thecoryroberts/.nuget/packages/microsoft.codecoverage/17.12.0/microsoft.codecoverage.17.12.0.nupkg.sha512",
+    "/home/thecoryroberts/.nuget/packages/microsoft.extensions.caching.abstractions/9.0.11/microsoft.extensions.caching.abstractions.9.0.11.nupkg.sha512",
     "/home/thecoryroberts/.nuget/packages/microsoft.extensions.dependencyinjection.abstractions/2.1.0/microsoft.extensions.dependencyinjection.abstractions.2.1.0.nupkg.sha512",
+    "/home/thecoryroberts/.nuget/packages/microsoft.extensions.primitives/9.0.11/microsoft.extensions.primitives.9.0.11.nupkg.sha512",
     "/home/thecoryroberts/.nuget/packages/microsoft.net.test.sdk/17.12.0/microsoft.net.test.sdk.17.12.0.nupkg.sha512",
     "/home/thecoryroberts/.nuget/packages/microsoft.testplatform.objectmodel/17.12.0/microsoft.testplatform.objectmodel.17.12.0.nupkg.sha512",
     "/home/thecoryroberts/.nuget/packages/microsoft.testplatform.testhost/17.12.0/microsoft.testplatform.testhost.17.12.0.nupkg.sha512",

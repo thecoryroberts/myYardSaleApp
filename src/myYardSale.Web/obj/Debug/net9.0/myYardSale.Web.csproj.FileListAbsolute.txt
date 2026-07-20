@@ -449,3 +449,10 @@
 /media/thecoryroberts/External/Design Assets/Web Solutions/myYardSale/src/myYardSale.Web/bin/Debug/net9.0/appsettings.Production.json
 /media/thecoryroberts/External/Design Assets/Web Solutions/myYardSale/src/myYardSale.Web/obj/Debug/net9.0/compressed/3i7pn5trxn-17xovigh9l.gz
 /media/thecoryroberts/External/Design Assets/Web Solutions/myYardSale/src/myYardSale.Web/obj/Debug/net9.0/compressed/qo97gduwm6-250iiinrvr.gz
+/media/thecoryroberts/External/Design Assets/Web Solutions/myYardSale/src/myYardSale.Web/bin/Debug/net9.0/Microsoft.Extensions.Diagnostics.Abstractions.dll
+/media/thecoryroberts/External/Design Assets/Web Solutions/myYardSale/src/myYardSale.Web/bin/Debug/net9.0/Microsoft.Extensions.Diagnostics.HealthChecks.dll
+/media/thecoryroberts/External/Design Assets/Web Solutions/myYardSale/src/myYardSale.Web/bin/Debug/net9.0/Microsoft.Extensions.Diagnostics.HealthChecks.Abstractions.dll
+/media/thecoryroberts/External/Design Assets/Web Solutions/myYardSale/src/myYardSale.Web/bin/Debug/net9.0/Microsoft.Extensions.Diagnostics.HealthChecks.EntityFrameworkCore.dll
+/media/thecoryroberts/External/Design Assets/Web Solutions/myYardSale/src/myYardSale.Web/bin/Debug/net9.0/Microsoft.Extensions.Hosting.Abstractions.dll
+/media/thecoryroberts/External/Design Assets/Web Solutions/myYardSale/src/myYardSale.Web/bin/Debug/net9.0/FluentValidation.AspNetCore.dll
+/media/thecoryroberts/External/Design Assets/Web Solutions/myYardSale/src/myYardSale.Web/obj/Debug/net9.0/compressed/6xfrriz5lr-ihgrjo0v7l.gz

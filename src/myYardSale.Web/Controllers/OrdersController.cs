@@ -9,10 +9,12 @@ namespace myYardSale.Web.Controllers;
 public class OrdersController : Controller
 {
     private readonly ListingService _listingService;
+    private readonly ILogger<OrdersController> _logger;
 
-    public OrdersController(ListingService listingService)
+    public OrdersController(ListingService listingService, ILogger<OrdersController> logger)
     {
         _listingService = listingService;
+        _logger = logger;
     }
 
     [HttpGet]
@@ -42,6 +44,7 @@ public class OrdersController : Controller
         var order = await _listingService.GetOrderByIdAsync(id, cancellationToken);
         if (order is null)
         {
+            _logger.LogWarning("Order {OrderId} not found", id);
             return NotFound();
         }
 
@@ -51,6 +54,8 @@ public class OrdersController : Controller
         // Only allow the order owner or admin to view
         if (order.UserId != userId && !isAdmin)
         {
+            _logger.LogWarning("User {UserId} attempted to view order {OrderId} owned by {OwnerId}",
+                userId, id, order.UserId);
             return Forbid();
         }
 

@@ -1,3 +1,4 @@
+using Microsoft.Extensions.Caching.Memory;
 using myYardSale.Application.Abstractions;
 using myYardSale.Domain.Entities;
 
@@ -6,10 +7,14 @@ namespace myYardSale.Application.Services;
 public sealed class ListingService
 {
     private readonly IListingRepository _listingRepository;
+    private readonly IMemoryCache _cache;
+    private static readonly TimeSpan CategoryCacheDuration = TimeSpan.FromMinutes(15);
+    private const string CategoryCacheKey = "ActiveCategories";
 
-    public ListingService(IListingRepository listingRepository)
+    public ListingService(IListingRepository listingRepository, IMemoryCache cache)
     {
         _listingRepository = listingRepository;
+        _cache = cache;
     }
 
     public async Task<IReadOnlyList<Listing>> SearchAsync(
@@ -84,8 +89,17 @@ public sealed class ListingService
     public Task<bool> DeleteAsync(int id, CancellationToken cancellationToken)
         => _listingRepository.DeleteAsync(id, cancellationToken);
 
-    public Task<IReadOnlyList<Category>> GetCategoriesAsync(CancellationToken cancellationToken)
-        => _listingRepository.GetCategoriesAsync(cancellationToken);
+    public async Task<IReadOnlyList<Category>> GetCategoriesAsync(CancellationToken cancellationToken)
+    {
+        if (_cache.TryGetValue(CategoryCacheKey, out IReadOnlyList<Category>? cached))
+        {
+            return cached!;
+        }
+
+        var categories = await _listingRepository.GetCategoriesAsync(cancellationToken);
+        _cache.Set(CategoryCacheKey, categories, CategoryCacheDuration);
+        return categories;
+    }
 
     public Task<ListingImage> AddImageAsync(int listingId, ListingImage image, CancellationToken cancellationToken)
         => _listingRepository.AddImageAsync(listingId, image, cancellationToken);
@@ -126,6 +140,9 @@ public sealed class ListingService
 
         return await _listingRepository.AddToCartAsync(item, cancellationToken);
     }
+
+    public Task<CartItem?> GetCartItemByIdAsync(int cartItemId, CancellationToken cancellationToken)
+        => _listingRepository.GetCartItemByIdAsync(cartItemId, cancellationToken);
 
     public Task<bool> RemoveFromCartAsync(int cartItemId, CancellationToken cancellationToken)
         => _listingRepository.RemoveFromCartAsync(cartItemId, cancellationToken);

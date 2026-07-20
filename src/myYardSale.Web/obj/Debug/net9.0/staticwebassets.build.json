@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "O+rK791gKxcrcNgBtpmG91Nt5Dbhcnxx6pBNgvz3HV4=",
+  "Hash": "1te8S8QQkoF+HQt9Lu0ANprWfz6M66kL54cXE/wjuPs=",
   "Source": "myYardSale.Web",
   "BasePath": "_content/myYardSale.Web",
   "Mode": "Default",
@@ -1758,6 +1758,27 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "/media/thecoryroberts/External/Design Assets/Web Solutions/myYardSale/src/myYardSale.Web/wwwroot/lib/bootstrap/dist/css/bootstrap-grid.css"
+    },
+    {
+      "Identity": "/media/thecoryroberts/External/Design Assets/Web Solutions/myYardSale/src/myYardSale.Web/obj/Debug/net9.0/compressed/6xfrriz5lr-ihgrjo0v7l.gz",
+      "SourceId": "myYardSale.Web",
+      "SourceType": "Discovered",
+      "ContentRoot": "/media/thecoryroberts/External/Design Assets/Web Solutions/myYardSale/src/myYardSale.Web/obj/Debug/net9.0/compressed/",
+      "BasePath": "_content/myYardSale.Web",
+      "RelativePath": "robots#[.{fingerprint=ihgrjo0v7l}]?.txt.gz",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Alternative",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "/media/thecoryroberts/External/Design Assets/Web Solutions/myYardSale/src/myYardSale.Web/wwwroot/robots.txt",
+      "AssetTraitName": "Content-Encoding",
+      "AssetTraitValue": "gzip",
+      "Fingerprint": "nh8595xt88",
+      "Integrity": "O+fVgVBTiR1DgZO1acEhelR0ZKMc8eiW1QA8+6xYIqw=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "/media/thecoryroberts/External/Design Assets/Web Solutions/myYardSale/src/myYardSale.Web/wwwroot/robots.txt"
     },
     {
       "Identity": "/media/thecoryroberts/External/Design Assets/Web Solutions/myYardSale/src/myYardSale.Web/obj/Debug/net9.0/compressed/6yftz8vbcl-vr1egmr9el.gz",
@@ -5349,6 +5370,27 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot/lib/jquery/LICENSE.txt"
+    },
+    {
+      "Identity": "/media/thecoryroberts/External/Design Assets/Web Solutions/myYardSale/src/myYardSale.Web/wwwroot/robots.txt",
+      "SourceId": "myYardSale.Web",
+      "SourceType": "Discovered",
+      "ContentRoot": "/media/thecoryroberts/External/Design Assets/Web Solutions/myYardSale/src/myYardSale.Web/wwwroot/",
+      "BasePath": "_content/myYardSale.Web",
+      "RelativePath": "robots#[.{fingerprint}]?.txt",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "ihgrjo0v7l",
+      "Integrity": "Np/+AhulnUpfWBXIbgrdpc5Z7mZ5goVxgdX1XR70A7w=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot/robots.txt"
     },
     {
       "Identity": "/media/thecoryroberts/External/Design Assets/Web Solutions/myYardSale/src/myYardSale.Web/wwwroot/uploads/listings/1/5db2c591029146a2a30ee898a61a96ab.png",
@@ -33181,6 +33223,304 @@
         {
           "Name": "integrity",
           "Value": "sha256-LQzSHblgqDuqX5tJqWjrDNBZN+uNTMbbSinCXKt1yTM="
+        }
+      ]
+    },
+    {
+      "Route": "robots.ihgrjo0v7l.txt",
+      "AssetFile": "/media/thecoryroberts/External/Design Assets/Web Solutions/myYardSale/src/myYardSale.Web/obj/Debug/net9.0/compressed/6xfrriz5lr-ihgrjo0v7l.gz",
+      "Selectors": [
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip",
+          "Quality": "0.012048192771"
+        }
+      ],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "82"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"O+fVgVBTiR1DgZO1acEhelR0ZKMc8eiW1QA8+6xYIqw=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Mon, 20 Jul 2026 19:07:47 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip"
+        },
+        {
+          "Name": "Vary",
+          "Value": "Content-Encoding"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/plain"
+        },
+        {
+          "Name": "ETag",
+          "Value": "W/\"Np/+AhulnUpfWBXIbgrdpc5Z7mZ5goVxgdX1XR70A7w=\""
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "ihgrjo0v7l"
+        },
+        {
+          "Name": "label",
+          "Value": "robots.txt"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-Np/+AhulnUpfWBXIbgrdpc5Z7mZ5goVxgdX1XR70A7w="
+        }
+      ]
+    },
+    {
+      "Route": "robots.ihgrjo0v7l.txt",
+      "AssetFile": "/media/thecoryroberts/External/Design Assets/Web Solutions/myYardSale/src/myYardSale.Web/wwwroot/robots.txt",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "66"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/plain"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"Np/+AhulnUpfWBXIbgrdpc5Z7mZ5goVxgdX1XR70A7w=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Mon, 20 Jul 2026 19:07:47 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "ihgrjo0v7l"
+        },
+        {
+          "Name": "label",
+          "Value": "robots.txt"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-Np/+AhulnUpfWBXIbgrdpc5Z7mZ5goVxgdX1XR70A7w="
+        }
+      ]
+    },
+    {
+      "Route": "robots.ihgrjo0v7l.txt.gz",
+      "AssetFile": "/media/thecoryroberts/External/Design Assets/Web Solutions/myYardSale/src/myYardSale.Web/obj/Debug/net9.0/compressed/6xfrriz5lr-ihgrjo0v7l.gz",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "82"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/plain"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"O+fVgVBTiR1DgZO1acEhelR0ZKMc8eiW1QA8+6xYIqw=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Mon, 20 Jul 2026 19:07:47 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip"
+        },
+        {
+          "Name": "Vary",
+          "Value": "Content-Encoding"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "ihgrjo0v7l"
+        },
+        {
+          "Name": "label",
+          "Value": "robots.txt.gz"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-O+fVgVBTiR1DgZO1acEhelR0ZKMc8eiW1QA8+6xYIqw="
+        }
+      ]
+    },
+    {
+      "Route": "robots.txt",
+      "AssetFile": "/media/thecoryroberts/External/Design Assets/Web Solutions/myYardSale/src/myYardSale.Web/obj/Debug/net9.0/compressed/6xfrriz5lr-ihgrjo0v7l.gz",
+      "Selectors": [
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip",
+          "Quality": "0.012048192771"
+        }
+      ],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "82"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"O+fVgVBTiR1DgZO1acEhelR0ZKMc8eiW1QA8+6xYIqw=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Mon, 20 Jul 2026 19:07:47 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        },
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip"
+        },
+        {
+          "Name": "Vary",
+          "Value": "Content-Encoding"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/plain"
+        },
+        {
+          "Name": "ETag",
+          "Value": "W/\"Np/+AhulnUpfWBXIbgrdpc5Z7mZ5goVxgdX1XR70A7w=\""
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-Np/+AhulnUpfWBXIbgrdpc5Z7mZ5goVxgdX1XR70A7w="
+        }
+      ]
+    },
+    {
+      "Route": "robots.txt",
+      "AssetFile": "/media/thecoryroberts/External/Design Assets/Web Solutions/myYardSale/src/myYardSale.Web/wwwroot/robots.txt",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "66"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/plain"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"Np/+AhulnUpfWBXIbgrdpc5Z7mZ5goVxgdX1XR70A7w=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Mon, 20 Jul 2026 19:07:47 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-Np/+AhulnUpfWBXIbgrdpc5Z7mZ5goVxgdX1XR70A7w="
+        }
+      ]
+    },
+    {
+      "Route": "robots.txt.gz",
+      "AssetFile": "/media/thecoryroberts/External/Design Assets/Web Solutions/myYardSale/src/myYardSale.Web/obj/Debug/net9.0/compressed/6xfrriz5lr-ihgrjo0v7l.gz",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "82"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/plain"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"O+fVgVBTiR1DgZO1acEhelR0ZKMc8eiW1QA8+6xYIqw=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Mon, 20 Jul 2026 19:07:47 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        },
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip"
+        },
+        {
+          "Name": "Vary",
+          "Value": "Content-Encoding"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-O+fVgVBTiR1DgZO1acEhelR0ZKMc8eiW1QA8+6xYIqw="
         }
       ]
     },

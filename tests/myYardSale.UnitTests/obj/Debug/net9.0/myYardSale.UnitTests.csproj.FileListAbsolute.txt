@@ -104,3 +104,5 @@
 /media/thecoryroberts/External/Design Assets/Web Solutions/myYardSale/tests/myYardSale.UnitTests/obj/Debug/net9.0/myYardSale.UnitTests.pdb
 /media/thecoryroberts/External/Design Assets/Web Solutions/myYardSale/tests/myYardSale.UnitTests/obj/Debug/net9.0/myYardSale.UnitTests.genruntimeconfig.cache
 /media/thecoryroberts/External/Design Assets/Web Solutions/myYardSale/tests/myYardSale.UnitTests/obj/Debug/net9.0/ref/myYardSale.UnitTests.dll
+/media/thecoryroberts/External/Design Assets/Web Solutions/myYardSale/tests/myYardSale.UnitTests/bin/Debug/net9.0/Microsoft.Extensions.Caching.Abstractions.dll
+/media/thecoryroberts/External/Design Assets/Web Solutions/myYardSale/tests/myYardSale.UnitTests/bin/Debug/net9.0/Microsoft.Extensions.Primitives.dll

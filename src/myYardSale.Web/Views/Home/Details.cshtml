@@ -2,6 +2,14 @@
 
 @{
     ViewData["Title"] = Model.Title;
+    ViewData["Description"] = Model.Description?.Length > 160 ? Model.Description[..157] + "..." : Model.Description;
+    ViewData["OgImage"] = Model.Images.FirstOrDefault()?.StoragePath;
+}
+@{
+    ViewData["Title"] = Model.Title;
+    var metaDescription = Model.Description?.Length > 160 ? Model.Description[..157] + "..." : Model.Description;
+    ViewData["Description"] = metaDescription;
+    ViewData["OgImage"] = Model.Images.FirstOrDefault()?.StoragePath;
 }
 
 <div class="card shadow-sm fade-in-up">
@@ -89,18 +97,20 @@
 @section Scripts {
     <script>
         (function() {
-            const modal = document.getElementById('lightboxModal');
+            const modalEl = document.getElementById('lightboxModal');
             const img = document.getElementById('lightboxImage');
-            if (!modal || !img) return;
+            if (!modalEl || !img) return;
+
+            const bsModal = bootstrap.Modal.getOrCreateInstance(modalEl);
 
             document.querySelectorAll('.listing-thumb').forEach(function(el) {
                 el.addEventListener('click', function() {
                     img.src = this.dataset.full || this.src;
-                    modal.show();
+                    bsModal.show();
                 });
             });
 
-            modal.addEventListener('hidden.bs.modal', function() {
+            modalEl.addEventListener('hidden.bs.modal', function() {
                 img.src = '';
             });
         })();

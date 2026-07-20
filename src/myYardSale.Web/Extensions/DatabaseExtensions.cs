@@ -51,8 +51,8 @@ public static class DatabaseExtensions
         }
 
         // Seed Admin User
-        var adminEmail = configuration.GetValue<string>("Admin:Email") ?? "admin@myyardsale.com";
-        var adminPassword = configuration.GetValue<string>("Admin:Password") ?? "Admin123!";
+        var adminEmail = configuration.GetValue<string>("Admin:Email") ?? throw new InvalidOperationException("Admin:Email configuration is required. Set via User Secrets or environment variables.");
+        var adminPassword = configuration.GetValue<string>("Admin:Password") ?? throw new InvalidOperationException("Admin:Password configuration is required. Set via User Secrets or environment variables.");
 
         var adminUser = await userManager.FindByEmailAsync(adminEmail);
         if (adminUser is null)

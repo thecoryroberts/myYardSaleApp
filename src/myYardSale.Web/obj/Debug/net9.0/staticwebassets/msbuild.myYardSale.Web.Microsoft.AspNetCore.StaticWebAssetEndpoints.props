@@ -768,6 +768,18 @@
       <EndpointProperties><![CDATA[[{"Name":"fingerprint","Value":"o9a4z7j5sy"},{"Name":"integrity","Value":"sha256-BAR4WIJb1Tn\u002BJQmrb09UKQ6I8eIMYZMpPNCgWEnU1nY="},{"Name":"label","Value":"_content/myYardSale.Web/myYardSale.Web.bundle.scp.css"}]]]></EndpointProperties>
       <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"1083"},{"Name":"Content-Type","Value":"text/css"},{"Name":"ETag","Value":"\u0022BAR4WIJb1Tn\u002BJQmrb09UKQ6I8eIMYZMpPNCgWEnU1nY=\u0022"},{"Name":"Last-Modified","Value":"Tue, 14 Jul 2026 17:15:58 GMT"}]]]></ResponseHeaders>
     </StaticWebAssetEndpoint>
+    <StaticWebAssetEndpoint Include="_content/myYardSale.Web/robots.ihgrjo0v7l.txt">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\robots.txt'))</AssetFile>
+      <Selectors><![CDATA[[]]]></Selectors>
+      <EndpointProperties><![CDATA[[{"Name":"fingerprint","Value":"ihgrjo0v7l"},{"Name":"integrity","Value":"sha256-Np/\u002BAhulnUpfWBXIbgrdpc5Z7mZ5goVxgdX1XR70A7w="},{"Name":"label","Value":"_content/myYardSale.Web/robots.txt"}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"66"},{"Name":"Content-Type","Value":"text/plain"},{"Name":"ETag","Value":"\u0022Np/\u002BAhulnUpfWBXIbgrdpc5Z7mZ5goVxgdX1XR70A7w=\u0022"},{"Name":"Last-Modified","Value":"Mon, 20 Jul 2026 19:07:47 GMT"}]]]></ResponseHeaders>
+    </StaticWebAssetEndpoint>
+    <StaticWebAssetEndpoint Include="_content/myYardSale.Web/robots.txt">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\robots.txt'))</AssetFile>
+      <Selectors><![CDATA[[]]]></Selectors>
+      <EndpointProperties><![CDATA[[{"Name":"integrity","Value":"sha256-Np/\u002BAhulnUpfWBXIbgrdpc5Z7mZ5goVxgdX1XR70A7w="}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"no-cache"},{"Name":"Content-Length","Value":"66"},{"Name":"Content-Type","Value":"text/plain"},{"Name":"ETag","Value":"\u0022Np/\u002BAhulnUpfWBXIbgrdpc5Z7mZ5goVxgdX1XR70A7w=\u0022"},{"Name":"Last-Modified","Value":"Mon, 20 Jul 2026 19:07:47 GMT"}]]]></ResponseHeaders>
+    </StaticWebAssetEndpoint>
     <StaticWebAssetEndpoint Include="_content/myYardSale.Web/uploads/listings/1/5db2c591029146a2a30ee898a61a96ab.2e54wfe06k.png">
       <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\listings\1\5db2c591029146a2a30ee898a61a96ab.png'))</AssetFile>
       <Selectors><![CDATA[[]]]></Selectors>

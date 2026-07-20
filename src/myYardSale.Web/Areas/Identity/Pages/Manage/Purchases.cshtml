@@ -45,8 +45,9 @@ else
                                         var statusClass = order.Status switch
                                         {
                                             "Pending" => "bg-warning",
-                                            "Processing" => "bg-info",
-                                            "Completed" => "bg-success",
+                                            "Confirmed" => "bg-info",
+                                            "Shipped" => "bg-primary",
+                                            "Delivered" => "bg-success",
                                             "Cancelled" => "bg-danger",
                                             _ => "bg-secondary"
                                         };

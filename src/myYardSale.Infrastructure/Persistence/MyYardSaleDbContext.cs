@@ -104,6 +104,7 @@ public class MyYardSaleDbContext : IdentityDbContext<ApplicationUser, IdentityRo
                 .WithMany(x => x.Images)
                 .HasForeignKey(x => x.ListingId)
                 .OnDelete(DeleteBehavior.Cascade);
+            entity.HasIndex(x => x.ListingId).HasDatabaseName("IX_ListingImages_ListingId");
         });
 
         modelBuilder.Entity<CartItem>(entity =>
@@ -117,6 +118,8 @@ public class MyYardSaleDbContext : IdentityDbContext<ApplicationUser, IdentityRo
                 .WithMany()
                 .HasForeignKey(x => x.UserId)
                 .OnDelete(DeleteBehavior.Cascade);
+            entity.HasIndex(x => x.UserId).HasDatabaseName("IX_CartItems_UserId");
+            entity.HasIndex(x => new { x.ListingId, x.UserId }).HasDatabaseName("IX_CartItems_ListingId_UserId");
         });
 
         modelBuilder.Entity<Order>(entity =>
@@ -128,6 +131,8 @@ public class MyYardSaleDbContext : IdentityDbContext<ApplicationUser, IdentityRo
                 .WithMany()
                 .HasForeignKey(x => x.UserId)
                 .OnDelete(DeleteBehavior.Cascade);
+            entity.HasIndex(x => x.UserId).HasDatabaseName("IX_Orders_UserId");
+            entity.HasIndex(x => x.PlacedAt).HasDatabaseName("IX_Orders_PlacedAt");
         });
 
         modelBuilder.Entity<OrderItem>(entity =>
@@ -142,6 +147,8 @@ public class MyYardSaleDbContext : IdentityDbContext<ApplicationUser, IdentityRo
                 .WithMany()
                 .HasForeignKey(x => x.ListingId)
                 .OnDelete(DeleteBehavior.SetNull);
+            entity.HasIndex(x => x.OrderId).HasDatabaseName("IX_OrderItems_OrderId");
+            entity.HasIndex(x => x.ListingId).HasDatabaseName("IX_OrderItems_ListingId");
         });
 
         modelBuilder.Entity<Listing>(entity =>
@@ -165,6 +172,14 @@ public class MyYardSaleDbContext : IdentityDbContext<ApplicationUser, IdentityRo
                 .HasForeignKey(x => x.UserId)
                 .IsRequired(false)
                 .OnDelete(DeleteBehavior.SetNull);
+
+            // Performance indexes
+            entity.HasIndex(x => x.UserId).HasDatabaseName("IX_Listings_UserId");
+            entity.HasIndex(x => x.CategoryId).HasDatabaseName("IX_Listings_CategoryId");
+            entity.HasIndex(x => x.Status).HasDatabaseName("IX_Listings_Status");
+            entity.HasIndex(x => x.CreatedAt).HasDatabaseName("IX_Listings_CreatedAt");
+            entity.HasIndex(x => new { x.Status, x.CreatedAt }).HasDatabaseName("IX_Listings_Status_CreatedAt");
         });
+
     }
 }

@@ -1,3 +1,4 @@
+using FluentValidation;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using myYardSale.Application.Abstractions;
@@ -41,9 +42,13 @@ public static class ServiceCollectionExtensions
         .AddDefaultTokenProviders()
         .AddDefaultUI();
 
+        services.AddMemoryCache();
         services.AddScoped<IListingRepository, SqliteListingRepository>();
         services.AddScoped<ListingService>();
         services.AddScoped<ListingImageService>();
+
+        // FluentValidation
+        services.AddValidatorsFromAssemblyContaining<Program>();
 
         services.AddAntiforgery(options =>
         {

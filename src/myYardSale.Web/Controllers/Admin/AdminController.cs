@@ -13,11 +13,16 @@ public class AdminController : Controller
 {
     private readonly ListingService _listingService;
     private readonly ListingImageService _imageService;
+    private readonly ILogger<AdminController> _logger;
 
-    public AdminController(ListingService listingService, ListingImageService imageService)
+    public AdminController(
+        ListingService listingService,
+        ListingImageService imageService,
+        ILogger<AdminController> logger)
     {
         _listingService = listingService;
         _imageService = imageService;
+        _logger = logger;
     }
 
     [HttpGet]
@@ -74,8 +79,13 @@ public class AdminController : Controller
 
     [HttpPost]
     [ValidateAntiForgeryToken]
-    public async Task<IActionResult> Edit(ListingFormViewModel model, CancellationToken cancellationToken)
+    public async Task<IActionResult> Edit(int id, ListingFormViewModel model, CancellationToken cancellationToken)
     {
+        if (id != model.Id)
+        {
+            return BadRequest("ID mismatch");
+        }
+
         if (!ModelState.IsValid)
         {
             model.Categories = (await _listingService.GetCategoriesAsync(cancellationToken))
@@ -84,9 +94,15 @@ public class AdminController : Controller
             return View(model);
         }
 
+        var existing = await _listingService.GetByIdAsync(id, cancellationToken);
+        if (existing is null)
+        {
+            return NotFound();
+        }
+
         var listing = new Listing
         {
-            Id = model.Id,
+            Id = id,
             Title = model.Title,
             Description = model.Description,
             Price = model.Price,
@@ -101,6 +117,8 @@ public class AdminController : Controller
             return NotFound();
         }
 
+        _logger.LogInformation("Admin updated listing {ListingId}", id);
+
         if (model.ImageFiles is { Count: > 0 })
         {
             foreach (var file in model.ImageFiles)
@@ -112,6 +130,7 @@ public class AdminController : Controller
             }
         }
 
+        TempData["Success"] = "Listing updated successfully.";
         return RedirectToAction(nameof(Index));
     }
 
@@ -119,7 +138,15 @@ public class AdminController : Controller
     [ValidateAntiForgeryToken]
     public async Task<IActionResult> Delete(int id, CancellationToken cancellationToken)
     {
+        var existing = await _listingService.GetByIdAsync(id, cancellationToken);
+        if (existing is null)
+        {
+            return NotFound();
+        }
+
         await _listingService.DeleteAsync(id, cancellationToken);
+        _logger.LogInformation("Admin deleted listing {ListingId}", id);
+        TempData["Success"] = "Listing deleted.";
         return RedirectToAction(nameof(Index));
     }
 
@@ -127,7 +154,15 @@ public class AdminController : Controller
     [ValidateAntiForgeryToken]
     public async Task<IActionResult> DeleteImage(int imageId, int listingId, CancellationToken cancellationToken)
     {
+        var listing = await _listingService.GetByIdAsync(listingId, cancellationToken);
+        if (listing is null)
+        {
+            return NotFound();
+        }
+
         await _imageService.DeleteImageAsync(imageId, cancellationToken);
+        _logger.LogInformation("Admin deleted image {ImageId} from listing {ListingId}", imageId, listingId);
+        TempData["Success"] = "Image deleted.";
         return RedirectToAction(nameof(Edit), new { id = listingId });
     }
 }
