@@ -14,13 +14,47 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    // Auto-dismiss alerts after 5 seconds
-    setTimeout(() => {
-        document.querySelectorAll('.alert-dismissible').forEach(alert => {
-            const bsAlert = bootstrap.Alert.getOrCreateInstance(alert);
-            bsAlert.close();
-        });
-    }, 5000);
+    // Auto-dismiss alerts after 5 seconds using SweetAlert2
+    const alerts = document.querySelectorAll('.alert');
+    alerts.forEach(alert => {
+        if (alert.classList.contains('alert-success')) {
+            Swal.fire({
+                icon: 'success',
+                title: alert.textContent.trim() || 'Success',
+                timer: 3000,
+                showConfirmButton: false,
+                toast: true,
+                position: 'top-end'
+            });
+        } else if (alert.classList.contains('alert-danger') || alert.classList.contains('alert-error')) {
+            Swal.fire({
+                icon: 'error',
+                title: alert.textContent.trim() || 'Error',
+                timer: 4000,
+                showConfirmButton: false,
+                toast: true,
+                position: 'top-end'
+            });
+        } else if (alert.classList.contains('alert-warning')) {
+            Swal.fire({
+                icon: 'warning',
+                title: alert.textContent.trim() || 'Warning',
+                timer: 3500,
+                showConfirmButton: false,
+                toast: true,
+                position: 'top-end'
+            });
+        } else if (alert.classList.contains('alert-info')) {
+            Swal.fire({
+                icon: 'info',
+                title: alert.textContent.trim() || 'Info',
+                timer: 3000,
+                showConfirmButton: false,
+                toast: true,
+                position: 'top-end'
+            });
+        }
+    });
 
     // Add loading state to forms
     document.querySelectorAll('form').forEach(form => {

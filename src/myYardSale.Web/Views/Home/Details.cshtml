@@ -2,11 +2,6 @@
 
 @{
     ViewData["Title"] = Model.Title;
-    ViewData["Description"] = Model.Description?.Length > 160 ? Model.Description[..157] + "..." : Model.Description;
-    ViewData["OgImage"] = Model.Images.FirstOrDefault()?.StoragePath;
-}
-@{
-    ViewData["Title"] = Model.Title;
     var metaDescription = Model.Description?.Length > 160 ? Model.Description[..157] + "..." : Model.Description;
     ViewData["Description"] = metaDescription;
     ViewData["OgImage"] = Model.Images.FirstOrDefault()?.StoragePath;

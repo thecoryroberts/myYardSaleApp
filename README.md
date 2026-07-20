@@ -51,7 +51,7 @@ myYardSale.sln
 
 ```bash
 # Clone the repository
-git clone https://github.com/thecoryroberts/myYardSaleApp.git
+git clone https://github.com/thecoryroberts/myYardSaleApp.git myYardSale
 cd myYardSale
 
 # Build and restore
