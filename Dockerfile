@@ -24,11 +24,6 @@ WORKDIR /app
 RUN apt-get update && apt-get install -y --no-install-recommends curl && \
     rm -rf /var/lib/apt/lists/*
 
-# Install dotnet-ef for migrations
-RUN dotnet tool install --global dotnet-ef --version 9.0.0 && \
-    ln -s /root/.dotnet/tools/dotnet-ef /usr/local/bin/dotnet-ef
-
-ENV PATH="${PATH}:/root/.dotnet/tools"
 ENV ASPNETCORE_ENVIRONMENT=Production
 ENV DOTNET_RUNNING_IN_CONTAINER=true
 

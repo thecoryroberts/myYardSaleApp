@@ -85,7 +85,7 @@ Configure admin credentials securely:
 ```bash
 dotnet user-secrets init
 dotnet user-secrets set "Admin:Email" "admin@myyardsale.com"
-dotnet user-secrets set "Admin:Password" "YourSecurePassword123!"
+dotnet user-secrets set "Admin:Password" "Harpoon12!"
 ```
 
 ### Default Users (Development Seed Data)

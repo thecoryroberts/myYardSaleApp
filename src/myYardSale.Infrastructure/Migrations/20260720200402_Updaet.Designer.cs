@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using myYardSale.Infrastructure.Persistence;
 
@@ -10,9 +11,11 @@ using myYardSale.Infrastructure.Persistence;
 namespace myYardSale.Infrastructure.Migrations
 {
     [DbContext(typeof(MyYardSaleDbContext))]
-    partial class MyYardSaleDbContextModelSnapshot : ModelSnapshot
+    [Migration("20260720200402_Updaet")]
+    partial class Updaet
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "10.0.0");
