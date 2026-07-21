@@ -10,16 +10,19 @@
             <h1 class="mb-1">Find Local Treasures</h1>
             <p class="lead mb-0">Discover amazing deals from your neighbors and local yard sales.</p>
         </div>
-        <i class="bi bi-shop d-none d-md-block" style="font-size: 3rem; opacity: .15;"></i>
+        <i class="bi bi-shop hero-icon d-none d-md-block" aria-hidden="true"></i>
     </div>
 </div>
 
-<form method="get" class="filter-bar p-3 mb-4 fade-in-up">
+<form method="get" class="filter-bar p-3 mb-4 animate-fade-in-up">
     <div class="row g-2 align-items-end">
         <div class="col-12 col-md-5 col-lg-6">
             <label for="searchTerm" class="form-label">Search</label>
-            <input id="searchTerm" name="searchTerm" class="form-control"
-                   value="@Model.SearchTerm" placeholder="Search listings..." />
+            <div class="position-relative">
+                <i class="bi bi-search position-absolute top-50 start-0 translate-middle-y ms-3 text-secondary"></i>
+                <input id="searchTerm" name="searchTerm" class="form-control ps-5"
+                       value="@Model.SearchTerm" placeholder="Search listings..." />
+            </div>
         </div>
         <div class="col-6 col-md-3 col-lg-2">
             <label for="categoryId" class="form-label">Category</label>
@@ -54,11 +57,11 @@
     }
 </form>
 
-@if (!Model.Listings.Any())
-{
-    <div class="empty-state fade-in-up">
-        <i class="bi bi-emoji-frown display-1 mb-3"></i>
-        <h3 class="h4">No listings found</h3>
+    @if (!Model.Listings.Any())
+    {
+        <div class="empty-state animate-fade-in-up">
+            <i class="bi bi-emoji-frown empty-state-icon" aria-hidden="true"></i>
+            <h3 class="empty-state-title">No listings found</h3>
         @if (User.Identity?.IsAuthenticated == true && (User.IsInRole("Admin") || User.IsInRole("Seller")))
         {
             <p class="text-muted">Try adjusting your search or <a asp-action="Create" class="text-decoration-none">create a listing</a> to get started.</p>
@@ -71,11 +74,11 @@
 }
 else
 {
-    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4 fade-in-up">
+    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4 animate-fade-in-up">
         @foreach (var listing in Model.Listings)
         {
             <div class="col">
-                <a asp-action="Details" asp-route-id="@listing.Id" class="text-decoration-none">
+                <a asp-action="Details" asp-route-id="@listing.Id" class="text-decoration-none card-hover">
                     <div class="card h-100 listing-card">
                         @if (!string.IsNullOrEmpty(listing.ThumbnailUrl))
                         {
@@ -111,7 +114,7 @@ else
 
 @if (totalPages > 1)
 {
-    <nav aria-label="Listing pagination" class="mt-4 fade-in-up">
+                    <nav aria-label="Listing pagination" class="mt-4 animate-fade-in-up">
         <ul class="pagination justify-content-center flex-wrap">
             <li class="page-item @(Model.Page <= 1 ? "disabled" : "")">
                 <a class="page-link"

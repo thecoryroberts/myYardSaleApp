@@ -28,6 +28,8 @@ public sealed class ListingFormValidator : AbstractValidator<ListingFormViewMode
             .WithMessage("Only .jpg, .jpeg, .png, .gif, and .webp images are allowed.");
     }
 
+
+
     private static bool IsValidImageExtension(string fileName)
     {
         var extension = Path.GetExtension(fileName)?.ToLowerInvariant();

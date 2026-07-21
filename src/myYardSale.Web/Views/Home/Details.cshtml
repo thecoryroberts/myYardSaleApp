@@ -7,7 +7,7 @@
     ViewData["OgImage"] = Model.Images.FirstOrDefault()?.StoragePath;
 }
 
-<div class="card shadow-sm fade-in-up">
+<div class="card shadow-sm fade-in-up detail-page">
     <div class="card-header bg-white py-3">
         <div class="d-flex justify-content-between align-items-start">
             <div>
@@ -58,6 +58,30 @@
                 <span class="text-muted small text-uppercase fw-semibold">Price</span>
                 <div class="detail-price">
                     <span class="currency">$</span>@Model.Price.ToString("0.00")
+                </div>
+            </div>
+            <div class="text-end">
+                <span class="text-muted small text-uppercase fw-semibold d-block mb-1">Status</span>
+                <span class="badge bg-@(Model.Status == "Active" ? "success" : Model.Status == "Sold" ? "warning" : "secondary") fs-6">@Model.Status</span>
+            </div>
+        </div>
+
+        <div class="mb-4">
+            <small class="text-muted text-uppercase fw-semibold d-block mb-2">Description</small>
+            <p class="mb-0 lh-relaxed">@Model.Description</p>
+        </div>
+
+        <div class="row g-3 mb-4">
+            <div class="col-md-6">
+                <div class="p-3 bg-body-secondary rounded">
+                    <small class="text-muted text-uppercase fw-semibold d-block mb-1">Category</small>
+                    <span class="fw-medium"><i class="bi bi-collection me-2 text-primary"></i>@Model.Category</span>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="p-3 bg-body-secondary rounded">
+                    <small class="text-muted text-uppercase fw-semibold d-block mb-1">Listing ID</small>
+                    <span class="fw-medium font-monospace">#@Model.Id</span>
                 </div>
             </div>
         </div>

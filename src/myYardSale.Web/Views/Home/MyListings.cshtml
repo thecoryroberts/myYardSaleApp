@@ -5,7 +5,7 @@
 }
 
 <div class="d-flex justify-content-between align-items-center mb-4">
-    <h1 class="h3 mb-0">
+    <h1 class="h3 mb-0 animate-fade-in-up">
         <i class="bi bi-box me-2"></i>My Listings
     </h1>
     <a asp-action="Create" class="btn btn-primary">
@@ -15,7 +15,7 @@
 
 @if (!Model.Listings.Any())
 {
-    <div class="empty-state fade-in-up">
+    <div class="empty-state animate-fade-in-up">
         <i class="bi bi-box display-1 mb-3 text-muted"></i>
         <h3 class="h4 mb-2">No listings yet</h3>
         <p class="text-muted mb-3">You haven't created any listings.</p>
@@ -26,11 +26,11 @@
 }
 else
 {
-    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4 fade-in-up">
+    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4 animate-fade-in-up">
         @foreach (var listing in Model.Listings)
         {
             <div class="col">
-                <a asp-action="Details" asp-route-id="@listing.Id" class="text-decoration-none">
+                <a asp-action="Details" asp-route-id="@listing.Id" class="text-decoration-none card-hover">
                     <div class="card h-100 listing-card">
                         @if (!string.IsNullOrEmpty(listing.ThumbnailUrl))
                         {
@@ -60,14 +60,3 @@ else
     </div>
 }
 
-@section Scripts {
-    <script>
-        // Stagger card animations
-        document.addEventListener('DOMContentLoaded', function() {
-            const cards = document.querySelectorAll('.listing-card');
-            cards.forEach((card, index) => {
-                card.style.animationDelay = (index * 50) + 'ms';
-            });
-        });
-    </script>
-}
