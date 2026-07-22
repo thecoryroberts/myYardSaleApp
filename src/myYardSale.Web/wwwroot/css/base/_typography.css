@@ -60,20 +60,20 @@ p {
 .tracking-wide { letter-spacing: var(--letter-spacing-wide); }
 
 /* === Text Colors === */
-.text-primary { color: var(--color-text); }
+.text-default { color: var(--color-text); }
 .text-secondary { color: var(--color-text-secondary); }
 .text-tertiary { color: var(--color-text-tertiary); }
 .text-inverse { color: var(--color-text-inverse); }
 .text-muted { color: var(--color-text-secondary); }
 
-a.text-primary,
+a.text-default,
 a.text-secondary,
 a.text-tertiary,
 a.text-muted {
   text-decoration: none;
 }
 
-a.text-primary:hover,
+a.text-default:hover,
 a.text-secondary:hover,
 a.text-tertiary:hover,
 a.text-muted:hover {

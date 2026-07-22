@@ -127,7 +127,7 @@
 }
 
 /* === Colors === */
-.text-primary { color: var(--color-text); }
+.text-default { color: var(--color-text); }
 .text-secondary { color: var(--color-text-secondary); }
 .text-tertiary { color: var(--color-text-tertiary); }
 .text-muted { color: var(--color-text-secondary); }

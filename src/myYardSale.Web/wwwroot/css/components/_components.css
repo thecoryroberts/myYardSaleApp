@@ -154,6 +154,22 @@
   aspect-ratio: 1;
 }
 
+/* === User Avatar === */
+.user-avatar {
+  width: 36px;
+  height: 36px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--color-primary-light);
+  color: var(--color-primary);
+  border-radius: var(--radius-full);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-semibold);
+  line-height: 1;
+  flex-shrink: 0;
+}
+
 /* === Forms === */
 .form-group {
   margin-bottom: var(--space-4);
@@ -300,37 +316,6 @@ textarea.form-control {
   background-position: right var(--space-3) center;
   background-size: 16px 12px;
   padding-right: var(--space-10);
-}
-
-/* === Cards === */
-.card {
-  background-color: var(--color-surface);
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius-lg);
-  box-shadow: var(--shadow-sm);
-  overflow: hidden;
-  transition: box-shadow var(--transition-normal), transform var(--transition-normal);
-}
-
-.card-hover:hover {
-  box-shadow: var(--shadow-md);
-  transform: translateY(-2px);
-}
-
-.card-header {
-  padding: var(--space-5);
-  border-bottom: 1px solid var(--color-border);
-  background-color: var(--color-surface);
-}
-
-.card-body {
-  padding: var(--space-5);
-}
-
-.card-footer {
-  padding: var(--space-4) var(--space-5);
-  border-top: 1px solid var(--color-border);
-  background-color: var(--color-background-subtle);
 }
 
 /* === Badges === */

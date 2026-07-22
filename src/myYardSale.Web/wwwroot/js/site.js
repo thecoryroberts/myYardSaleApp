@@ -160,7 +160,7 @@ const Alerts = {
     const alerts = document.querySelectorAll('.alert');
     alerts.forEach(alert => {
       if (alert.classList.contains('alert-success')) {
-        Swal.fire({
+        const toast = Swal.fire({
           icon: 'success',
           title: alert.textContent.trim() || 'Success',
           timer: 3000,
@@ -168,6 +168,8 @@ const Alerts = {
           toast: true,
           position: 'top-end'
         });
+
+        alert.style.display = 'none';
       } else if (alert.classList.contains('alert-danger') || alert.classList.contains('alert-error')) {
         Swal.fire({
           icon: 'error',
@@ -177,6 +179,7 @@ const Alerts = {
           toast: true,
           position: 'top-end'
         });
+        alert.style.display = 'none';
       } else if (alert.classList.contains('alert-warning')) {
         Swal.fire({
           icon: 'warning',
@@ -186,6 +189,7 @@ const Alerts = {
           toast: true,
           position: 'top-end'
         });
+        alert.style.display = 'none';
       } else if (alert.classList.contains('alert-info')) {
         Swal.fire({
           icon: 'info',
@@ -195,6 +199,7 @@ const Alerts = {
           toast: true,
           position: 'top-end'
         });
+        alert.style.display = 'none';
       }
     });
   }

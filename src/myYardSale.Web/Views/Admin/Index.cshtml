@@ -15,15 +15,15 @@
 
 @if (!Model.Listings.Any())
 {
-    <div class="empty-state fade-in-up">
-        <i class="bi bi-box display-1 mb-3 text-warning"></i>
+    <div class="empty-state animate-fade-in-up">
+        <i class="bi bi-box empty-state-icon text-warning"></i>
         <h3 class="h4 mb-2">No listings yet</h3>
         <p class="text-muted">No listings have been created.</p>
     </div>
 }
 else
 {
-    <div class="card shadow-sm fade-in-up">
+    <div class="card shadow-sm animate-fade-in-up">
         <div class="card-header bg-white py-3">
             <h5 class="mb-0">
                 <i class="bi bi-list-ul me-2"></i>All Listings
@@ -69,15 +69,15 @@ else
                                 <td>@listing.CreatedAt.ToString("MMM dd, yyyy")</td>
                                 <td class="text-end">
                                     <div class="btn-group btn-group-sm">
-                                        <a asp-action="Details" asp-controller="Home" asp-route-id="@listing.Id" class="btn btn-outline-primary" title="View">
+                                        <a asp-action="Details" asp-controller="Home" asp-route-id="@listing.Id" class="btn btn-outline-primary" aria-label="View listing" title="View">
                                             <i class="bi bi-eye"></i>
                                         </a>
-                                        <a asp-action="Edit" asp-controller="Home" asp-route-id="@listing.Id" class="btn btn-outline-secondary" title="Edit">
+                                        <a asp-action="Edit" asp-controller="Home" asp-route-id="@listing.Id" class="btn btn-outline-secondary" aria-label="Edit listing" title="Edit">
                                             <i class="bi bi-pencil"></i>
                                         </a>
                                         <form asp-action="Delete" asp-controller="Home" asp-route-id="@listing.Id" method="post" class="d-inline" 
                                               onsubmit="return confirm('Delete this listing? This action cannot be undone.');">
-                                            <button type="submit" class="btn btn-outline-danger" title="Delete">
+                                            <button type="submit" class="btn btn-outline-danger" aria-label="Delete listing" title="Delete">
                                                 <i class="bi bi-trash"></i>
                                             </button>
                                         </form>

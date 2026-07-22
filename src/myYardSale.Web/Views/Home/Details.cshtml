@@ -27,19 +27,18 @@
                 @for (int i = 0; i < Model.Images.Count; i++)
                 {
                     <img src="@Model.Images[i].StoragePath"
-                         class="img-fluid cursor-pointer listing-thumb"
+                         class="img-fluid cursor-pointer listing-thumb detail-image"
                          alt="@Model.Images[i].AltText"
                          loading="lazy"
                          data-full="@Model.Images[i].StoragePath"
-                         data-index="@i"
-                         style="height:140px; width:100%; object-fit:cover;" />
+                         data-index="@i" />
                 }
             </div>
         }
         else
         {
-            <div class="bg-light rounded mb-4 d-flex align-items-center justify-content-center" style="height: 200px;">
-                <i class="bi bi-image text-muted" style="font-size: 3rem;"></i>
+            <div class="bg-light rounded mb-4 d-flex align-items-center justify-content-center detail-image-placeholder">
+                <i class="bi bi-image text-muted"></i>
             </div>
         }
 
@@ -101,12 +100,12 @@
                 </a>
             <form asp-action="Delete" asp-route-id="@Model.Id" method="post" class="d-inline" 
                   onsubmit="return confirm('Are you sure you want to delete this listing? This action cannot be undone.');">
-                <button type="submit" class="btn btn-outline-danger btn-lg">
-                    <i class="bi bi-trash me-2"></i>Delete
-                </button>
+                                        <button type="submit" class="btn btn-outline-danger btn-lg" aria-label="Delete listing">
+                                            <i class="bi bi-trash me-2"></i>Delete
+                                        </button>
             </form>
             }
-            <a class="btn btn-outline-light btn-lg" asp-action="Index">
+            <a class="btn btn-outline-secondary btn-lg" asp-action="Index">
                 <i class="bi bi-arrow-left me-2"></i>Back to Listings
             </a>
         </div>
@@ -131,6 +130,23 @@
 
             modalEl.addEventListener('hidden.bs.modal', function() {
                 img.src = '';
+            });
+
+            // Focus trap for accessibility
+            const focusableElements = modalEl.querySelectorAll('button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])');
+            const firstFocusable = focusableElements[0];
+            const lastFocusable = focusableElements[focusableElements.length - 1];
+
+            modalEl.addEventListener('keydown', function(e) {
+                if (e.key === 'Tab') {
+                    if (e.shiftKey && document.activeElement === firstFocusable) {
+                        e.preventDefault();
+                        lastFocusable.focus();
+                    } else if (!e.shiftKey && document.activeElement === lastFocusable) {
+                        e.preventDefault();
+                        firstFocusable.focus();
+                    }
+                }
             });
         })();
     </script>
